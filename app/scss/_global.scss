@@ -1,0 +1,46 @@
+button {
+  cursor: pointer;
+  border-radius: 3px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+.blue-button {
+  font-family: SFProDisplay, sans-serif;
+  background-color: $accent-color;
+  color: #FFF;
+}
+
+input {
+  outline: none;
+}
+
+input::placeholder {
+  color: $light-gray;
+}
+
+html {
+  font-family: SFProDisplay, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 15px;
+}
+
+.main {
+  min-height: 100vh;
+}
+
+.section-title {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 30px;
+  margin-bottom: 25px;
+}
