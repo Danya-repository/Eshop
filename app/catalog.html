@@ -1,0 +1,531 @@
+<section class="catalog">
+    <div class="catalog__wrapper">
+        <div class="container">
+            <div class="catalog__inner">
+                <h2 class="catalog__goods-section-title goods-section-title">Гидроциклы</h2>
+                <div class="catalog__view-control-bar view-control-bar">
+                    <ul class="view-control-bar__popular-search-request-list popular-search-request-list">
+                        <li class="popular-search-request-list__item">
+                            <button class="popular-search-request__button">Полноприводные</button>
+                        </li>
+                        <li class="popular-search-request-list__item">
+                            <button class="popular-search-request__button">От 5000</button>
+                        </li>
+                        <li class="popular-search-request-list__item">
+                            <button class="popular-search-request__button">BRP</button>
+                        </li>
+                        <li class="popular-search-request-list__item">
+                            <button class="popular-search-request__button">Еще</button>
+                        </li>
+                    </ul>
+                    <div class="view-control-bar__view-types">
+                        <select class="view-control-bar__sort-by-list" name="#">
+                            <option class="view-control-bar__sort-by-item" value="popular">По популярности</option>
+                            <option class="view-control-bar__sort-by-item" value="saab">По цене по возрастанию</option>
+                            <option class="view-control-bar__sort-by-item" value="mercedes">По цене по убыванию</option>
+                            <option class="view-control-bar__sort-by-item" value="audi">По алфавиту</option>
+                        </select>
+                        <div class="view-control-bar__view-type-buttons">
+                            <button class="view-control-bar__view-type-button">
+                                <svg width="25" height="19" viewBox="0 0 23 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="1" y="1" width="21" height="19" stroke="#2F3035" stroke-width="2"/>
+                                    <rect x="7" y="6" width="2" height="2" fill="#2F3035" stroke="#2F3035" stroke-width="2"/>
+                                    <rect x="7" y="13" width="2" height="2" fill="#2F3035" stroke="#2F3035" stroke-width="2"/>
+                                    <rect x="14" y="6" width="2" height="2" fill="#2F3035" stroke="#2F3035" stroke-width="2"/>
+                                    <rect x="14" y="13" width="2" height="2" fill="#2F3035" stroke="#2F3035" stroke-width="2"/>
+                                </svg>
+                            </button>
+                            <button class="view-control-bar__view-type-button">
+                                <svg width="25" height="19" viewBox="0 0 25 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g opacity="0.3">
+                                        <rect x="6" width="19" height="3" rx="1.5" fill="#2F3035"/>
+                                        <rect x="6" y="8" width="19" height="3" rx="1.5" fill="#2F3035"/>
+                                        <rect x="6" y="16" width="19" height="3" rx="1.5" fill="#2F3035"/>
+                                        <rect width="3" height="3" rx="1.5" fill="#2F3035"/>
+                                        <rect y="8" width="3" height="3" rx="1.5" fill="#2F3035"/>
+                                        <rect y="16" width="3" height="3" rx="1.5" fill="#2F3035"/>
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="catalog__window">
+                    <div class="catalog__filter filter">
+                        <form class="filter__form" action="#">
+                            <div class="filter__head-buttons">
+                                <button class="filter__head-button active">Параметры</button>
+                                <button class="filter__head-button">По марке</button>
+                            </div>
+                            <div class="filter__columns">
+                                <div class="filter__column filter__by-params">
+                                    <ul class="filter__section-list">
+                                        <li class="filter__section-item">
+                                            <div class="filter__section-item-inner">
+                                                <div class="filter-drop-down drop-down">
+                                                    <button class="drop-down__head-button">Наличие</button>
+                                                    <div class="drop-down__section-body drop-down__body">
+                                                        <div class="drop-down__body-window">
+                                                            <div class="drop-down__search-wrapper">
+                                                                <label class="drop-down__checkbox-label" for="">
+                                                                    <input class="drop-down__search-field"
+                                                                           type="text" name="#"
+                                                                           placeholder="Введите модель">
+                                                                </label>
+                                                            </div>
+                                                            <div class="drop-down__checkbox-list-default">
+                                                                <label class="drop-down__checkbox-label" for="">
+                                                                    <input class="drop-down__checkbox-default"
+                                                                           type="checkbox" name="№"
+                                                                           checked="checked">В наличие
+                                                                </label>
+                                                                <label class="drop-down__checkbox-label" for="">
+                                                                    <input class="drop-down__checkbox-default"
+                                                                           type="checkbox" name="№">Под заказ
+                                                                </label>
+                                                                <label class="drop-down__checkbox-label" for="">
+                                                                    <input class="drop-down__checkbox-default"
+                                                                           type="checkbox" name="№">Под заказ
+                                                                </label>
+                                                            </div>
+                                                            <button class="drop-down__open-full-window-button see-more-button">Показать
+                                                                еще
+                                                            </button>
+                                                            <div class="drop-down__check-buttons">
+                                                                <label class="drop-down__checkbox-label active" for="">
+                                                                    <input class="drop-down__check-button"
+                                                                           type="checkbox" name="№">SALE
+                                                                </label>
+                                                                <label class="drop-down__checkbox-label special-checkbox-label" for="">
+                                                                    <input class="drop-down__check-button special-check-button"
+                                                                           type="checkbox" name="№">NEW
+                                                                </label>
+                                                                <label class="drop-down__checkbox-label special active" for="">
+                                                                    <input class="drop-down__check-button special"
+                                                                           type="checkbox" name="№">Дилер
+                                                                </label>
+                                                            </div>
+                                                            <div class="drop-down__slider">
+                                                                <div class="drop-down__slider-inner">
+                                                                    <div class="drop-down__slider-back-line">
+                                                                        <div class="drop-down__slider-main-line">
+                                                                            <div class="drop-down__minimum-value">
+                                                                                <p class="drop-down__cloud-value">
+                                                                                    100 000
+                                                                                </p>
+                                                                            </div>
+                                                                            <div class="drop-down__maximum-value">
+                                                                                <!--                                                                                    <p class="drop-down__cloud-value">-->
+                                                                                <!--                                                                                        500 000-->
+                                                                                <!--                                                                                    </p>-->
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="drop-down__slider-pointers">
+                                                                            <span class="drop-down__slider-pointer drop-down__slider-pointer-minimum">
+                                                                                100 000
+                                                                            </span>
+                                                                        <span class="drop-down__slider-pointer drop-down__slider-pointer-maximum">
+                                                                                500 000
+                                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="filter__section-item inline-filter">
+                                            <div class="filter__section-item-inner">
+                                                <h3 class="filter__section-item-title">Мощность, л.с.</h3>
+                                                <label class="filter__section-label" for="">
+                                                    <select class="filter__section-selector section-selector"
+                                                            name="#">
+                                                        <option class="section-selector__option" value="1">1
+                                                        </option>
+                                                        <option class="section-selector__option" value="2">2
+                                                        </option>
+                                                        <option class="section-selector__option" value="3">3
+                                                        </option>
+                                                        <option class="section-selector__option" value="4">4
+                                                        </option>
+                                                    </select>
+                                                </label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="filter__column filter__by-product-label">
+
+                                </div>
+                            </div>
+                            <button type="submit" class="filter__button-submit">Выбрать</button>
+                            <div class="filter__section-item addition-parameters drop-down">
+                                <button class="addition-parameters__button">Дополнительные параметры</button>
+                                <div class="drop-down__body drop-down__body"></div>
+                            </div>
+                            <button class="filter__button-reset" type="reset">Сбросить фильтр</button>
+                        </form>
+                    </div>
+                    <div class="catalog__list-wrapper">
+                        <ul class="catalog__list">
+                            <li class="catalog__list-item">
+                                <div class="card">
+                                    <div class="card__special-offer">Sale</div>
+                                    <button class="card__like-button">
+                                        <svg class="card__like-button-disable" width="24" height="22"
+                                             viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 8.22892C12.234 7.10892 13.547 1.99992 17.382 1.99992C19.602 1.99992 22 3.55092 22 7.00292C22 10.9099 18.373 15.4729 12 19.6319C5.627 15.4729 2 10.9099 2 7.00292C2 3.51892 4.369 1.99792 6.577 1.99792C10.5 1.99792 11.722 7.12392 12 8.22892ZM0 7.00292C0 11.0709 3.06 16.4839 12 21.9999C20.94 16.4839 24 11.0709 24 7.00292C24 -0.959077 14.352 -2.02508 12 3.26592C9.662 -1.99608 0 -1.00408 0 7.00292Z"
+                                                  fill="#2F3035"/>
+                                        </svg>
+                                        <svg class="card__like-button-enable" width="24" height="22" viewBox="0 0 24 22"
+                                             fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 3.43498C10.011 -1.96402 0 -1.16202 0 7.00298C0 11.071 3.06 16.484 12 22C20.94 16.484 24 11.071 24 7.00298C24 -1.11502 14 -1.99602 12 3.43498Z"
+                                                  fill="#1C62CD"/>
+                                        </svg>
+                                    </button>
+                                    <div class="card__content">
+                                        <img class="card__content-image" src="img/vest.png" alt="vest">
+                                        <span class="card__view-good">посмотреть товар</span>
+                                        <p class="card__content-text">Спасательный жилет BRP Men's Airflow PFD</p>
+                                        <!--                                        <span class="card__out-of-stock">Нет в наличии</span>-->
+                                        <!--                                        <button class="card__report-on-admission">Сообщить о поступлении</button>-->
+                                        <span class="card__content-price">6 900 ₽</span>
+                                    </div>
+                                    <button class="card__add-to-basket-button">
+                                        <svg width="30" height="23" viewBox="0 0 30 23" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M30 0L29.0713 2.5H26.66L22.3175 17.5H5.76875L0 3.75H21.015L20.31 6.25H3.76L7.43125 15H20.4662L24.7563 0H30ZM10.625 18.75C9.59 18.75 8.75 19.59 8.75 20.625C8.75 21.6612 9.59 22.5 10.625 22.5C11.66 22.5 12.5 21.6612 12.5 20.625C12.5 19.59 11.66 18.75 10.625 18.75ZM19.25 10L16.875 18.75C15.84 18.75 15 19.5888 15 20.625C15 21.6612 15.84 22.5 16.875 22.5C17.91 22.5 18.75 21.6612 18.75 20.625C18.75 19.59 17.91 18.75 16.875 18.75L19.25 10Z"
+                                                  fill="white"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </li>
+                            <li class="catalog__list-item">
+                                <div class="card">
+                                    <div class="card__special-offer">Sale</div>
+                                    <button class="card__like-button">
+                                        <svg class="card__like-button-disable" width="24" height="22"
+                                             viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 8.22892C12.234 7.10892 13.547 1.99992 17.382 1.99992C19.602 1.99992 22 3.55092 22 7.00292C22 10.9099 18.373 15.4729 12 19.6319C5.627 15.4729 2 10.9099 2 7.00292C2 3.51892 4.369 1.99792 6.577 1.99792C10.5 1.99792 11.722 7.12392 12 8.22892ZM0 7.00292C0 11.0709 3.06 16.4839 12 21.9999C20.94 16.4839 24 11.0709 24 7.00292C24 -0.959077 14.352 -2.02508 12 3.26592C9.662 -1.99608 0 -1.00408 0 7.00292Z"
+                                                  fill="#2F3035"/>
+                                        </svg>
+                                        <svg class="card__like-button-enable" width="24" height="22" viewBox="0 0 24 22"
+                                             fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 3.43498C10.011 -1.96402 0 -1.16202 0 7.00298C0 11.071 3.06 16.484 12 22C20.94 16.484 24 11.071 24 7.00298C24 -1.11502 14 -1.99602 12 3.43498Z"
+                                                  fill="#1C62CD"/>
+                                        </svg>
+                                    </button>
+                                    <div class="card__content">
+                                        <img class="card__content-image" src="img/vest.png" alt="vest">
+                                        <span class="card__view-good">посмотреть товар</span>
+                                        <p class="card__content-text">Спасательный жилет BRP Men's Airflow PFD</p>
+                                        <!--                                        <span class="card__out-of-stock">Нет в наличии</span>-->
+                                        <!--                                        <button class="card__report-on-admission">Сообщить о поступлении</button>-->
+                                        <span class="card__content-price">6 900 ₽</span>
+                                    </div>
+                                    <button class="card__add-to-basket-button">
+                                        <svg width="30" height="23" viewBox="0 0 30 23" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M30 0L29.0713 2.5H26.66L22.3175 17.5H5.76875L0 3.75H21.015L20.31 6.25H3.76L7.43125 15H20.4662L24.7563 0H30ZM10.625 18.75C9.59 18.75 8.75 19.59 8.75 20.625C8.75 21.6612 9.59 22.5 10.625 22.5C11.66 22.5 12.5 21.6612 12.5 20.625C12.5 19.59 11.66 18.75 10.625 18.75ZM19.25 10L16.875 18.75C15.84 18.75 15 19.5888 15 20.625C15 21.6612 15.84 22.5 16.875 22.5C17.91 22.5 18.75 21.6612 18.75 20.625C18.75 19.59 17.91 18.75 16.875 18.75L19.25 10Z"
+                                                  fill="white"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </li>
+                            <li class="catalog__list-item">
+                                <div class="card">
+                                    <div class="card__special-offer">Sale</div>
+                                    <button class="card__like-button">
+                                        <svg class="card__like-button-disable" width="24" height="22"
+                                             viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 8.22892C12.234 7.10892 13.547 1.99992 17.382 1.99992C19.602 1.99992 22 3.55092 22 7.00292C22 10.9099 18.373 15.4729 12 19.6319C5.627 15.4729 2 10.9099 2 7.00292C2 3.51892 4.369 1.99792 6.577 1.99792C10.5 1.99792 11.722 7.12392 12 8.22892ZM0 7.00292C0 11.0709 3.06 16.4839 12 21.9999C20.94 16.4839 24 11.0709 24 7.00292C24 -0.959077 14.352 -2.02508 12 3.26592C9.662 -1.99608 0 -1.00408 0 7.00292Z"
+                                                  fill="#2F3035"/>
+                                        </svg>
+                                        <svg class="card__like-button-enable" width="24" height="22" viewBox="0 0 24 22"
+                                             fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 3.43498C10.011 -1.96402 0 -1.16202 0 7.00298C0 11.071 3.06 16.484 12 22C20.94 16.484 24 11.071 24 7.00298C24 -1.11502 14 -1.99602 12 3.43498Z"
+                                                  fill="#1C62CD"/>
+                                        </svg>
+                                    </button>
+                                    <div class="card__content">
+                                        <img class="card__content-image" src="img/vest.png" alt="vest">
+                                        <span class="card__view-good">посмотреть товар</span>
+                                        <p class="card__content-text">Спасательный жилет BRP Men's Airflow PFD</p>
+                                        <!--                                        <span class="card__out-of-stock">Нет в наличии</span>-->
+                                        <!--                                        <button class="card__report-on-admission">Сообщить о поступлении</button>-->
+                                        <span class="card__content-price">6 900 ₽</span>
+                                    </div>
+                                    <button class="card__add-to-basket-button">
+                                        <svg width="30" height="23" viewBox="0 0 30 23" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M30 0L29.0713 2.5H26.66L22.3175 17.5H5.76875L0 3.75H21.015L20.31 6.25H3.76L7.43125 15H20.4662L24.7563 0H30ZM10.625 18.75C9.59 18.75 8.75 19.59 8.75 20.625C8.75 21.6612 9.59 22.5 10.625 22.5C11.66 22.5 12.5 21.6612 12.5 20.625C12.5 19.59 11.66 18.75 10.625 18.75ZM19.25 10L16.875 18.75C15.84 18.75 15 19.5888 15 20.625C15 21.6612 15.84 22.5 16.875 22.5C17.91 22.5 18.75 21.6612 18.75 20.625C18.75 19.59 17.91 18.75 16.875 18.75L19.25 10Z"
+                                                  fill="white"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </li>
+                            <li class="catalog__list-item">
+                                <div class="card">
+                                    <div class="card__special-offer">Sale</div>
+                                    <button class="card__like-button">
+                                        <svg class="card__like-button-disable" width="24" height="22"
+                                             viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 8.22892C12.234 7.10892 13.547 1.99992 17.382 1.99992C19.602 1.99992 22 3.55092 22 7.00292C22 10.9099 18.373 15.4729 12 19.6319C5.627 15.4729 2 10.9099 2 7.00292C2 3.51892 4.369 1.99792 6.577 1.99792C10.5 1.99792 11.722 7.12392 12 8.22892ZM0 7.00292C0 11.0709 3.06 16.4839 12 21.9999C20.94 16.4839 24 11.0709 24 7.00292C24 -0.959077 14.352 -2.02508 12 3.26592C9.662 -1.99608 0 -1.00408 0 7.00292Z"
+                                                  fill="#2F3035"/>
+                                        </svg>
+                                        <svg class="card__like-button-enable" width="24" height="22" viewBox="0 0 24 22"
+                                             fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 3.43498C10.011 -1.96402 0 -1.16202 0 7.00298C0 11.071 3.06 16.484 12 22C20.94 16.484 24 11.071 24 7.00298C24 -1.11502 14 -1.99602 12 3.43498Z"
+                                                  fill="#1C62CD"/>
+                                        </svg>
+                                    </button>
+                                    <div class="card__content">
+                                        <img class="card__content-image" src="img/vest.png" alt="vest">
+                                        <span class="card__view-good">посмотреть товар</span>
+                                        <p class="card__content-text">Спасательный жилет BRP Men's Airflow PFD</p>
+                                        <!--                                        <span class="card__out-of-stock">Нет в наличии</span>-->
+                                        <!--                                        <button class="card__report-on-admission">Сообщить о поступлении</button>-->
+                                        <span class="card__content-price">6 900 ₽</span>
+                                    </div>
+                                    <button class="card__add-to-basket-button">
+                                        <svg width="30" height="23" viewBox="0 0 30 23" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M30 0L29.0713 2.5H26.66L22.3175 17.5H5.76875L0 3.75H21.015L20.31 6.25H3.76L7.43125 15H20.4662L24.7563 0H30ZM10.625 18.75C9.59 18.75 8.75 19.59 8.75 20.625C8.75 21.6612 9.59 22.5 10.625 22.5C11.66 22.5 12.5 21.6612 12.5 20.625C12.5 19.59 11.66 18.75 10.625 18.75ZM19.25 10L16.875 18.75C15.84 18.75 15 19.5888 15 20.625C15 21.6612 15.84 22.5 16.875 22.5C17.91 22.5 18.75 21.6612 18.75 20.625C18.75 19.59 17.91 18.75 16.875 18.75L19.25 10Z"
+                                                  fill="white"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </li>
+                            <li class="catalog__list-item">
+                                <div class="card">
+                                    <div class="card__special-offer">Sale</div>
+                                    <button class="card__like-button">
+                                        <svg class="card__like-button-disable" width="24" height="22"
+                                             viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 8.22892C12.234 7.10892 13.547 1.99992 17.382 1.99992C19.602 1.99992 22 3.55092 22 7.00292C22 10.9099 18.373 15.4729 12 19.6319C5.627 15.4729 2 10.9099 2 7.00292C2 3.51892 4.369 1.99792 6.577 1.99792C10.5 1.99792 11.722 7.12392 12 8.22892ZM0 7.00292C0 11.0709 3.06 16.4839 12 21.9999C20.94 16.4839 24 11.0709 24 7.00292C24 -0.959077 14.352 -2.02508 12 3.26592C9.662 -1.99608 0 -1.00408 0 7.00292Z"
+                                                  fill="#2F3035"/>
+                                        </svg>
+                                        <svg class="card__like-button-enable" width="24" height="22" viewBox="0 0 24 22"
+                                             fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 3.43498C10.011 -1.96402 0 -1.16202 0 7.00298C0 11.071 3.06 16.484 12 22C20.94 16.484 24 11.071 24 7.00298C24 -1.11502 14 -1.99602 12 3.43498Z"
+                                                  fill="#1C62CD"/>
+                                        </svg>
+                                    </button>
+                                    <div class="card__content">
+                                        <img class="card__content-image" src="img/vest.png" alt="vest">
+                                        <span class="card__view-good">посмотреть товар</span>
+                                        <p class="card__content-text">Спасательный жилет BRP Men's Airflow PFD</p>
+                                        <!--                                        <span class="card__out-of-stock">Нет в наличии</span>-->
+                                        <!--                                        <button class="card__report-on-admission">Сообщить о поступлении</button>-->
+                                        <span class="card__content-price">6 900 ₽</span>
+                                    </div>
+                                    <button class="card__add-to-basket-button">
+                                        <svg width="30" height="23" viewBox="0 0 30 23" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M30 0L29.0713 2.5H26.66L22.3175 17.5H5.76875L0 3.75H21.015L20.31 6.25H3.76L7.43125 15H20.4662L24.7563 0H30ZM10.625 18.75C9.59 18.75 8.75 19.59 8.75 20.625C8.75 21.6612 9.59 22.5 10.625 22.5C11.66 22.5 12.5 21.6612 12.5 20.625C12.5 19.59 11.66 18.75 10.625 18.75ZM19.25 10L16.875 18.75C15.84 18.75 15 19.5888 15 20.625C15 21.6612 15.84 22.5 16.875 22.5C17.91 22.5 18.75 21.6612 18.75 20.625C18.75 19.59 17.91 18.75 16.875 18.75L19.25 10Z"
+                                                  fill="white"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </li>
+                        </ul>
+                        <button class="show-more-button rectangle-button">Показать еще</button>
+                        <div class="catalog__pagination pagination">
+                            <ul class="pagination__list">
+                                <li class="pagination__list-item">
+                                    <button class="pagination__button active">1</button>
+                                </li>
+                                <li class="pagination__list-item">
+                                    <button class="pagination__button">2</button>
+                                </li>
+                                <li class="pagination__list-item">
+                                    <button class="pagination__button">3</button>
+                                </li>
+                                <li class="pagination__list-item">
+                                    <button class="pagination__button">4</button>
+                                </li>
+                                <li class="pagination__list-item">
+                                    <button class="pagination__button">5</button>
+                                </li>
+                                <li class="pagination__list-item">
+                                    <button class="pagination__button">...</button>
+                                </li>
+                                <li class="pagination__list-item">
+                                    <button class="pagination__button">11</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="popular-goods product-goods-tabs">
+    <div class="product-goods-tabs__wrapper">
+        <div class="container">
+            <div class="product-goods-tabs__inner">
+                <h4 class="product-goods-tabs__title section-title">С этим товаром покупают</h4>
+                <div class="product-goods-tabs__buttons tab-buttons">
+                    <div class="product-goods-tabs__button-wrapper tab-button">
+                        <div class="menu__list-item button-decorate-underline">
+                                <span class="menu__item-wrapper">
+                                    <a class="menu__link link" href="#">запчасти</a>
+                                    <span class="button__decorate-line"></span>
+                                </span>
+                        </div>
+                    </div>
+                    <div class="product-goods-tabs__button-wrapper tab-button">
+                        <div class="menu__list-item button-decorate-underline">
+                                <span class="menu__item-wrapper">
+                                    <a class="menu__link link" href="#">моторы</a>
+                                    <span class="button__decorate-line"></span>
+                                </span>
+                        </div>
+                    </div>
+                    <div class="product-goods-tabs__button-wrapper tab-button">
+                        <div class="menu__list-item button-decorate-underline">
+                                <span class="menu__item-wrapper">
+                                    <a class="menu__link link" href="#">шины</a>
+                                    <span class="button__decorate-line"></span>
+                                </span>
+                        </div>
+                    </div>
+                    <div class="product-goods-tabs__button-wrapper tab-button">
+                        <div class="menu__list-item button-decorate-underline">
+                                <span class="menu__item-wrapper">
+                                    <a class="menu__link link" href="#">электроника</a>
+                                    <span class="button__decorate-line"></span>
+                                </span>
+                        </div>
+                    </div>
+                    <div class="product-goods-tabs__button-wrapper tab-button">
+                        <div class="menu__list-item button-decorate-underline">
+                                <span class="menu__item-wrapper">
+                                    <a class="menu__link link" href="#">инструменты</a>
+                                    <span class="button__decorate-line"></span>
+                                </span>
+                        </div>
+                    </div>
+                    <div class="product-goods-tabs__button-wrapper tab-button">
+                        <div class="menu__list-item button-decorate-underline">
+                                <span class="menu__item-wrapper">
+                                    <a class="menu__link link" href="#">аксессуары</a>
+                                    <span class="button__decorate-line"></span>
+                                </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-goods-tabs__tab-content">
+                    <div class="product-goods-tabs__carousel">
+                        <div class="product-goods-tabs__carousel-wrapper">
+                            <div class="product-goods-tabs__carousel-item card">
+                                <div class="card__special-offer">Sale</div>
+                                <button class="card__like-button active">
+                                    <svg class="card__like-button-disable" width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 8.22892C12.234 7.10892 13.547 1.99992 17.382 1.99992C19.602 1.99992 22 3.55092 22 7.00292C22 10.9099 18.373 15.4729 12 19.6319C5.627 15.4729 2 10.9099 2 7.00292C2 3.51892 4.369 1.99792 6.577 1.99792C10.5 1.99792 11.722 7.12392 12 8.22892ZM0 7.00292C0 11.0709 3.06 16.4839 12 21.9999C20.94 16.4839 24 11.0709 24 7.00292C24 -0.959077 14.352 -2.02508 12 3.26592C9.662 -1.99608 0 -1.00408 0 7.00292Z" fill="#2F3035"/>
+                                    </svg>
+                                    <svg class="card__like-button-enable" width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 3.43498C10.011 -1.96402 0 -1.16202 0 7.00298C0 11.071 3.06 16.484 12 22C20.94 16.484 24 11.071 24 7.00298C24 -1.11502 14 -1.99602 12 3.43498Z" fill="#1C62CD"/>
+                                    </svg>
+                                </button>
+                                <div class="card__content">
+                                    <img class="card__content-image" src="img/vest.png" alt="vest">
+                                    <span class="card__view-good">посмотреть товар</span>
+                                    <p class="card__content-text">Спасательный жилет BRP Men's Airflow PFD</p>
+                                    <span class="card__out-of-stock">Нет в наличии</span>
+                                    <button class="card__report-on-admission">Сообщить о поступлении</button>
+                                    <!--                                        <span class="card__content-price">6 900 ₽</span>-->
+                                </div>
+                                <!--                                    <button class="card__add-to-basket-button">-->
+                                <!--                                        <svg width="30" height="23" viewBox="0 0 30 23" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+                                <!--                                            <path d="M30 0L29.0713 2.5H26.66L22.3175 17.5H5.76875L0 3.75H21.015L20.31 6.25H3.76L7.43125 15H20.4662L24.7563 0H30ZM10.625 18.75C9.59 18.75 8.75 19.59 8.75 20.625C8.75 21.6612 9.59 22.5 10.625 22.5C11.66 22.5 12.5 21.6612 12.5 20.625C12.5 19.59 11.66 18.75 10.625 18.75ZM19.25 10L16.875 18.75C15.84 18.75 15 19.5888 15 20.625C15 21.6612 15.84 22.5 16.875 22.5C17.91 22.5 18.75 21.6612 18.75 20.625C18.75 19.59 17.91 18.75 16.875 18.75L19.25 10Z" fill="white"/>-->
+                                <!--                                        </svg>-->
+                                <!--                                    </button>-->
+                            </div>
+                            <div class="product-goods-tabs__carousel-item card">
+                                <div class="card__special-offer">Sale</div>
+                                <button class="card__like-button">
+                                    <svg class="card__like-button-disable" width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 8.22892C12.234 7.10892 13.547 1.99992 17.382 1.99992C19.602 1.99992 22 3.55092 22 7.00292C22 10.9099 18.373 15.4729 12 19.6319C5.627 15.4729 2 10.9099 2 7.00292C2 3.51892 4.369 1.99792 6.577 1.99792C10.5 1.99792 11.722 7.12392 12 8.22892ZM0 7.00292C0 11.0709 3.06 16.4839 12 21.9999C20.94 16.4839 24 11.0709 24 7.00292C24 -0.959077 14.352 -2.02508 12 3.26592C9.662 -1.99608 0 -1.00408 0 7.00292Z" fill="#2F3035"/>
+                                    </svg>
+                                    <svg class="card__like-button-enable" width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 3.43498C10.011 -1.96402 0 -1.16202 0 7.00298C0 11.071 3.06 16.484 12 22C20.94 16.484 24 11.071 24 7.00298C24 -1.11502 14 -1.99602 12 3.43498Z" fill="#1C62CD"/>
+                                    </svg>
+                                </button>
+                                <div class="card__content">
+                                    <img class="card__content-image" src="img/vest.png" alt="vest">
+                                    <span class="card__view-good">посмотреть товар</span>
+                                    <p class="card__content-text">Спасательный жилет BRP Men's Airflow PFD</p>
+                                    <!--                                        <span class="card__out-of-stock">Нет в наличии</span>-->
+                                    <!--                                        <button class="card__report-on-admission">Сообщить о поступлении</button>-->
+                                    <span class="card__content-price">6 900 ₽</span>
+                                </div>
+                                <button class="card__add-to-basket-button">
+                                    <svg width="30" height="23" viewBox="0 0 30 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M30 0L29.0713 2.5H26.66L22.3175 17.5H5.76875L0 3.75H21.015L20.31 6.25H3.76L7.43125 15H20.4662L24.7563 0H30ZM10.625 18.75C9.59 18.75 8.75 19.59 8.75 20.625C8.75 21.6612 9.59 22.5 10.625 22.5C11.66 22.5 12.5 21.6612 12.5 20.625C12.5 19.59 11.66 18.75 10.625 18.75ZM19.25 10L16.875 18.75C15.84 18.75 15 19.5888 15 20.625C15 21.6612 15.84 22.5 16.875 22.5C17.91 22.5 18.75 21.6612 18.75 20.625C18.75 19.59 17.91 18.75 16.875 18.75L19.25 10Z" fill="white"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="product-goods-tabs__carousel-item card">
+                                <div class="card__special-offer">Sale</div>
+                                <button class="card__like-button active">
+                                    <svg class="card__like-button-disable" width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 8.22892C12.234 7.10892 13.547 1.99992 17.382 1.99992C19.602 1.99992 22 3.55092 22 7.00292C22 10.9099 18.373 15.4729 12 19.6319C5.627 15.4729 2 10.9099 2 7.00292C2 3.51892 4.369 1.99792 6.577 1.99792C10.5 1.99792 11.722 7.12392 12 8.22892ZM0 7.00292C0 11.0709 3.06 16.4839 12 21.9999C20.94 16.4839 24 11.0709 24 7.00292C24 -0.959077 14.352 -2.02508 12 3.26592C9.662 -1.99608 0 -1.00408 0 7.00292Z" fill="#2F3035"/>
+                                    </svg>
+                                    <svg class="card__like-button-enable" width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 3.43498C10.011 -1.96402 0 -1.16202 0 7.00298C0 11.071 3.06 16.484 12 22C20.94 16.484 24 11.071 24 7.00298C24 -1.11502 14 -1.99602 12 3.43498Z" fill="#1C62CD"/>
+                                    </svg>
+                                </button>
+                                <div class="card__content">
+                                    <img class="card__content-image" src="img/vest.png" alt="vest">
+                                    <span class="card__view-good">посмотреть товар</span>
+                                    <p class="card__content-text">Спасательный жилет BRP Men's Airflow PFD</p>
+                                    <span class="card__out-of-stock">Нет в наличии</span>
+                                    <button class="card__report-on-admission">Сообщить о поступлении</button>
+                                    <!--                                        <span class="card__content-price">6 900 ₽</span>-->
+                                </div>
+                                <!--                                    <button class="card__add-to-basket-button">-->
+                                <!--                                        <svg width="30" height="23" viewBox="0 0 30 23" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+                                <!--                                            <path d="M30 0L29.0713 2.5H26.66L22.3175 17.5H5.76875L0 3.75H21.015L20.31 6.25H3.76L7.43125 15H20.4662L24.7563 0H30ZM10.625 18.75C9.59 18.75 8.75 19.59 8.75 20.625C8.75 21.6612 9.59 22.5 10.625 22.5C11.66 22.5 12.5 21.6612 12.5 20.625C12.5 19.59 11.66 18.75 10.625 18.75ZM19.25 10L16.875 18.75C15.84 18.75 15 19.5888 15 20.625C15 21.6612 15.84 22.5 16.875 22.5C17.91 22.5 18.75 21.6612 18.75 20.625C18.75 19.59 17.91 18.75 16.875 18.75L19.25 10Z" fill="white"/>-->
+                                <!--                                        </svg>-->
+                                <!--                                    </button>-->
+                            </div>
+                            <div class="product-goods-tabs__carousel-item card">
+                                <div class="card__special-offer">Sale</div>
+                                <button class="card__like-button">
+                                    <svg class="card__like-button-disable" width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 8.22892C12.234 7.10892 13.547 1.99992 17.382 1.99992C19.602 1.99992 22 3.55092 22 7.00292C22 10.9099 18.373 15.4729 12 19.6319C5.627 15.4729 2 10.9099 2 7.00292C2 3.51892 4.369 1.99792 6.577 1.99792C10.5 1.99792 11.722 7.12392 12 8.22892ZM0 7.00292C0 11.0709 3.06 16.4839 12 21.9999C20.94 16.4839 24 11.0709 24 7.00292C24 -0.959077 14.352 -2.02508 12 3.26592C9.662 -1.99608 0 -1.00408 0 7.00292Z" fill="#2F3035"/>
+                                    </svg>
+                                    <svg class="card__like-button-enable" width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 3.43498C10.011 -1.96402 0 -1.16202 0 7.00298C0 11.071 3.06 16.484 12 22C20.94 16.484 24 11.071 24 7.00298C24 -1.11502 14 -1.99602 12 3.43498Z" fill="#1C62CD"/>
+                                    </svg>
+                                </button>
+                                <div class="card__content">
+                                    <img class="card__content-image" src="img/vest.png" alt="vest">
+                                    <span class="card__view-good">посмотреть товар</span>
+                                    <p class="card__content-text">Спасательный жилет BRP Men's Airflow PFD</p>
+                                    <!--                                        <span class="card__out-of-stock">Нет в наличии</span>-->
+                                    <!--                                        <button class="card__report-on-admission">Сообщить о поступлении</button>-->
+                                    <span class="card__content-price">6 900 ₽</span>
+                                </div>
+                                <button class="card__add-to-basket-button">
+                                    <svg width="30" height="23" viewBox="0 0 30 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M30 0L29.0713 2.5H26.66L22.3175 17.5H5.76875L0 3.75H21.015L20.31 6.25H3.76L7.43125 15H20.4662L24.7563 0H30ZM10.625 18.75C9.59 18.75 8.75 19.59 8.75 20.625C8.75 21.6612 9.59 22.5 10.625 22.5C11.66 22.5 12.5 21.6612 12.5 20.625C12.5 19.59 11.66 18.75 10.625 18.75ZM19.25 10L16.875 18.75C15.84 18.75 15 19.5888 15 20.625C15 21.6612 15.84 22.5 16.875 22.5C17.91 22.5 18.75 21.6612 18.75 20.625C18.75 19.59 17.91 18.75 16.875 18.75L19.25 10Z" fill="white"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-goods-tabs-arrows carousel-arrows">
+                            <button class="carousel-arrows__button left-arrow"></button>
+                            <button class="carousel-arrows__button right-arrow"></button>
+                        </div>
+                    </div>
+                </div>
+                <button class="show-more-button rectangle-button">Показать еще</button>
+            </div>
+        </div>
+    </div>
+</section>
