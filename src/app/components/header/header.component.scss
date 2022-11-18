@@ -1,0 +1,175 @@
+@import "../../styles/vars";
+
+.header {
+  padding-top: 25px;
+
+  &__main-menu-button {
+    display: none;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    line-height: 24px;
+  }
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__image {
+    width: 53px;
+    height: 42px;
+    margin-bottom: 10px;
+  }
+
+  &__text {
+    font-family: 'Staatliches', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    text-transform: capitalize;
+  }
+}
+
+.mini-menu {
+  display: flex;
+
+  &__link {
+    white-space: nowrap;
+  }
+
+  .mini-menu__item + .mini-menu__item {
+    margin-left: 50px;
+  }
+}
+
+.info-bar {
+  display: flex;
+}
+
+.hot-buttons {
+  display: flex;
+  align-items: flex-end;
+
+  &__button {
+    max-height: 24px;
+    position: relative;
+  }
+
+  &__button + &__button {
+    margin-left: 10px;
+  }
+
+  &__counter {
+    position: absolute;
+    bottom: -9px;
+    right: -12px;
+    background-color: $accent-color;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    color: #FFFFFF;
+    text-align: center;
+    padding-top: 3px;
+
+    font-size: 10px;
+    line-height: 12px;
+  }
+}
+
+.address {
+  display: flex;
+  align-items: flex-end;
+  margin-right: 85px;
+
+  &__inner {
+    display: flex;
+    padding-left: 30px;
+    align-items: flex-end;
+    position: relative;
+  }
+
+  &__map-pointer {
+    height: 30px;
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+  }
+}
+
+.menu {
+  white-space: nowrap;
+  background-color: $base-color;
+  transition: all .7s;
+  max-width: 1170px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+
+  &.active {
+    transform: translateX(0);
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-around;
+    min-height: 53px;
+  }
+
+  &-button {
+    display: none;
+    width: 33px;
+    height: 27px;
+    position: relative;
+
+    .menu-button__button-line {
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: $main-color;
+      border-radius: 3px;
+      left: 0;
+
+      &:nth-child(1) {
+        top: 0;
+      }
+
+      &:nth-child(2) {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      &:nth-child(3) {
+        bottom: 0;
+      }
+    }
+  }
+
+  &__link {
+    white-space: nowrap;
+  }
+
+  &__address{
+    margin-top: 65px;
+    display: none;
+
+    .address__map-pointer {
+      display: none;
+    }
+
+    .address__text {
+      width: 130px;
+      white-space: initial;
+    }
+  }
+
+  .button-decorate__wrapper {
+    top: 30%;
+  }
+}

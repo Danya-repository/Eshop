@@ -1,0 +1,232 @@
+<section class="advertisement">
+  <div class="advertisement__wrapper">
+    <div class="container">
+      <div class="advertisement__inner">
+        <div class="advertisement__carousel-inner carousel-inner">
+          <div class="advertisement__carousel">
+            <div class="advertisement__carousel-item" style="background-image: url('assets/carousel-plug.jpg')">
+              <div class="advertisement__carousel-arrows carousel-arrows">
+                <button class="carousel-arrows__button left-arrow"></button>
+                <button class="carousel-arrows__button right-arrow"></button>
+              </div>
+              <div class="advertisement__carousel-dots carousel-dots">
+                <ul class="carousel-dots__list">
+                  <li class="carousel-dots__list-item active"></li>
+                  <li class="carousel-dots__list-item"></li>
+                </ul>
+              </div>
+              <p class="advertisement__carousel-text">
+                Почувствуй скорость и экстрим
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="advertisement__banner">
+          <a class="advertisement__banner-link" href="#">
+            <img class="advertisement__banner-image" src="assets/advertisement-banner.jpg" alt="advertisement-banner">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="search">
+  <div class="search__wrapper">
+    <div class="container">
+      <div class="search__inner">
+        <div class="search__tabs">
+          <button class="search__tab">Поиск по номеру</button>
+          <button class="search__tab active">Поиск по марке</button>
+          <button class="search__tab">Поиск по названию товара</button>
+        </div>
+        <form class="search__form" action="#">
+          <input class="search__input" type="text" placeholder="Введите марку">
+          <button class="search__submit-button blue-button rectangle-button" type="submit">Искать</button>
+        </form>
+        <div class="search__tab-menu tab-menu">
+          <a class="tab-menu__item" style="background-image: url('assets/quatro.png')">
+            <p class="tab-menu__name">Квадроциклы</p>
+            <p class="tab-menu__more">Подробнее</p>
+          </a>
+          <a class="tab-menu__item" style="background-image: url('assets/hydro.png')">
+            <p class="tab-menu__name">Гидроциклы</p>
+            <p class="tab-menu__more" href="#">Подробнее</p>
+          </a>
+          <a class="tab-menu__item" style="background-image: url('assets/boat.png')">
+            <p class="tab-menu__name">Катера</p>
+            <p class="tab-menu__more" href="#">Подробнее</p>
+          </a>
+          <a class="tab-menu__item" style="background-image: url('assets/snow.png')">
+            <p class="tab-menu__name">Снегоходы</p>
+            <p class="tab-menu__more" href="#">Подробнее</p>
+          </a>
+          <a class="tab-menu__item" style="background-image: url('assets/crossover.png')">
+            <p class="tab-menu__name">Вездеходы</p>
+            <p class="tab-menu__more" href="#">Подробнее</p>
+          </a>
+          <a class="tab-menu__item" style="background-image: url('assets/engine.png')">
+            <p class="tab-menu__name">Двигатели</p>
+            <p class="tab-menu__more" href="#">Подробнее</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="recommended-goods product-goods-tabs">
+  <div class="product-goods-tabs__wrapper">
+    <div class="container">
+      <div class="product-goods-tabs__inner">
+        <h4 class="product-goods-tabs__title section-title">С этим товаром покупают</h4>
+        <div class="product-goods-tabs__buttons tab-buttons">
+          <div class="product-goods-tabs__button-wrapper tab-button">
+            <div class="menu__list-item button-decorate">
+                                <span class="button-decorate__wrapper">
+                                    <a class="menu__link link" href="#">запчасти</a>
+                                    <span class="button-decorate__underline"></span>
+                                </span>
+            </div>
+          </div>
+          <div class="product-goods-tabs__button-wrapper tab-button">
+            <div class="menu__list-item button-decorate">
+                                <span class="button-decorate__wrapper">
+                                    <a class="menu__link link" href="#">моторы</a>
+                                    <span class="button-decorate__underline"></span>
+                                </span>
+            </div>
+          </div>
+          <div class="product-goods-tabs__button-wrapper tab-button">
+            <div class="menu__list-item button-decorate">
+                                <span class="button-decorate__wrapper">
+                                    <a class="menu__link link" href="#">шины</a>
+                                    <span class="button-decorate__underline"></span>
+                                </span>
+            </div>
+          </div>
+          <div class="product-goods-tabs__button-wrapper tab-button">
+            <div class="menu__list-item button-decorate">
+                                <span class="button-decorate__wrapper">
+                                    <a class="menu__link link" href="#">электроника</a>
+                                    <span class="button-decorate__underline"></span>
+                                </span>
+            </div>
+          </div>
+          <div class="product-goods-tabs__button-wrapper tab-button">
+            <div class="menu__list-item button-decorate">
+                                <span class="button-decorate__wrapper">
+                                    <a class="menu__link link" href="#">инструменты</a>
+                                    <span class="button-decorate__underline"></span>
+                                </span>
+            </div>
+          </div>
+          <div class="product-goods-tabs__button-wrapper tab-button">
+            <div class="menu__list-item button-decorate">
+                                <span class="button-decorate__wrapper">
+                                    <a class="menu__link link" href="#">аксессуары</a>
+                                    <span class="button-decorate__underline"></span>
+                                </span>
+            </div>
+          </div>
+        </div>
+        <div class="product-goods-tabs__tab-content">
+          <div class="product-goods-tabs__carousel">
+            <div class="product-goods-tabs__carousel-wrapper">
+              <app-product class="product-goods-tabs__carousel-item"></app-product>
+              <app-product class="product-goods-tabs__carousel-item"></app-product>
+              <app-product class="product-goods-tabs__carousel-item"></app-product>
+              <app-product class="product-goods-tabs__carousel-item"></app-product>
+            </div>
+            <div class="product-goods-tabs-arrows carousel-arrows">
+              <button class="carousel-arrows__button left-arrow"></button>
+              <button class="carousel-arrows__button right-arrow"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="banner-advertisement">
+  <div class="banner-advertisement__wrapper">
+    <div class="container">
+      <div class="banner-advertisement__inner">
+        <a class="banner-advertisement__link" href="#">
+          <img class="banner-advertisement__image-layout" style="background-image: url('assets/banner-advertisement-banner.jpg')">
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="popular-goods product-goods-tabs">
+  <div class="product-goods-tabs__wrapper">
+    <div class="container">
+      <div class="product-goods-tabs__inner">
+        <h4 class="product-goods-tabs__title section-title">С этим товаром покупают</h4>
+        <div class="product-goods-tabs__buttons tab-buttons">
+          <div class="product-goods-tabs__button-wrapper tab-button">
+            <div class="menu__list-item button-decorate">
+                                <span class="button-decorate__wrapper">
+                                    <a class="menu__link link" href="#">запчасти</a>
+                                    <span class="button-decorate__underline"></span>
+                                </span>
+            </div>
+          </div>
+          <div class="product-goods-tabs__button-wrapper tab-button">
+            <div class="menu__list-item button-decorate">
+                                <span class="button-decorate__wrapper">
+                                    <a class="menu__link link" href="#">моторы</a>
+                                    <span class="button-decorate__underline"></span>
+                                </span>
+            </div>
+          </div>
+          <div class="product-goods-tabs__button-wrapper tab-button">
+            <div class="menu__list-item button-decorate">
+                                <span class="button-decorate__wrapper">
+                                    <a class="menu__link link" href="#">шины</a>
+                                    <span class="button-decorate__underline"></span>
+                                </span>
+            </div>
+          </div>
+          <div class="product-goods-tabs__button-wrapper tab-button">
+            <div class="menu__list-item button-decorate">
+                                <span class="button-decorate__wrapper">
+                                    <a class="menu__link link" href="#">электроника</a>
+                                    <span class="button-decorate__underline"></span>
+                                </span>
+            </div>
+          </div>
+          <div class="product-goods-tabs__button-wrapper tab-button">
+            <div class="menu__list-item button-decorate">
+                                <span class="button-decorate__wrapper">
+                                    <a class="menu__link link" href="#">инструменты</a>
+                                    <span class="button-decorate__underline"></span>
+                                </span>
+            </div>
+          </div>
+          <div class="product-goods-tabs__button-wrapper tab-button">
+            <div class="menu__list-item button-decorate">
+                                <span class="button-decorate__wrapper">
+                                    <a class="menu__link link" href="#">аксессуары</a>
+                                    <span class="button-decorate__underline"></span>
+                                </span>
+            </div>
+          </div>
+        </div>
+        <div class="product-goods-tabs__tab-content">
+          <div class="product-goods-tabs__carousel">
+            <div class="product-goods-tabs__carousel-wrapper">
+              <app-product class="product-goods-tabs__carousel-item"></app-product>
+              <app-product class="product-goods-tabs__carousel-item"></app-product>
+              <app-product class="product-goods-tabs__carousel-item"></app-product>
+              <app-product class="product-goods-tabs__carousel-item"></app-product>
+            </div>
+            <div class="product-goods-tabs-arrows carousel-arrows">
+              <button class="carousel-arrows__button left-arrow"></button>
+              <button class="carousel-arrows__button right-arrow"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
