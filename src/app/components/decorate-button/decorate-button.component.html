@@ -1,0 +1,7 @@
+<button class="button-decorate" [ngClass]="active ? 'active' : ''">
+  <span class="button-decorate__wrapper">
+    <a class="button-decorate__link"><ng-content></ng-content>
+      <span class="button-decorate__underline"></span>
+    </a>
+  </span>
+</button>

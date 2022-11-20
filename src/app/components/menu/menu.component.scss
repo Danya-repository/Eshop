@@ -1,0 +1,74 @@
+@import "../../styles/vars";
+
+.menu {
+  white-space: nowrap;
+  background-color: $base-color;
+  transition: all .7s;
+  max-width: 1170px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  padding-top: 15px;
+  height: 53px;
+
+  &.active {
+    transform: translateX(0);
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  &__list-item {
+    height: 41px;
+  }
+
+  &-button {
+    display: none;
+    width: 33px;
+    height: 27px;
+    position: relative;
+
+    .menu-button__button-line {
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: $main-color;
+      border-radius: 3px;
+      left: 0;
+
+      &:nth-child(1) {
+        top: 0;
+      }
+
+      &:nth-child(2) {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      &:nth-child(3) {
+        bottom: 0;
+      }
+    }
+  }
+
+  &__link {
+    white-space: nowrap;
+  }
+
+  &__address{
+    margin-top: 65px;
+    display: none;
+
+    .address__map-pointer {
+      display: none;
+    }
+
+    .address__text {
+      width: 130px;
+      white-space: initial;
+    }
+  }
+}

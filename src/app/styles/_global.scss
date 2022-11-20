@@ -1,0 +1,168 @@
+body {
+  color: $main-color;
+}
+
+button {
+  cursor: pointer;
+  border-radius: 3px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.show-more-button {
+  margin: 35px auto 0;
+  width: 252px;
+  height: 50px;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background-color: $base-color;
+  display: block;
+}
+
+.blue-button {
+  font-family: SFProDisplay, sans-serif;
+  background-color: $accent-color;
+  color: #FFF;
+  border-radius: 3px;
+}
+
+input {
+  outline: none;
+}
+
+input::placeholder {
+  color: $light-gray;
+}
+
+html {
+  font-family: SFProDisplay, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 15px;
+}
+
+.main {
+  min-height: 100vh;
+}
+
+.section-title {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 30px;
+  margin-bottom: 25px;
+}
+
+.breadcrumbs {
+  margin: 41px 0;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__list-item {
+    font-size: 15px;
+    line-height: 18px;
+    color: $light-gray;
+    padding-right: 16px;
+    position: relative;
+
+    &:before, &:after {
+      position: absolute;
+      content: '';
+      width: 5px;
+      height: 1px;
+      background-color: $light-gray;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+      right: 5px;
+      top: 7px;
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+      right: 5px;
+      bottom: 7px;
+    }
+
+    &:last-child {
+      &:after, &:before {
+        display: none;
+      }
+    }
+  }
+}
+
+.carousel-arrows {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  &__button:hover {
+    background-color: rgba(#FFF, .2);
+  }
+
+  &__button {
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    padding: 20px;
+    border-radius: 50%;
+
+    &::before, &::after {
+      position: absolute;
+      content: '';
+      height: 15px;
+      width: 1px;
+      background-color: #FFFFFF;
+    }
+
+    &.left-arrow {
+      &::after {
+        transform: rotate(-45deg);
+        bottom: 6px;
+        left: 19px;
+      }
+
+      &::before {
+        transform: rotate(45deg);
+        top: 8px;
+        left: 19px;
+      }
+    }
+
+    &.right-arrow {
+      &::after {
+        transform: rotate(45deg);
+        bottom: 6px;
+        right: 19px;
+      }
+
+      &::before {
+        transform: rotate(-45deg);
+        top: 8px;
+        right: 19px;
+      }
+    }
+  }
+}

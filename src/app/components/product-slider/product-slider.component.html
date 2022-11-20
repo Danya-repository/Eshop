@@ -1,0 +1,21 @@
+<section class="product-goods-tabs">
+  <div class="container">
+    <div class="product-goods-tabs__inner">
+      <h4 class="product-goods-tabs__title section-title">С этим товаром покупают</h4>
+      <app-product-slider-menu></app-product-slider-menu>
+      <div class="product-goods-tabs__tab-content">
+        <div class="product-goods-tabs__carousel">
+          <div class="product-goods-tabs__carousel-wrapper">
+            <div class="product-goods-tabs__carousel-item" *ngFor="let sliderItem of sliderItems">
+              <app-product class="product-goods-tabs__carousel-item" [productData]="sliderItem"></app-product>
+            </div>
+          </div>
+          <div class="product-goods-tabs-arrows carousel-arrows">
+            <button class="carousel-arrows__button left-arrow"></button>
+            <button class="carousel-arrows__button right-arrow"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
