@@ -1,52 +1,11 @@
 <nav class="menu">
   <ul class="menu__list">
-    <li class="menu__list-item menu__item button-decorate" [routerLinkActive]="['active']">
-      <span class="button-decorate__wrapper">
-        <a class="menu__link link" [routerLink]="['/catalog', '1']">Квадроциклы</a>
-        <span class="button-decorate__underline"></span>
-      </span>
-    </li>
-    <li class="menu__list-item menu__item button-decorate" [routerLinkActive]="['active']">
-      <span class="button-decorate__wrapper">
-        <a class="menu__link link" [routerLink]="['/catalog', '2']">Катера</a>
-        <span class="button-decorate__underline"></span>
-      </span>
-    </li>
-    <li class="menu__list-item menu__item button-decorate" [routerLinkActive]="['active']">
-      <span class="button-decorate__wrapper">
-        <a class="menu__link link" [routerLink]="['/catalog', '3']">Гидроциклы</a>
-        <span class="button-decorate__underline"></span>
-      </span>
-    </li>
-    <li class="menu__list-item menu__item button-decorate" [routerLinkActive]="['active']">
-      <span class="button-decorate__wrapper">
-        <a class="menu__link link" [routerLink]="['/catalog', '4']">Лодки</a>
-        <span class="button-decorate__underline"></span>
-      </span>
-    </li>
-    <li class="menu__list-item menu__item button-decorate" [routerLinkActive]="['active']">
-      <span class="button-decorate__wrapper">
-        <a class="menu__link link" [routerLink]="['/catalog', '5']">Вездеходы</a>
-        <span class="button-decorate__underline"></span>
-      </span>
-    </li>
-    <li class="menu__list-item menu__item button-decorate" [routerLinkActive]="['active']">
-      <span class="button-decorate__wrapper">
-        <a class="menu__link link" [routerLink]="['/catalog', '6']">Снегоходы</a>
-        <span class="button-decorate__underline"></span>
-      </span>
-    </li>
-    <li class="menu__list-item menu__item button-decorate" [routerLinkActive]="['active']">
-      <span class="button-decorate__wrapper">
-        <a class="menu__link link" [routerLink]="['/catalog', '7']">Двигатели</a>
-        <span class="button-decorate__underline"></span>
-      </span>
-    </li>
-    <li class="menu__list-item menu__item button-decorate" [routerLinkActive]="['active']">
-      <span class="button-decorate__wrapper">
-        <a class="menu__link link" [routerLink]="['/catalog', '8']">Запчасти</a>
-        <span class="button-decorate__underline"></span>
-      </span>
+    <li class="menu__list-item" *ngFor="let data of state">
+      <app-decorate-button
+        [active] = "data['active']"
+        (click)="toggleActivate(data)"
+        [routerLink]="['/catalog', data['key']]"
+      >{{data['name']}}</app-decorate-button>
     </li>
   </ul>
   <div class="menu__address">

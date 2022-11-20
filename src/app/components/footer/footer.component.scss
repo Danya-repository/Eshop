@@ -105,6 +105,12 @@
     .info-links__link:hover {
       font-weight: 700;
     }
+
+    .info-links__head:hover {
+      .info-links__link {
+        font-weight: 700;
+      }
+    }
   }
 }
 

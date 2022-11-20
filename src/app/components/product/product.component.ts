@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class ProductComponent implements OnInit {
 
-  @Input() data: ProductInterface = {name: "", price: 0, available: true};
+  @Input() productData: ProductInterface = {name: "", price: 0, available: true};
   private subscription: Subscription | undefined;
 
   constructor(
@@ -22,16 +22,15 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  favoriteToggle(id: number, event: Event) {
+  favoriteToggle(event: Event) {
     event.stopPropagation();
 
     this.subscription = this.productService
-                                      .putOne(this.data)
+                                      .putOne({...this.productData, favorite: !this.productData.favorite})
                                       .subscribe(data => {
-                                        console.log(data)
+                                        this.productData = data;
+                                        console.log(this.productData)
                                       })
-
-    this.data.favorite = !this.data.favorite;
     console.log('LIKE!')
   }
 
@@ -41,10 +40,7 @@ export class ProductComponent implements OnInit {
   }
 
   goToProductPage() {
-    // this.productService.getOne(this.data.id).subscribe(goodItem => {
-    //   console.log(goodItem)
-    // })
-    this.router.navigate(['/product', this.data.id])
+    this.router.navigate(['/product', this.productData.id])
     console.log('OPEN PRODUCT!')
   }
 

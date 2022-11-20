@@ -170,8 +170,8 @@
           </div>
           <div class="catalog__list-wrapper">
             <ul class="catalog__list">
-              <li class="catalog__list-item" *ngFor="let productData of products">
-                <app-product [data]="productData"></app-product>
+              <li class="catalog__list-item" *ngFor="let product of products">
+                <app-product [productData]="product"></app-product>
               </li>
             </ul>
             <button class="show-more-button rectangle-button">Показать еще</button>
@@ -206,76 +206,6 @@
     </div>
   </div>
 </section>
-<section class="popular-goods product-goods-tabs">
-  <div class="product-goods-tabs__wrapper">
-    <div class="container">
-      <div class="product-goods-tabs__inner">
-        <h4 class="product-goods-tabs__title section-title">С этим товаром покупают</h4>
-        <div class="product-goods-tabs__buttons tab-buttons">
-          <div class="product-goods-tabs__button-wrapper tab-button">
-            <div class="menu__list-item button-decorate">
-                                <span class="button-decorate__wrapper">
-                                    <a class="menu__link link" href="#">запчасти</a>
-                                    <span class="button-decorate__underline"></span>
-                                </span>
-            </div>
-          </div>
-          <div class="product-goods-tabs__button-wrapper tab-button">
-            <div class="menu__list-item button-decorate">
-                                <span class="button-decorate__wrapper">
-                                    <a class="menu__link link" href="#">моторы</a>
-                                    <span class="button-decorate__underline"></span>
-                                </span>
-            </div>
-          </div>
-          <div class="product-goods-tabs__button-wrapper tab-button">
-            <div class="menu__list-item button-decorate">
-                                <span class="button-decorate__wrapper">
-                                    <a class="menu__link link" href="#">шины</a>
-                                    <span class="button-decorate__underline"></span>
-                                </span>
-            </div>
-          </div>
-          <div class="product-goods-tabs__button-wrapper tab-button">
-            <div class="menu__list-item button-decorate">
-                                <span class="button-decorate__wrapper">
-                                    <a class="menu__link link" href="#">электроника</a>
-                                    <span class="button-decorate__underline"></span>
-                                </span>
-            </div>
-          </div>
-          <div class="product-goods-tabs__button-wrapper tab-button">
-            <div class="menu__list-item button-decorate">
-                                <span class="button-decorate__wrapper">
-                                    <a class="menu__link link" href="#">инструменты</a>
-                                    <span class="button-decorate__underline"></span>
-                                </span>
-            </div>
-          </div>
-          <div class="product-goods-tabs__button-wrapper tab-button">
-            <div class="menu__list-item button-decorate">
-                                <span class="button-decorate__wrapper">
-                                    <a class="menu__link link" href="#">аксессуары</a>
-                                    <span class="button-decorate__underline"></span>
-                                </span>
-            </div>
-          </div>
-        </div>
-        <div class="product-goods-tabs__tab-content">
-          <div class="product-goods-tabs__carousel">
-            <div class="product-goods-tabs__carousel-wrapper">
-              <app-product class="product-goods-tabs__carousel-item"></app-product>
-              <app-product class="product-goods-tabs__carousel-item"></app-product>
-              <app-product class="product-goods-tabs__carousel-item"></app-product>
-              <app-product class="product-goods-tabs__carousel-item"></app-product>
-            </div>
-            <div class="product-goods-tabs-arrows carousel-arrows">
-              <button class="carousel-arrows__button left-arrow"></button>
-              <button class="carousel-arrows__button right-arrow"></button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<section class="popular-goods">
+  <app-product-slider></app-product-slider>
 </section>

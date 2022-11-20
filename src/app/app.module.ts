@@ -1,19 +1,24 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
+import {AppComponent} from './app.component';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {environment} from '../environments/environment';
+import {HeaderComponent} from './components/header/header.component';
+import {FooterComponent} from './components/footer/footer.component';
 import {RouterModule} from "@angular/router";
-import { MenuComponent } from './components/menu/menu.component';
-import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './components/home/home.component';
-import { CatalogComponent } from './components/catalog/catalog.component';
-import { ProductPageComponent } from './components/product-page/product-page.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
+import {MenuComponent} from './components/menu/menu.component';
+import {AppRoutingModule} from './app-routing.module';
+import {HomeComponent} from './components/home/home.component';
+import {CatalogComponent} from './components/catalog/catalog.component';
+import {ProductPageComponent} from './components/product-page/product-page.component';
+import {NotFoundComponent} from './components/not-found/not-found.component';
 import {ProductComponent} from "./components/product/product.component";
+import {ProductSliderComponent} from './components/product-slider/product-slider.component';
+import {AdminModule} from "./admin/admin.module";
+import {ExtraModule} from "./extra/extra.module";
+import { ProductSliderMenuComponent } from './components/product-slider-menu/product-slider-menu.component';
+import { DecorateButtonComponent } from './components/decorate-button/decorate-button.component';
 
 
 @NgModule({
@@ -26,12 +31,17 @@ import {ProductComponent} from "./components/product/product.component";
     CatalogComponent,
     ProductPageComponent,
     NotFoundComponent,
-    ProductComponent
+    ProductComponent,
+    ProductSliderComponent,
+    ProductSliderMenuComponent,
+    DecorateButtonComponent
   ],
   imports: [
     BrowserModule,
     RouterModule,
     AppRoutingModule,
+    AdminModule,
+    ExtraModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable

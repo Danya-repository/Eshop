@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductInterface} from "../../models/product.interface";
 import {products as data} from "../../mocks/products";
+import {ProductService} from "../../services/product.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-catalog',
@@ -9,11 +11,17 @@ import {products as data} from "../../mocks/products";
 })
 export class CatalogComponent implements OnInit {
 
-  products: ProductInterface[] = data;
+  products: ProductInterface[] | undefined;
+  sub: Subscription | undefined;
 
-  constructor() { }
+  constructor(
+    private productService: ProductService
+  ) { }
 
   ngOnInit(): void {
+    this.sub = this.productService.getAll().subscribe(products => {
+      this.products = products;
+    })
   }
 
 }

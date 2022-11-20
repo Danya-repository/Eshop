@@ -8,6 +8,8 @@
   margin: 0 auto;
   position: relative;
   z-index: 1;
+  padding-top: 15px;
+  height: 53px;
 
   &.active {
     transform: translateX(0);
@@ -16,7 +18,11 @@
   &__list {
     display: flex;
     justify-content: space-around;
-    min-height: 53px;
+    align-items: center;
+  }
+
+  &__list-item {
+    height: 41px;
   }
 
   &-button {
@@ -64,9 +70,5 @@
       width: 130px;
       white-space: initial;
     }
-  }
-
-  .button-decorate__wrapper {
-    top: 30%;
   }
 }

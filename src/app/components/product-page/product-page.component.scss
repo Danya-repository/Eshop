@@ -199,6 +199,7 @@
 
 .product-information {
   margin-bottom: 100px;
+  white-space: nowrap;
 
   &__menu {
     display: flex;
@@ -212,8 +213,11 @@
     bottom: -7px;
   }
 
+  .button-decorate__wrapper {
+    transform: translate(-50%, -50%);
+  }
+
   &__item-wrapper {
-    transform: translate(-50%, -31%);
     position: absolute;
   }
 
