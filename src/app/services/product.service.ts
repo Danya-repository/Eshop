@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ProductInterface} from "../models/product.interface";
 import {Observable} from "rxjs";
-import {products as data} from "../mocks/products";
+import {products, products as data} from "../mocks/products";
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +18,8 @@ export class ProductService {
     })
   }
 
-  getAll(): Observable<ProductInterface[]> {
-    return new Observable<ProductInterface[]>(subscriber => {
-      subscriber.next(data);
-    })
+  getAll(type: string) {
+    return products.filter(item => item.type === type);
   }
 
   deleteOne(id: number): Observable<ProductInterface> {

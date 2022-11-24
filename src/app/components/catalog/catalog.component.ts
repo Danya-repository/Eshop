@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductInterface} from "../../models/product.interface";
-import {products as data} from "../../mocks/products";
 import {ProductService} from "../../services/product.service";
 import {Subscription} from "rxjs";
 
@@ -19,9 +18,10 @@ export class CatalogComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.sub = this.productService.getAll().subscribe(products => {
-      this.products = products;
-    })
+    this.products = this.productService.getAll('Hydro');
+    // this.sub = this.productService.getAll().subscribe(products => {
+    //   this.products = products;
+    // })
   }
 
 }

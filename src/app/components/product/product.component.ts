@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class ProductComponent implements OnInit {
 
-  @Input() productData: ProductInterface = {name: "", price: 0, available: true};
+  @Input() productData: ProductInterface = {name: "", price: 0, type: "", available: true};
   private subscription: Subscription | undefined;
 
   constructor(
