@@ -69,7 +69,6 @@ export class ProductCarouselComponent implements OnInit, OnDestroy, AfterViewIni
 
   onMouseUp() {
     this.enableTransition();
-    this.productCarouselService.resetTrackPositionToActualSlide();
   }
 
   enableTransition(seconds =  1) {

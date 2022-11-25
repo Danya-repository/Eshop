@@ -61,14 +61,11 @@ export class ProductCarouselService {
   }
 
   mouseUp() {
-    if(Math.abs(this.getDeltaMousePosition) > 50 && this.getDeltaMousePosition > 0) {
-      this.nextSlide()
-    }
-    if (Math.abs(this.getDeltaMousePosition) > 50 && this.getDeltaMousePosition < 0) {
-      this.prevSlide()
-    }
     this.state.mouseState.isUp = true;
     this.state.mouseState.isDown = false
+
+    this.resetTrackPositionToActualSlide();
+    this.dragChangeSlide();
   }
 
   mouseDown() {
@@ -92,6 +89,15 @@ export class ProductCarouselService {
   dragTrack(position: number) {
     this.setMouseEndPosition = position;
     this.state.currentTrackPosition = this.state.startDragTrackPosition - this.getDeltaMousePosition;
+  }
+
+  dragChangeSlide() {
+    if(Math.abs(this.getDeltaMousePosition) > 50 && this.getDeltaMousePosition > 0) {
+      this.nextSlide()
+    }
+    if (Math.abs(this.getDeltaMousePosition) > 50 && this.getDeltaMousePosition < 0) {
+      this.prevSlide()
+    }
   }
 
   set setMouseEndPosition(position: number) {
