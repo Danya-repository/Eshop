@@ -9,6 +9,8 @@
   cursor: pointer;
   z-index: 1;
 
+  user-select: none;
+
   &:hover {
     transform: scale(1.0003);
     border-color: transparent;
@@ -70,6 +72,8 @@
     object-fit: contain;
     object-position: center;
     margin-bottom: 11px;
+
+    user-select: none;
   }
 
   &__view-good {

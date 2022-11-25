@@ -22,6 +22,8 @@ import {ProductCarouselMenuComponent} from "./components/product-carousel-menu/p
 import {ProductCarouselSectionComponent} from "./components/product-carousel-section/product-carousel-section.component";
 import {NextSlideDirective} from "./directives/next-slide.directive";
 import {PrevSlideDirective} from "./directives/prev-slide.directive";
+import { ProductCarouselMouseListenDirective } from './directives/product-carousel-mouse-listen.directive';
+import { ProductCarouselTrackMouseListenDirective } from './directives/product-carousel-track-mouse-listen.directive';
 
 
 
@@ -41,7 +43,9 @@ import {PrevSlideDirective} from "./directives/prev-slide.directive";
     DecorateButtonComponent,
     ProductCarouselSectionComponent,
     NextSlideDirective,
-    PrevSlideDirective
+    PrevSlideDirective,
+    ProductCarouselMouseListenDirective,
+    ProductCarouselTrackMouseListenDirective,
   ],
   imports: [
     BrowserModule,
