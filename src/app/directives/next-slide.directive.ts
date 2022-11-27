@@ -7,12 +7,11 @@ import {ProductCarouselService} from "../services/product-carousel.service";
 export class NextSlideDirective {
 
   constructor(
-    private el: ElementRef,
     private productCarouselService: ProductCarouselService
   ) {}
 
   @HostListener('click')
   onClick() {
-    this.productCarouselService.nextSlide()
+    this.productCarouselService.nextSlide();
   }
 }

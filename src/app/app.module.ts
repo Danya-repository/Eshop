@@ -23,7 +23,6 @@ import {ProductCarouselSectionComponent} from "./components/product-carousel-sec
 import {NextSlideDirective} from "./directives/next-slide.directive";
 import {PrevSlideDirective} from "./directives/prev-slide.directive";
 import { ProductCarouselMouseListenDirective } from './directives/product-carousel-mouse-listen.directive';
-import { ProductCarouselTrackMouseListenDirective } from './directives/product-carousel-track-mouse-listen.directive';
 
 
 
@@ -45,7 +44,6 @@ import { ProductCarouselTrackMouseListenDirective } from './directives/product-c
     NextSlideDirective,
     PrevSlideDirective,
     ProductCarouselMouseListenDirective,
-    ProductCarouselTrackMouseListenDirective,
   ],
   imports: [
     BrowserModule,

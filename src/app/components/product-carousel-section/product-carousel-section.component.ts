@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from "@angular/core";
+import {AfterViewInit, Component, OnDestroy, OnInit} from "@angular/core";
 import {ProductInterface} from "../../models/product.interface";
 import {Subscription} from "rxjs";
 import {ProductService} from "../../services/product.service";
@@ -11,7 +11,7 @@ import {ProductCarouselService} from "../../services/product-carousel.service";
   styleUrls: ['./product-carousel-section.component.scss']
 })
 
-export class ProductCarouselSectionComponent implements OnInit, OnDestroy {
+export class ProductCarouselSectionComponent implements OnInit, OnDestroy, AfterViewInit {
 
   products: ProductInterface[] = [];
   productCarouselMenuSub: Subscription = new Subscription();
@@ -19,7 +19,6 @@ export class ProductCarouselSectionComponent implements OnInit, OnDestroy {
   constructor(
     private productService: ProductService,
     private productCarouselMenuService: ProductCarouselMenuService,
-    private productCarouselService: ProductCarouselService
   ) { }
 
   ngOnInit(): void {
@@ -30,6 +29,9 @@ export class ProductCarouselSectionComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.productCarouselMenuSub.unsubscribe()
+  }
+
+  ngAfterViewInit(): void {
   }
 
 }

@@ -1,7 +1,7 @@
 <div class="carousel">
   <div class="carousel__inner">
     <div class="carousel__window" #carouselWindow>
-      <div class="carousel__track" #carouselTrack appProductCarouselTrackMouseListen (mousemove)="setTrackPosition()" (mousedown)="onMouseDown()" (mouseup)="onMouseUp()">
+      <div class="carousel__track" #carouselTrack>
         <div class="carousel__item" #carouselSlides *ngFor="let carouselItem of carouselItems">
           <app-product [productData]="carouselItem"></app-product>
         </div>
@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="carousel-arrows">
-    <button class="carousel-arrows__button left-arrow" appPrevSlide *ngIf="arrowsState.prev" (click)="changeSlide()"></button>
-    <button class="carousel-arrows__button right-arrow" appNextSlide *ngIf="arrowsState.next" (click)="changeSlide()"></button>
+    <button class="carousel-arrows__button left-arrow" appPrevSlide *ngIf="arrowsState.prev"></button>
+    <button class="carousel-arrows__button right-arrow" appNextSlide *ngIf="arrowsState.next"></button>
   </div>
 </div>

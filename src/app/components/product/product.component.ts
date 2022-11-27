@@ -19,8 +19,7 @@ export class ProductComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   favoriteToggle(event: Event) {
     event.stopPropagation();
@@ -40,7 +39,7 @@ export class ProductComponent implements OnInit {
   }
 
   goToProductPage() {
-    this.router.navigate(['/product', this.productData.id])
+    // this.router.navigate(['/product', this.productData.id])
     console.log('OPEN PRODUCT!')
   }
 

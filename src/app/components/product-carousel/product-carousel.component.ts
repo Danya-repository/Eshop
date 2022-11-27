@@ -6,7 +6,7 @@ import {
   OnDestroy,
   OnInit,
   QueryList,
-  Renderer2,
+  Renderer2, RendererFactory2,
   ViewChild,
   ViewChildren
 } from '@angular/core';
@@ -36,7 +36,6 @@ export class ProductCarouselComponent implements OnInit, OnDestroy, AfterViewIni
 
   constructor(
     private productCarouselService: ProductCarouselService,
-    private renderer: Renderer2
   ) {
   }
 
@@ -45,38 +44,8 @@ export class ProductCarouselComponent implements OnInit, OnDestroy, AfterViewIni
   }
 
   ngAfterViewInit(): void {
-    this.productCarouselService.initialization(this.carouselWindow, this.carouselSlides, this.countOfSlideToDisplay)
-
-    this.renderer.setStyle(this.carouselTrack?.nativeElement, 'width', `${this.productCarouselService.getTrackWidth}px`)
-    this.carouselSlides.map(carouselItem => {
-      this.renderer.setStyle(carouselItem.nativeElement, 'width', `${this.productCarouselService.getItemWidth}px`)
-    })
-  }
-
-  changeSlide() {
-    this.setTrackPosition();
-  }
-
-  setTrackPosition() {
-    this.renderer.setStyle(this.carouselTrack?.nativeElement, 'transform', `translateX(${this.productCarouselService.getTrackPosition}px)`);
+    this.productCarouselService.initialization(this.carouselWindow, this.carouselTrack, this.carouselSlides, this.countOfSlideToDisplay)
   }
 
   ngOnDestroy(): void {}
-
-  onMouseDown() {
-    this.disableTransition();
-  }
-
-  onMouseUp() {
-    this.enableTransition();
-  }
-
-  enableTransition(seconds =  1) {
-    // @ts-ignore
-    this.renderer.setStyle(this.carouselTrack?.nativeElement, 'transition', `all ${seconds}s`)
-  }
-
-  disableTransition() {
-    this.renderer.setStyle(this.carouselTrack?.nativeElement, 'transition', 'none')
-  }
 }

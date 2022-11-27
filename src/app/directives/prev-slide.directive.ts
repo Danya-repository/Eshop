@@ -7,7 +7,6 @@ import {ProductCarouselService} from "../services/product-carousel.service";
 export class PrevSlideDirective {
 
   constructor(
-    private el: ElementRef,
     private productCarouselService: ProductCarouselService
   ) { }
 
@@ -15,5 +14,4 @@ export class PrevSlideDirective {
   onClick() {
     this.productCarouselService.prevSlide();
   }
-
 }

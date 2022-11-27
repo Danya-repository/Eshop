@@ -1,12 +1,14 @@
-import {ElementRef, Injectable, QueryList} from '@angular/core';
-import {Subject} from "rxjs";
+import {ElementRef, Injectable, QueryList, Renderer2, RendererFactory2} from '@angular/core';
+import {Carousel} from "../components/plugins/carousel/Carousel";
+import {CarouselState} from "../components/plugins/carousel/interface/state-carousel.interface";
+import {Target} from "@angular/compiler";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductCarouselService {
 
-  state = {
+  private state = {
     windowWidth: 0,
     itemWidth: 0,
     trackWidth: 0,
@@ -29,16 +31,46 @@ export class ProductCarouselService {
     }
   }
 
-  $carouselStream: Subject<any> = new Subject<any>();
+  private carouselTrack: ElementRef | undefined;
+  private renderer: Renderer2;
+  private carouselSlides: QueryList<any> = new QueryList<any>();
 
-  constructor() {}
+  constructor(
+    protected rendererFactory: RendererFactory2,
+  ) {
+    this.renderer = rendererFactory.createRenderer(null, null);
+  }
 
-  initialization(window: ElementRef | undefined, carouselSlides: QueryList<any>, countSlidesToDisplay: number = 1) {
+  initialization(window: ElementRef | undefined, track: ElementRef | undefined, carouselSlides: QueryList<any>, countSlidesToDisplay: number = 1) {
     this.state.windowWidth = window?.nativeElement.offsetWidth;
     this.state.countSlides = carouselSlides.length
     this.state.countOfSlideToDisplay = countSlidesToDisplay
     this.state.itemWidth = Math.round(this.state.windowWidth / this.state.countOfSlideToDisplay);
     this.state.trackWidth = this.state.itemWidth * this.state.countSlides;
+
+    this.carouselSlides = carouselSlides;
+    this.carouselTrack = track;
+
+    this.setStartStyle();
+  }
+
+  public setStartStyle = () => {
+    this.renderer.setStyle(this.carouselTrack?.nativeElement, 'width', `${this.getTrackWidth}px`);
+    this.carouselSlides.map(carouselItem => {
+      this.renderer.setStyle(carouselItem.nativeElement, 'width', `${this.getItemWidth}px`);
+    })
+  }
+
+  updateTransformTrack = () => {
+    this.renderer.setStyle(this.carouselTrack?.nativeElement, 'transform', `translateX(${this.getTrackPosition}px)`);
+  }
+
+  enableTransition = (seconds =  1) => {
+    this.renderer.setStyle(this.carouselTrack?.nativeElement, 'transition', `all ${seconds}s`)
+  }
+
+  disableTransition = () => {
+    this.renderer.setStyle(this.carouselTrack?.nativeElement, 'transition', 'none')
   }
 
   actualizeArrowButtons() {
@@ -51,6 +83,9 @@ export class ProductCarouselService {
     this.state.currentSlide++;
     this.state.currentTrackPosition -= this.state.itemWidth;
     this.actualizeArrowButtons();
+
+    this.resetTrackPositionToActualSlide();
+    this.updateTransformTrack();
   }
 
   prevSlide() {
@@ -58,17 +93,17 @@ export class ProductCarouselService {
     this.state.currentSlide--;
     this.state.currentTrackPosition += this.state.itemWidth;
     this.actualizeArrowButtons();
-  }
-
-  mouseUp() {
-    this.state.mouseState.isUp = true;
-    this.state.mouseState.isDown = false
 
     this.resetTrackPositionToActualSlide();
-    this.dragChangeSlide();
+    this.updateTransformTrack();
   }
 
-  mouseDown() {
+  mouseSetUp() {
+    this.state.mouseState.isUp = true;
+    this.state.mouseState.isDown = false
+  }
+
+  mouseSetDown() {
     this.state.mouseState.isUp = false;
     this.state.mouseState.isDown = true;
   }
@@ -89,15 +124,21 @@ export class ProductCarouselService {
   dragTrack(position: number) {
     this.setMouseEndPosition = position;
     this.state.currentTrackPosition = this.state.startDragTrackPosition - this.getDeltaMousePosition;
+    this.updateTransformTrack();
   }
 
   dragChangeSlide() {
     if(Math.abs(this.getDeltaMousePosition) > 50 && this.getDeltaMousePosition > 0) {
-      this.nextSlide()
+      this.nextSlide();
+    } else if (Math.abs(this.getDeltaMousePosition) > 50 && this.getDeltaMousePosition < 0) {
+      this.prevSlide();
     }
-    if (Math.abs(this.getDeltaMousePosition) > 50 && this.getDeltaMousePosition < 0) {
-      this.prevSlide()
-    }
+    this.resetTrackPositionToActualSlide();
+    this.updateTransformTrack();
+  }
+
+  isTrack(target: Target): boolean {
+    return this.carouselTrack?.nativeElement.contains(target)
   }
 
   set setMouseEndPosition(position: number) {
@@ -114,10 +155,6 @@ export class ProductCarouselService {
 
   get getCurrentSlide() {
     return this.state.currentSlide;
-  }
-
-  get getPossibleChange() {
-    return this.state.possibleChange;
   }
 
   get getTrackWidth() {
@@ -145,6 +182,58 @@ export class ProductCarouselService {
   }
 
   get getDeltaMousePosition(): number {
+    // return this.getMouseStartPosition - this.getMouseEndPosition;
     return this.getMouseStartPosition - this.getMouseEndPosition;
+  }
+
+  // public onMouseUp(event: MouseEvent) {
+  //   this.mouseSetUp();
+  //   this.setMouseEndPosition = event.clientX;
+  //
+  //   this.dragChangeSlide();
+  //   this.resetTrackPositionToActualSlide();
+  //   this.resetMousePosition();
+  //
+  //   this.enableTransition();
+  //   this.updateTransformTrack();
+  // }
+  //
+  // public onMouseMove(event: MouseEvent) {
+  //   if (this.mouseIsDown) {
+  //     this.dragTrack(event.clientX);
+  //   }
+  // }
+  //
+  // public onMouseDown(event: MouseEvent, target: Target) {
+  //   if (!this.isTrack(target)) return
+  //   this.mouseSetDown()
+  //   this.updateStartDragTrackPosition()
+  //   this.setMouseStartPosition = event.clientX;
+  //   this.disableTransition();
+  // }
+  //
+  // public onMouseLeave() {
+  //   this.mouseSetUp();
+  //
+  //   this.dragChangeSlide();
+  //   this.resetTrackPositionToActualSlide();
+  //   this.resetMousePosition();
+  //
+  //   this.enableTransition();
+  //   this.updateTransformTrack();
+  // }
+  //
+  // public onNextSlide() {
+  //   this.nextSlide()
+  //   this.updateTransformTrack();
+  // }
+  //
+  // public onPrevSlide() {
+  //   this.prevSlide();
+  //   this.updateTransformTrack();
+  // }
+  //
+  get getPossibleChange() {
+    return this.state.possibleChange;
   }
 }

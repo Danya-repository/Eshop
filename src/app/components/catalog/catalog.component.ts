@@ -18,7 +18,7 @@ export class CatalogComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.products = this.productService.getAll('Hydro');
+    this.products = this.productService.getAll('Запчасти');
     // this.sub = this.productService.getAll().subscribe(products => {
     //   this.products = products;
     // })
