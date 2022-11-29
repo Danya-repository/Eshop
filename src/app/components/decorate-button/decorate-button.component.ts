@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {TabStateInterface} from "../../models/tab-state.interface";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ButtonStateInterface} from "../../models/buttonState.interface";
 
 @Component({
   selector: 'app-decorate-button',
@@ -8,11 +8,9 @@ import {TabStateInterface} from "../../models/tab-state.interface";
 })
 export class DecorateButtonComponent implements OnInit {
 
-  @Input() active: boolean = false;
+  @Input() buttonData: ButtonStateInterface = {identifier: ''}
 
-  constructor() {
-  }
+  constructor() {}
 
   ngOnInit(): void {}
-
 }

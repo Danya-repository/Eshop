@@ -1,4 +1,4 @@
-export enum SliderMenuEnum {
+export enum CarouselMenuEnum {
   SPARES = 'Запчасти',
   ENGINES = 'Моторы',
   TIRES = 'Шины',

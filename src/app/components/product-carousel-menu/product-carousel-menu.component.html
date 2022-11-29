@@ -1,5 +1,5 @@
 <div class="product-goods-tabs__buttons tab-buttons">
   <div class="product-goods-tabs__button-wrapper tab-button" *ngFor="let data of state;">
-    <app-decorate-button [active] = "data['active']" (click)="toggleActivate(data)">{{data['name'] | lowercase}}</app-decorate-button>
+    <app-decorate-button (click)="toggleActivate(data)" [buttonData]="data">{{data.text | lowercase}}</app-decorate-button>
   </div>
 </div>

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MenuService} from "../../services/menu.service";
-import {TabStateInterface} from "../../models/tab-state.interface";
+import {ButtonStateInterface} from "../../models/buttonState.interface";
 
 @Component({
   selector: 'app-menu',
@@ -9,15 +9,11 @@ import {TabStateInterface} from "../../models/tab-state.interface";
 })
 export class MenuComponent implements OnInit {
 
-  state = [];
+  buttons: ButtonStateInterface[] = [];
 
-  constructor(private menuService: MenuService) { }
+  constructor(private menuService: MenuService) {}
 
   ngOnInit(): void {
-    this.state = this.menuService.getState;
-  }
-
-  toggleActivate(button: TabStateInterface): void {
-    this.menuService.setActiveButton(button);
+    this.buttons = this.menuService.getState;
   }
 }

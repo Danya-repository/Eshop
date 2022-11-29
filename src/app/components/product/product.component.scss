@@ -70,6 +70,8 @@
     object-fit: contain;
     object-position: center;
     margin-bottom: 11px;
+
+    -webkit-user-drag: none;
   }
 
   &__view-good {

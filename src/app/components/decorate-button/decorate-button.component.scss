@@ -1,8 +1,15 @@
 @import "../../styles/vars";
 
-app-decorate-button {
-  width: calc(105%);
-  display: block;
+//app-decorate-button {
+//  width: calc(105%);
+//  display: block;
+//}
+
+.active {
+  .button-decorate__underline {
+    width: 100%;
+    left: 0;
+  }
 }
 
 .button-decorate {

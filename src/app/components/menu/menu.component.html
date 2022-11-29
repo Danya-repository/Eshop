@@ -1,11 +1,7 @@
 <nav class="menu">
   <ul class="menu__list">
-    <li class="menu__list-item" *ngFor="let data of state">
-      <app-decorate-button
-        [active] = "data['active']"
-        (click)="toggleActivate(data)"
-        [routerLink]="['/catalog', data['key']]"
-      >{{data['name']}}</app-decorate-button>
+    <li class="menu__list-item" *ngFor="let button of buttons">
+      <app-decorate-button [buttonData]="button" [routerLink]="['/catalog', button.identifier]">{{button.text}}</app-decorate-button>
     </li>
   </ul>
   <div class="menu__address">

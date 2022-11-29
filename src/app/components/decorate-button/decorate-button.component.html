@@ -1,4 +1,4 @@
-<button class="button-decorate" [ngClass]="active ? 'active' : ''">
+<button class="button-decorate" [routerLinkActive]="'active'" [ngClass]="{'active': buttonData.active}">
   <span class="button-decorate__wrapper">
     <a class="button-decorate__link"><ng-content></ng-content>
       <span class="button-decorate__underline"></span>

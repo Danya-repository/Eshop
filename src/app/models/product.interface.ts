@@ -4,6 +4,7 @@ export interface ProductInterface {
   id?: number,
   name: string,
   price: number,
+  type: string,
   oldPrice?: number,
   available: boolean,
   image?: string,

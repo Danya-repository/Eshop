@@ -14,11 +14,16 @@ import {CatalogComponent} from './components/catalog/catalog.component';
 import {ProductPageComponent} from './components/product-page/product-page.component';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {ProductComponent} from "./components/product/product.component";
-import {ProductSliderComponent} from './components/product-slider/product-slider.component';
 import {AdminModule} from "./admin/admin.module";
 import {ExtraModule} from "./extra/extra.module";
-import { ProductSliderMenuComponent } from './components/product-slider-menu/product-slider-menu.component';
-import { DecorateButtonComponent } from './components/decorate-button/decorate-button.component';
+import {DecorateButtonComponent} from './components/decorate-button/decorate-button.component';
+import {ProductCarouselComponent} from "./components/product-carousel/product-carousel.component";
+import {ProductCarouselMenuComponent} from "./components/product-carousel-menu/product-carousel-menu.component";
+import {ProductCarouselSectionComponent} from "./components/product-carousel-section/product-carousel-section.component";
+import {NextSlideDirective} from "./directives/next-slide.directive";
+import {PrevSlideDirective} from "./directives/prev-slide.directive";
+import { ProductCarouselMouseListenDirective } from './directives/product-carousel-mouse-listen.directive';
+
 
 
 @NgModule({
@@ -32,9 +37,13 @@ import { DecorateButtonComponent } from './components/decorate-button/decorate-b
     ProductPageComponent,
     NotFoundComponent,
     ProductComponent,
-    ProductSliderComponent,
-    ProductSliderMenuComponent,
-    DecorateButtonComponent
+    ProductCarouselComponent,
+    ProductCarouselMenuComponent,
+    DecorateButtonComponent,
+    ProductCarouselSectionComponent,
+    NextSlideDirective,
+    PrevSlideDirective,
+    ProductCarouselMouseListenDirective,
   ],
   imports: [
     BrowserModule,
