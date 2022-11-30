@@ -1,57 +1,65 @@
 import {ElementRef, Injectable} from '@angular/core';
 import {Target} from "@angular/compiler";
-import {CarouselStateService} from "../components/plugins/carousel/carousel-state.service";
 import {CarouselState} from "../components/plugins/carousel/carousel-state";
+import {BehaviorSubject} from "rxjs";
+import {ICarouselState} from "../components/plugins/carousel/interface/state-carousel.interface";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CarouselService {
 
   protected window: ElementRef | undefined;
   protected carouselTrack: ElementRef | undefined;
-
   state: CarouselState = new CarouselState();
-  stateService = new CarouselStateService()
+
+  public $carouselStateStream = new BehaviorSubject(this.state);
 
   constructor() {
-    this.stateService.$carouselStateStream.subscribe((state) => {
+    this.$carouselStateStream.subscribe((state) => {
       this.state = state;
     })
+  }
+
+  setState(state: ICarouselState) {
+    if (state instanceof CarouselState) {
+      this.$carouselStateStream.next(state);
+    }
+  }
+
+  getState() {
+    return this.state;
   }
 
   public initialize(window: ElementRef | undefined, track: ElementRef | undefined) {
     this.window = window;
     this.carouselTrack = track;
 
-    this.stateService.setState(this.state.setWindowWidth(this.window?.nativeElement.offsetWidth));
-    this.stateService.setState(this.state.setItemWidth(Math.round(this.state.windowWidth / this.state.countOfSlideToDisplay)));
-    this.stateService.setState(this.state.setTrackWidth(this.state.itemWidth * this.state.countSlides));
-    this.stateService.setState(this.state.setIsArrowNext(!(this.state.currentSlide + this.state.countOfSlideToDisplay >= this.state.countSlides)));
-    this.stateService.setState(this.state.setIsArrowPrev(!(this.state.currentSlide <= 0)));
+    this.setState(this.state.setWindowWidth(this.window?.nativeElement.offsetWidth));
+    this.setState(this.state.setItemWidth(Math.round(this.state.windowWidth / this.state.countOfSlideToDisplay)));
+    this.setState(this.state.setTrackWidth(this.state.itemWidth * this.state.countSlides));
+    this.setState(this.state.setIsArrowNext(!(this.state.currentSlide + this.state.countOfSlideToDisplay >= this.state.countSlides)));
+    this.setState(this.state.setIsArrowPrev(!(this.state.currentSlide <= 0)));
   }
 
   public actualizeArrowButtons() {
-    this.stateService.setState(
+    this.setState(
       this.state
         .setIsArrowNext(!(this.state.currentSlide + this.state.countOfSlideToDisplay >= this.state.countSlides))
         .setIsArrowPrev(!(this.state.currentSlide <= 0)))
   }
 
   private resetTrackPositionToActualSlide() {
-    this.stateService
-      .setState(this.state.setCurrentTrackPosition(-this.state.itemWidth * this.state.currentSlide));
+    this.setState(this.state.setCurrentTrackPosition(-this.state.itemWidth * this.state.currentSlide));
   }
 
   private mouseSetUp() {
-    this.stateService.setState(
+    this.setState(
       this.state
         .setMouseIsUp(true)
         .setMouseIsDown(false))
   }
 
   private mouseSetDown() {
-    this.stateService.setState(
+    this.setState(
       this.state
         .setMouseIsUp(false)
         .setMouseIsDown(true)
@@ -59,21 +67,20 @@ export class CarouselService {
   }
 
   private updateStartDragTrackPosition() {
-    this.stateService.setState(
+    this.setState(
       this.state.setStartDragTrackPosition(this.state.currentTrackPosition)
     )
   }
 
   private resetMousePosition() {
-    this.stateService.setState(
+    this.setState(
       this.state
         .setMouseEndPosition(0)
         .setMouseStartPosition(0));
   }
 
   private dragTrack(position: number) {
-    this.stateService
-      .setState(
+    this.setState(
         this.state
           .setMouseEndPosition(position)
           .setCurrentTrackPosition(this.state.startDragTrackPosition - this.getDeltaMousePosition));
@@ -97,20 +104,17 @@ export class CarouselService {
   }
 
   protected enableTransition () {
-    this.stateService
-      .setState(this.state.setTransition(true));
+    this.setState(this.state.setTransition(true));
   }
 
   protected disableTransition () {
-    this.stateService
-      .setState(this.state.setTransition(false));
+    this.setState(this.state.setTransition(false));
   }
 
   public onMouseUp(event: MouseEvent) {
     if (!this.state.mouseIsDown) return
     this.mouseSetUp();
-    this.stateService
-      .setState(
+    this.setState(
         this.state.setMouseEndPosition(event.clientX));
     this.dragChangeSlide();
     this.resetMousePosition();
@@ -127,7 +131,7 @@ export class CarouselService {
     if (!this.isTrack(event.target)) return
     this.mouseSetDown()
     this.updateStartDragTrackPosition()
-    this.stateService.setState(
+    this.setState(
       this.state.setMouseStartPosition(event.clientX));
     this.disableTransition();
   }
@@ -142,8 +146,7 @@ export class CarouselService {
 
   public nextSlide() {
     if (!this.state.isArrowNext) return
-    this.stateService
-      .setState(this.state.setCurrentSlide(this.state.currentSlide + 1));
+    this.setState(this.state.setCurrentSlide(this.state.currentSlide + 1));
     this.actualizeArrowButtons();
 
     this.resetTrackPositionToActualSlide();
@@ -151,8 +154,7 @@ export class CarouselService {
 
   public prevSlide() {
     if (!this.state.isArrowPrev) return
-    this.stateService
-      .setState(this.state.setCurrentSlide(this.state.currentSlide - 1));
+    this.setState(this.state.setCurrentSlide(this.state.currentSlide - 1));
     this.actualizeArrowButtons();
     this.resetTrackPositionToActualSlide();
   }

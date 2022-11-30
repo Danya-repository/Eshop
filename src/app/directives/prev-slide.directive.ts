@@ -2,7 +2,8 @@ import {Directive, ElementRef, HostListener} from '@angular/core';
 import {CarouselService} from "../services/carousel.service";
 
 @Directive({
-  selector: '[appPrevSlide]'
+  selector: '[appPrevSlide]',
+  providers: [CarouselService]
 })
 export class PrevSlideDirective {
 

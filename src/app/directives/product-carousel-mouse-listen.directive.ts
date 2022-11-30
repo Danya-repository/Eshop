@@ -3,7 +3,8 @@ import {Target} from "@angular/compiler";
 import {CarouselService} from "../services/carousel.service";
 
 @Directive({
-  selector: '[productCarouselMouseListen]'
+  selector: '[productCarouselMouseListen]',
+  providers: [CarouselService]
 })
 export class ProductCarouselMouseListenDirective {
 
@@ -14,12 +15,12 @@ export class ProductCarouselMouseListenDirective {
 
   @HostListener('mouseup', ['$event'])
   onMouseUp(event: MouseEvent) {
-    this.carouselService.onMouseUp(event)
+    // this.carouselService.onMouseUp(event)
   }
 
   @HostListener('mousemove', ['$event'])
   onMouseMove(event: MouseEvent) {
-    this.carouselService.onMouseMove(event)
+    // this.carouselService.onMouseMove(event)
   }
 
   @HostListener('mousedown', ['$event', '$event.target'])
@@ -29,6 +30,6 @@ export class ProductCarouselMouseListenDirective {
 
   @HostListener('mouseleave')
   onMouseLeave() {
-    this.carouselService.onMouseLeave();
+    // this.carouselService.onMouseLeave();
   }
 }

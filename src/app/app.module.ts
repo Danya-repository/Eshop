@@ -23,8 +23,7 @@ import {ProductCarouselSectionComponent} from "./components/product-carousel-sec
 import {NextSlideDirective} from "./directives/next-slide.directive";
 import {PrevSlideDirective} from "./directives/prev-slide.directive";
 import { ProductCarouselMouseListenDirective } from './directives/product-carousel-mouse-listen.directive';
-import { RecommendedCarouselComponent } from './components/recommended-carousel/recommended-carousel.component';
-import { ClassicProductCarouselComponent } from './components/classic-product-carousel/classic-product-carousel.component';
+import { HeadHomeCarouselComponent } from './components/head-home-carousel/head-home-carousel.component';
 
 
 
@@ -46,8 +45,7 @@ import { ClassicProductCarouselComponent } from './components/classic-product-ca
     NextSlideDirective,
     PrevSlideDirective,
     ProductCarouselMouseListenDirective,
-    RecommendedCarouselComponent,
-    ClassicProductCarouselComponent,
+    HeadHomeCarouselComponent
   ],
   imports: [
     BrowserModule,

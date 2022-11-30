@@ -1,40 +1,30 @@
-import {
-  Component,
-  DoCheck,
-  ElementRef,
-  Input,
-  OnChanges,
-  OnDestroy,
-  OnInit,
-  SimpleChanges,
-  ViewChild
-} from '@angular/core';
+import {Component, DoCheck, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {ProductInterface} from "../../../models/product.interface";
 import {CarouselState} from "../../plugins/carousel/carousel-state";
-import {Subscription} from "rxjs";
 import {CarouselService} from "../../../services/carousel.service";
 
 @Component({
   selector: 'app-product-carousel',
   templateUrl: './product-carousel.component.html',
-  styleUrls: ['./product-carousel.component.scss']
+  styleUrls: ['./product-carousel.component.scss'],
+  providers: [CarouselService]
 })
-export class ProductCarouselComponent implements OnInit, OnDestroy, OnChanges, DoCheck {
+export class ProductCarouselComponent implements OnInit, OnChanges, DoCheck {
 
-  private carouselStreamSub = new Subscription();
-
-  @Input() state: CarouselState = new CarouselState();
+  state: CarouselState = new CarouselState();
   @Input() carouselItems: ProductInterface[] = [];
   @Input() countOfSlideToDisplay: number = 0;
   @ViewChild('carouselWindow', {static: true}) carouselWindow: ElementRef | undefined;
   @ViewChild('carouselTrack', {static: true}) carouselTrack: ElementRef | undefined;
 
-  carouselService: CarouselService = new CarouselService()
-  constructor() {}
+
+  constructor(
+    protected carouselService: CarouselService
+  ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.carouselService.stateService.setState(
-      this.carouselService.stateService.getState()
+    this.carouselService.setState(
+      this.carouselService.getState()
         .setCurrentTrackPosition(0)
         .setCurrentSlide(0)
         .setCountSlides(this.carouselItems.length)
@@ -43,7 +33,7 @@ export class ProductCarouselComponent implements OnInit, OnDestroy, OnChanges, D
   }
 
   ngOnInit(): void {
-    this.carouselService.stateService.$carouselStateStream.subscribe((state) => {
+    this.carouselService.$carouselStateStream.subscribe((state) => {
       this.state = state
     })
   }
@@ -51,10 +41,6 @@ export class ProductCarouselComponent implements OnInit, OnDestroy, OnChanges, D
   ngDoCheck(): void {
     this.carouselService.initialize(this.carouselWindow, this.carouselTrack)
     this.carouselService.actualizeArrowButtons();
-  }
-
-  ngOnDestroy(): void {
-    this.carouselStreamSub.unsubscribe();
   }
 
   next() {

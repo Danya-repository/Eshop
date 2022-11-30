@@ -2,24 +2,8 @@
   <div class="advertisement__wrapper">
     <div class="container">
       <div class="advertisement__inner">
-        <div class="advertisement__carousel-inner carousel-inner">
-          <div class="advertisement__carousel">
-            <div class="advertisement__carousel-item" style="background-image: url('assets/carousel-plug.jpg')">
-              <div class="advertisement__carousel-arrows carousel-arrows">
-                <button class="carousel-arrows__button left-arrow"></button>
-                <button class="carousel-arrows__button right-arrow"></button>
-              </div>
-              <div class="advertisement__carousel-dots carousel-dots">
-                <ul class="carousel-dots__list">
-                  <li class="carousel-dots__list-item active"></li>
-                  <li class="carousel-dots__list-item"></li>
-                </ul>
-              </div>
-              <p class="advertisement__carousel-text">
-                Почувствуй скорость и экстрим
-              </p>
-            </div>
-          </div>
+        <div class="advertisement__carousel-wrapper">
+          <app-head-home-carousel [countOfSlideToDisplay]="1"></app-head-home-carousel>
         </div>
         <div class="advertisement__banner">
           <a class="advertisement__banner-link" href="#">
@@ -74,7 +58,7 @@
   </div>
 </section>
 <section class="recommended-goods">
-  <app-classic-product-carousel></app-classic-product-carousel>
+  <app-product-carousel-section titleSection="Популярные товары"></app-product-carousel-section>
 </section>
 <section class="banner-advertisement">
   <div class="banner-advertisement__wrapper">
@@ -88,5 +72,5 @@
   </div>
 </section>
 <section class="popular-goods">
-  <app-recommended-carousel></app-recommended-carousel>
+  <app-product-carousel-section titleSection="С этим товаром покупают"></app-product-carousel-section>
 </section>

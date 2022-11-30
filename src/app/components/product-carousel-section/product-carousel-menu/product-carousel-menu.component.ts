@@ -10,16 +10,22 @@ import {Subscription} from "rxjs";
 })
 export class ProductCarouselMenuComponent implements OnInit, OnDestroy {
 
-  @Input() public state: ButtonStateInterface[] = [];
-  @Output() toggleEmitter: EventEmitter<ButtonStateInterface> = new EventEmitter<ButtonStateInterface>()
+  state: ButtonStateInterface[] = [];
   carouselMenuStreamSub: Subscription = new Subscription();
 
-  constructor() { }
+  constructor(
+    protected productCarouselMenuService: ProductCarouselMenuService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.carouselMenuStreamSub = this.productCarouselMenuService.$stream.subscribe((button) => {
+      this.productCarouselMenuService.activateButtonOfCarouselMenu(button)
+      this.state = this.productCarouselMenuService.getState;
+    })
+  }
 
   public toggleActivate(button: ButtonStateInterface): void {
-    this.toggleEmitter.emit(button);
+    this.productCarouselMenuService.activateButtonOfCarouselMenu(button)
   }
 
   ngOnDestroy(): void {

@@ -2,7 +2,8 @@ import {Directive, ElementRef, HostListener, Input, Renderer2} from '@angular/co
 import {CarouselService} from "../services/carousel.service";
 
 @Directive({
-  selector: '[appNextSlide]'
+  selector: '[appNextSlide]',
+  providers: [CarouselService]
 })
 export class NextSlideDirective {
 
