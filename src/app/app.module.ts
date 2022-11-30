@@ -17,12 +17,14 @@ import {ProductComponent} from "./components/product/product.component";
 import {AdminModule} from "./admin/admin.module";
 import {ExtraModule} from "./extra/extra.module";
 import {DecorateButtonComponent} from './components/decorate-button/decorate-button.component';
-import {ProductCarouselComponent} from "./components/product-carousel/product-carousel.component";
-import {ProductCarouselMenuComponent} from "./components/product-carousel-menu/product-carousel-menu.component";
+import {ProductCarouselComponent} from "./components/product-carousel-section/product-carousel/product-carousel.component";
+import {ProductCarouselMenuComponent} from "./components/product-carousel-section/product-carousel-menu/product-carousel-menu.component";
 import {ProductCarouselSectionComponent} from "./components/product-carousel-section/product-carousel-section.component";
 import {NextSlideDirective} from "./directives/next-slide.directive";
 import {PrevSlideDirective} from "./directives/prev-slide.directive";
 import { ProductCarouselMouseListenDirective } from './directives/product-carousel-mouse-listen.directive';
+import { RecommendedCarouselComponent } from './components/recommended-carousel/recommended-carousel.component';
+import { ClassicProductCarouselComponent } from './components/classic-product-carousel/classic-product-carousel.component';
 
 
 
@@ -44,6 +46,8 @@ import { ProductCarouselMouseListenDirective } from './directives/product-carous
     NextSlideDirective,
     PrevSlideDirective,
     ProductCarouselMouseListenDirective,
+    RecommendedCarouselComponent,
+    ClassicProductCarouselComponent,
   ],
   imports: [
     BrowserModule,

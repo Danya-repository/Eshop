@@ -1,5 +1,5 @@
 import {Directive, ElementRef, HostListener} from '@angular/core';
-import {ProductCarouselService} from "../services/product-carousel.service";
+import {CarouselService} from "../services/carousel.service";
 
 @Directive({
   selector: '[appPrevSlide]'
@@ -7,11 +7,11 @@ import {ProductCarouselService} from "../services/product-carousel.service";
 export class PrevSlideDirective {
 
   constructor(
-    private productCarouselService: ProductCarouselService
+    private carouselService: CarouselService
   ) { }
 
   @HostListener('click')
   onClick() {
-    this.productCarouselService.prevSlide();
+    this.carouselService.prevSlide();
   }
 }
