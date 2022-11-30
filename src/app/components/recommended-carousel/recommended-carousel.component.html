@@ -3,7 +3,7 @@
     <div class="product-goods-tabs__inner">
       <h4 class="product-goods-tabs__title section-title">{{titleSection}}</h4>
       <app-product-carousel-menu [state]="buttonsState" (toggleEmitter)="changeGroup($event)"></app-product-carousel-menu>
-      <app-product-carousel [state] = "carouselState" [countOfSlideToDisplay]="4" [carouselItems]="products" ></app-product-carousel>
+      <app-product-carousel [state] = "carouselState" [countOfSlideToDisplay]="4" [carouselItems]="products"></app-product-carousel>
     </div>
   </div>
 </section>

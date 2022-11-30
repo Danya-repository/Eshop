@@ -16,18 +16,10 @@
   &__track {
     display: flex;
 
-
     width: 100%;
     padding: 25px 0;
     transform: translateX(0px);
-    transition: all 1s;
   }
-
-  //&__item-inner {
-  //  display: flex;
-  //  justify-content: center;
-  //  align-items: center;
-  //}
 
   &__item {
     display: flex;

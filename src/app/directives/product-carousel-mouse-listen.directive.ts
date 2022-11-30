@@ -1,6 +1,6 @@
 import {Directive, ElementRef, HostListener} from '@angular/core';
-import {ProductCarouselService} from "../services/product-carousel.service";
 import {Target} from "@angular/compiler";
+import {CarouselService} from "../services/carousel.service";
 
 @Directive({
   selector: '[productCarouselMouseListen]'
@@ -9,46 +9,26 @@ export class ProductCarouselMouseListenDirective {
 
   constructor(
     private el: ElementRef,
-    private productCarouselService: ProductCarouselService
+    private carouselService: CarouselService
   ) { }
 
   @HostListener('mouseup', ['$event'])
   onMouseUp(event: MouseEvent) {
-    if (!this.productCarouselService.mouseIsDown) return
-    this.productCarouselService.mouseSetUp();
-    this.productCarouselService.setMouseEndPosition = event.clientX;
-
-    this.productCarouselService.dragChangeSlide();
-
-    this.productCarouselService.enableTransition();
-    this.productCarouselService.resetMousePosition();
+    this.carouselService.onMouseUp(event)
   }
 
   @HostListener('mousemove', ['$event'])
   onMouseMove(event: MouseEvent) {
-    if (this.productCarouselService.mouseIsDown) {
-      this.productCarouselService.dragTrack(event.clientX);
-    }
+    this.carouselService.onMouseMove(event)
   }
 
   @HostListener('mousedown', ['$event', '$event.target'])
   onMouseDown(event: MouseEvent, target: Target) {
-    if (!this.productCarouselService.isTrack(target)) return
-    this.productCarouselService.mouseSetDown()
-    this.productCarouselService.updateStartDragTrackPosition()
-    this.productCarouselService.setMouseStartPosition = event.clientX;
-    this.productCarouselService.disableTransition();
+    // this.carouselService.onMouseDown(event, target)
   }
 
   @HostListener('mouseleave')
   onMouseLeave() {
-    this.productCarouselService.mouseSetUp();
-
-    this.productCarouselService.dragChangeSlide();
-    this.productCarouselService.resetTrackPositionToActualSlide();
-    this.productCarouselService.resetMousePosition();
-
-    this.productCarouselService.enableTransition();
-    this.productCarouselService.updateTransformTrack();
+    this.carouselService.onMouseLeave();
   }
 }

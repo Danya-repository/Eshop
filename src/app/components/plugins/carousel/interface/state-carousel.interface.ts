@@ -1,4 +1,4 @@
-export interface CarouselState {
+export interface ICarouselState {
   windowWidth: number,
   itemWidth: number,
   trackWidth: number,
@@ -7,18 +7,11 @@ export interface CarouselState {
   startDragTrackPosition: number,
   countSlides: number,
   countOfSlideToDisplay: number,
-  mouseState: MouseCarouselState,
-  possibleChange: {
-    next: boolean,
-    prev: boolean
-  }
-}
-
-interface MouseCarouselState {
-  isDown: boolean,
-  isUp: boolean,
-  position: {
-    start: number,
-    end: number
-  }
+  mouseIsDown: boolean,
+  mouseIsUp: boolean,
+  mouseStartPosition: number,
+  mouseEndPosition: number,
+  isArrowNext: boolean,
+  isArrowPrev: boolean,
+  transition: boolean
 }
