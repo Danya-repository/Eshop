@@ -4,7 +4,7 @@ import {CarouselMenuEnum} from "../enums/сarouselMenu.enum";
 import {BehaviorSubject} from "rxjs";
 
 @Injectable()
-export class ProductCarouselMenuService implements OnInit{
+export class ProductCarouselMenuService{
 
   private buttonsState: ButtonStateInterface[] = [
     {active: false, text: 'Запчасти', identifier: CarouselMenuEnum.SPARES},
@@ -21,14 +21,11 @@ export class ProductCarouselMenuService implements OnInit{
 
   public activateButtonOfCarouselMenu(button: ButtonStateInterface) {
     this.buttonsState.map(buttonInState => buttonInState.active = buttonInState.identifier === button.identifier)
-    this.$stream.next(button)
+
   }
 
   get getState(): ButtonStateInterface[] {
     return this.buttonsState;
-  }
-
-  ngOnInit(): void {
   }
 }
 

@@ -158,6 +158,12 @@ export class CarouselService {
     this.actualizeArrowButtons();
     this.resetTrackPositionToActualSlide();
   }
+
+  public goToSlide(numberOfSlide: number) {
+    this.setState(this.state.setCurrentSlide(numberOfSlide))
+    this.actualizeArrowButtons();
+    this.resetTrackPositionToActualSlide();
+  }
 }
 
 

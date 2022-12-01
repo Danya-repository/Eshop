@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output} from '@angular/core';
 import {ProductCarouselMenuService} from "../../../services/product-carousel-menu.service";
 import {ButtonStateInterface} from "../../../models/buttonState.interface";
 import {Subscription} from "rxjs";
@@ -25,7 +25,7 @@ export class ProductCarouselMenuComponent implements OnInit, OnDestroy {
   }
 
   public toggleActivate(button: ButtonStateInterface): void {
-    this.productCarouselMenuService.activateButtonOfCarouselMenu(button)
+    this.productCarouselMenuService.$stream.next(button);
   }
 
   ngOnDestroy(): void {

@@ -24,6 +24,8 @@ import {NextSlideDirective} from "./directives/next-slide.directive";
 import {PrevSlideDirective} from "./directives/prev-slide.directive";
 import { ProductCarouselMouseListenDirective } from './directives/product-carousel-mouse-listen.directive';
 import { HeadHomeCarouselComponent } from './components/head-home-carousel/head-home-carousel.component';
+import { CarouselDotsComponent } from './components/carousel-dots/carousel-dots.component';
+import { TilesComponent } from './components/tiles/tiles.component';
 
 
 
@@ -45,7 +47,9 @@ import { HeadHomeCarouselComponent } from './components/head-home-carousel/head-
     NextSlideDirective,
     PrevSlideDirective,
     ProductCarouselMouseListenDirective,
-    HeadHomeCarouselComponent
+    HeadHomeCarouselComponent,
+    CarouselDotsComponent,
+    TilesComponent
   ],
   imports: [
     BrowserModule,
