@@ -1,0 +1,53 @@
+<section class="advertisement">
+  <div class="advertisement__wrapper">
+    <div class="container">
+      <div class="advertisement__inner">
+        <div class="advertisement__carousel-wrapper">
+          <app-head-home-carousel [countOfSlideToDisplay]="1"></app-head-home-carousel>
+        </div>
+        <div class="advertisement__banner">
+          <a class="advertisement__banner-link" href="#">
+            <img class="advertisement__banner-image" src="../../../assets/advertisement-banner.jpg" alt="advertisement-banner">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="search">
+  <div class="search__wrapper">
+    <div class="container">
+      <div class="search__inner">
+        <div class="search__main-form">
+          <form class="search__form" action="#">
+            <div class="search__tabs">
+              <button class="search__tab">Поиск по номеру</button>
+              <button class="search__tab active">Поиск по марке</button>
+              <button class="search__tab">Поиск по названию товара</button>
+            </div>
+            <input class="search__input" type="text" placeholder="Введите марку">
+            <button class="search__submit-button blue-button rectangle-button" type="submit">Искать</button>
+          </form>
+        </div>
+        <app-tiles></app-tiles>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="recommended-goods">
+  <app-product-carousel-section titleSection="Популярные товары"></app-product-carousel-section>
+</section>
+<section class="banner-advertisement">
+  <div class="banner-advertisement__wrapper">
+    <div class="container">
+      <div class="banner-advertisement__inner">
+        <a class="banner-advertisement__link" href="#">
+          <img class="banner-advertisement__image-layout" style="background-image: url('../../../assets/banner-advertisement-banner.jpg')">
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="popular-goods">
+  <app-product-carousel-section titleSection="С этим товаром покупают"></app-product-carousel-section>
+</section>
