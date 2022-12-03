@@ -1,11 +1,11 @@
 <div class="search__main-form">
-  <form class="search__form" action="#">
+  <form class="search__form" action="#" [formGroup]="formSearch" (ngSubmit)="submitSearch()">
     <div class="search__tabs">
-      <button class="search__tab">Поиск по номеру</button>
-      <button class="search__tab active">Поиск по марке</button>
-      <button class="search__tab">Поиск по названию товара</button>
+      <button type="button" class="search__tab">Поиск по номеру</button>
+      <button type="button" class="search__tab active">Поиск по марке</button>
+      <button type="button" class="search__tab">Поиск по названию товара</button>
     </div>
-    <input class="search__input" type="text" placeholder="Введите марку">
+    <input class="search__input" type="text" placeholder="Введите марку" formControlName="searchString">
     <button class="search__submit-button blue-button rectangle-button" type="submit">Искать</button>
   </form>
 </div>

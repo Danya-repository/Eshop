@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ButtonStateInterface} from "../../../shared/models/buttonState.interface";
+import {ButtonStateInterface} from "../../../../shared/models/buttonState.interface";
 
 @Component({
   selector: 'app-decorate-button',

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ProductInterface} from "../../../shared/models/product.interface";
-import {ProductService} from "../../../shared/services/product.service";
+import {ProductInterface} from "../../../../shared/models/product.interface";
+import {ProductService} from "../../../../shared/services/product.service";
 import {Subscription} from "rxjs";
 import {Router} from "@angular/router";
 

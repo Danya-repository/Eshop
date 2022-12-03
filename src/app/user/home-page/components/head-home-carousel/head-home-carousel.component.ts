@@ -11,8 +11,8 @@ import {
   OnInit,
   ViewChild
 } from '@angular/core';
-import {CarouselService} from "../../../shared/services/carousel.service";
-import {CarouselState} from "../plugins/carousel/carousel-state";
+import {CarouselService} from "../../../../shared/services/carousel.service";
+import {CarouselState} from "../../../components/plugins/carousel/carousel-state";
 import {Subscription} from "rxjs";
 
 @Component({

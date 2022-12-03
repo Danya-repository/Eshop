@@ -1,7 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {CarouselService} from "../../../shared/services/carousel.service";
+import {CarouselService} from "../../../../shared/services/carousel.service";
 import {Subscription} from "rxjs";
-import {CarouselState} from "../plugins/carousel/carousel-state";
+import {CarouselState} from "../../../components/plugins/carousel/carousel-state";
 
 @Component({
   selector: 'app-carousel-dots',
