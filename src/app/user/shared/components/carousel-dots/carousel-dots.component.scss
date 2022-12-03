@@ -1,0 +1,26 @@
+.carousel-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 40px;
+
+  &__list {
+    display: flex;
+
+    &-item {
+      height: 11px;
+      width: 11px;
+      border-radius: 50%;
+      border: 1px solid #FFFFFF;
+      transition: all 1s;
+      cursor: pointer;
+
+      &.active {
+        background: #FFFFFF;
+      }
+    }
+
+    .carousel-dots__list-item + .carousel-dots__list-item {
+      margin-left: 9px;
+    }
+  }
+}

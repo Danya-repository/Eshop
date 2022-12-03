@@ -1,0 +1,28 @@
+@import "../../styles/vars";
+
+.advertisement {
+  margin: 41px 0;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__carousel-wrapper {
+    max-width: 850px;
+    width: 100%;
+  }
+}
+
+.banner-advertisement {
+  margin: 86px 0 72px;
+
+  &__image-layout {
+    width: 100%;
+    height: 165px;
+  }
+}
+
+.popular-goods {
+  margin-bottom: 97px;
+}

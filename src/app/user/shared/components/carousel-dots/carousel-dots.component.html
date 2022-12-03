@@ -1,0 +1,9 @@
+<div class="carousel-dots">
+  <ul class="carousel-dots__list">
+    <li class="carousel-dots__list-item"
+        *ngFor="let dot of carouselSlides; let idx = index"
+        [ngClass]="{'active': carouselState.currentSlide === idx}"
+        (click)="setSlide(idx)"
+    ></li>
+  </ul>
+</div>
