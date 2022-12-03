@@ -1,0 +1,8 @@
+<div class="search__tab-menu tab-menu">
+  <a class="tab-menu__item"
+     *ngFor="let tile of state"
+     [style]="'background-image: url('+ tile.urlImage +')'">
+    <p class="tab-menu__name" [routerLink]="['/catalog', tile.identifier]" >{{tile.text}}</p>
+    <p class="tab-menu__more" [routerLink]="['/extra', tile.identifier]">Подробнее</p>
+  </a>
+</div>

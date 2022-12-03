@@ -10,7 +10,7 @@ import {
   ViewChild
 } from '@angular/core';
 import {ProductInterface} from "../../../../shared/models/product.interface";
-import {CarouselState} from "../../plugins/carousel/carousel-state";
+import {CarouselState} from "../../../components/plugins/carousel/carousel-state";
 import {CarouselService} from "../../../../shared/services/carousel.service";
 import {Subscription} from "rxjs";
 

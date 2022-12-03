@@ -1,13 +1,13 @@
 import {Component, Input, OnChanges, OnDestroy, OnInit, ViewChild} from "@angular/core";
-import {ProductInterface} from "../../../shared/models/product.interface";
+import {ProductInterface} from "../../../../shared/models/product.interface";
 import {delay, interval, Subscription, timeout} from "rxjs";
-import {ProductService} from "../../../shared/services/product.service";
-import {ButtonStateInterface} from "../../../shared/models/buttonState.interface";
-import {CarouselState} from "../plugins/carousel/carousel-state";
-import {ProductCarouselSectionService} from "../../../shared/services/product-carousel-section.service";
-import {CarouselService} from "../../../shared/services/carousel.service";
-import {ProductCarouselMenuService} from "../../../shared/services/product-carousel-menu.service";
-import {ProductCarouselMenuComponent} from "./product-carousel-menu/product-carousel-menu.component";
+import {ProductService} from "../../../../shared/services/product.service";
+import {ButtonStateInterface} from "../../../../shared/models/buttonState.interface";
+import {CarouselState} from "../../../components/plugins/carousel/carousel-state";
+import {ProductCarouselSectionService} from "../../../../shared/services/product-carousel-section.service";
+import {CarouselService} from "../../../../shared/services/carousel.service";
+import {ProductCarouselMenuService} from "../../../../shared/services/product-carousel-menu.service";
+import {ProductCarouselMenuComponent} from "../product-carousel-menu/product-carousel-menu.component";
 
 @Component({
   selector: 'app-product-carousel-section',
