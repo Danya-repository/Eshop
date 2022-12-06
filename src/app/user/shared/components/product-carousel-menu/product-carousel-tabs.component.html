@@ -1,0 +1,8 @@
+<div class="tab-buttons">
+  <div class="tab-button" *ngFor="let tab of tabMenuService.state">
+    <app-decorate-button (click)="toggleActivate(tab)" [buttonData]="tab">{{tab.text | lowercase}}</app-decorate-button>
+  </div>
+</div>
+<div class="tab__container">
+  <app-product-carousel [countOfSlideToDisplay]="4" [carouselItems]="products" ></app-product-carousel>
+</div>

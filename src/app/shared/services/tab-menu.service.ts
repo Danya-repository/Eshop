@@ -6,7 +6,7 @@ import {BehaviorSubject} from "rxjs";
 @Injectable()
 export class ProductCarouselMenuService{
 
-  private buttonsState: ButtonStateInterface[] = [
+  private tabButtonsState: ButtonStateInterface[] = [
     {active: false, text: 'Запчасти', identifier: CarouselMenuEnum.SPARES},
     {active: false, text: 'Моторы', identifier: CarouselMenuEnum.ENGINES},
     {active: false, text: 'Шины', identifier: CarouselMenuEnum.TIRES},
@@ -15,16 +15,20 @@ export class ProductCarouselMenuService{
     {active: false, text: 'Аксессуары', identifier: CarouselMenuEnum.ACCESSORIES}
   ]
 
-  $stream = new BehaviorSubject<ButtonStateInterface>(this.buttonsState[0]);
+  $stream = new BehaviorSubject<ButtonStateInterface>(this.tabButtonsState[0]);
 
   constructor() {}
 
   public activateButtonOfCarouselMenu(button: ButtonStateInterface) {
-    this.buttonsState.map(buttonInState => buttonInState.active = buttonInState.identifier === button.identifier)
+    this.tabButtonsState.map(buttonInState => buttonInState.active = buttonInState.identifier === button.identifier)
+  }
+
+  set setState(state: ButtonStateInterface[]) {
+    // this.s
   }
 
   get getState(): ButtonStateInterface[] {
-    return this.buttonsState;
+    return this.tabButtonsState;
   }
 }
 
