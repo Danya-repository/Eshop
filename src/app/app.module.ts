@@ -33,4 +33,5 @@ import {AdminModule} from "./admin/admin.module";
   bootstrap: [AppComponent]
 })
 
-export class AppModule {}
+export class AppModule {
+}

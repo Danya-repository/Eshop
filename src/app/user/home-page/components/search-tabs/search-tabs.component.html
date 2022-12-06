@@ -1,1 +1,3 @@
-<p>search-tabs works!</p>
+<div class="search__tabs">
+  <button *ngFor="let tab of tabs;" (click)="toggleActivate(tab)"  type="button" class="search__tab" [ngClass]="{'active': tab.active}">{{tab.text}}</button>
+</div>

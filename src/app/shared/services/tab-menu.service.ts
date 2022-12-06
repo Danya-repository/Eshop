@@ -1,34 +1,32 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ButtonStateInterface} from "../models/buttonState.interface";
-import {CarouselMenuEnum} from "../enums/сarouselMenu.enum";
-import {BehaviorSubject} from "rxjs";
+import {Subject} from "rxjs";
+import {TabsState} from "../../user/components/plugins/tabs/tabs-state";
 
 @Injectable()
-export class ProductCarouselMenuService{
+export class TabMenuService {
 
-  private tabButtonsState: ButtonStateInterface[] = [
-    {active: false, text: 'Запчасти', identifier: CarouselMenuEnum.SPARES},
-    {active: false, text: 'Моторы', identifier: CarouselMenuEnum.ENGINES},
-    {active: false, text: 'Шины', identifier: CarouselMenuEnum.TIRES},
-    {active: false, text: 'Электроника', identifier: CarouselMenuEnum.ELECTRONICS},
-    {active: false, text: 'Инструменты', identifier: CarouselMenuEnum.TOOLS},
-    {active: false, text: 'Аксессуары', identifier: CarouselMenuEnum.ACCESSORIES}
-  ]
-
-  $stream = new BehaviorSubject<ButtonStateInterface>(this.tabButtonsState[0]);
+  $stream: Subject<ButtonStateInterface> = new Subject<ButtonStateInterface>();
+  private _state: TabsState = new TabsState([]);
 
   constructor() {}
 
-  public activateButtonOfCarouselMenu(button: ButtonStateInterface) {
-    this.tabButtonsState.map(buttonInState => buttonInState.active = buttonInState.identifier === button.identifier)
+  initialize(buttons: ButtonStateInterface[], indexOfActivateButton: number) {
+    this._state = new TabsState(buttons, indexOfActivateButton)
+    this.$stream.next(<ButtonStateInterface>this.getActiveButton())
   }
 
-  set setState(state: ButtonStateInterface[]) {
-    // this.s
+  get state() {
+    return this._state.getState;
   }
 
-  get getState(): ButtonStateInterface[] {
-    return this.tabButtonsState;
+  getActiveButton(): ButtonStateInterface {
+    return <ButtonStateInterface>this._state.getActiveButton;
+  }
+
+  setActiveButton(button: ButtonStateInterface) {
+    this._state.activateTab(button)
+    this.$stream.next(button)
   }
 }
 
