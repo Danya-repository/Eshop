@@ -1,47 +1,53 @@
-import {Component, Input, OnChanges, OnDestroy, OnInit, ViewChild} from "@angular/core";
+import {Component, Input} from "@angular/core";
 import {ProductInterface} from "../../../../shared/models/product.interface";
-import {delay, interval, Subscription, timeout} from "rxjs";
+import {delay, Subscription} from "rxjs";
 import {ProductService} from "../../../../shared/services/product.service";
 import {ButtonStateInterface} from "../../../../shared/models/buttonState.interface";
-import {CarouselState} from "../../../components/plugins/carousel/carousel-state";
-import {ProductCarouselSectionService} from "../../../../shared/services/product-carousel-section.service";
-import {CarouselService} from "../../../../shared/services/carousel.service";
-import {ProductCarouselMenuService} from "../../../../shared/services/product-carousel-menu.service";
-import {ProductCarouselMenuComponent} from "../product-carousel-menu/product-carousel-menu.component";
+import {TabMenuService} from "../../../../shared/services/tab-menu.service";
 
 @Component({
   selector: 'app-product-carousel-section',
   templateUrl: './product-carousel-section.component.html',
   styleUrls: ['./product-carousel-section.component.scss'],
-  providers: [ProductCarouselMenuService]
+  providers: [TabMenuService]
 })
-export class ProductCarouselSectionComponent implements OnInit, OnDestroy {
+export class ProductCarouselSectionComponent {
 
   @Input() titleSection = '';
 
-  products: ProductInterface[] = [];
   productCarouselSectionSub: Subscription = new Subscription();
   productsSub: Subscription = new Subscription();
+
+  products: ProductInterface[] = [];
   isLoad: boolean = false;
 
   constructor(
-    protected productCarouselMenuService: ProductCarouselMenuService,
-    protected productService: ProductService
-  ) { }
+    private tabMenuService: TabMenuService,
+    private productService: ProductService
+  ) {}
 
   ngOnInit(): void {
-    this.productCarouselSectionSub = this.productCarouselMenuService.$stream.subscribe((button: ButtonStateInterface) => {
-      this.products = [];
-      this.isLoad = true;
-      this.productsSub = this.productService.getAll(button.identifier)
-        .pipe(
-         delay(2000)
-        )
-        .subscribe((products) => {
-          this.isLoad = false;
-          this.products = products;
-      });
+    this.productCarouselSectionSub = this.tabMenuService.$stream.subscribe(button => {
+      this.getProducts(button)
     })
+  }
+
+  getProducts(button: ButtonStateInterface | undefined) {
+    if (!button) {
+      this.isLoad = false;
+      this.products = [];
+      return
+    }
+
+    this.products = [];
+    this.isLoad = true;
+    this.productsSub = this.productService
+      .getAll(button.identifier)
+      .pipe(delay(1000))
+      .subscribe((products) => {
+        this.isLoad = false;
+        this.products = products;
+      });
   }
 
   ngOnDestroy(): void {

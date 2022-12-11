@@ -1,0 +1,18 @@
+@import "../../../../styles/vars";
+
+.search__tabs {
+    margin-bottom: 25px;
+}
+
+.search__tab {
+  padding: 11px 28px;
+  border-radius: 5px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &.active {
+    background-color: $base-color;
+  }
+}

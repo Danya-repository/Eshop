@@ -1,0 +1,5 @@
+<div class="tab-buttons">
+  <div class="tab-button" *ngFor="let tab of tabs">
+    <app-decorate-button (click)="toggleActivate(tab)" [buttonData]="tab">{{tab.text | lowercase}}</app-decorate-button>
+  </div>
+</div>
