@@ -1,5 +1,5 @@
-import {ButtonStateInterface} from "../../../../../shared/models/buttonState.interface";
+import {IButtonState} from "../../../../../shared/models/buttonState.interface";
 
 export interface ITabs {
-  tabs: ButtonStateInterface[]
+  tabs: IButtonState[]
 }

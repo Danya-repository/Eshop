@@ -9,7 +9,7 @@ import {
   SimpleChanges,
   ViewChild
 } from '@angular/core';
-import {ProductInterface} from "../../../../shared/models/product.interface";
+import {IProduct} from "../../../../shared/models/product.interface";
 import {CarouselState} from "../../../components/plugins/carousel/carousel-state";
 import {CarouselService} from "../../../../shared/services/carousel.service";
 import {Subscription} from "rxjs";
@@ -23,7 +23,7 @@ import {Subscription} from "rxjs";
 export class ProductCarouselComponent implements OnChanges, DoCheck, OnDestroy {
 
   state: CarouselState = new CarouselState();
-  @Input() carouselItems: ProductInterface[] = [];
+  @Input() carouselItems: IProduct[] = [];
   @Input() countOfSlideToDisplay: number = 0;
   @ViewChild('carouselWindow', {static: true}) carouselWindow: ElementRef | undefined;
   @ViewChild('carouselTrack', {static: true}) carouselTrack: ElementRef | undefined;

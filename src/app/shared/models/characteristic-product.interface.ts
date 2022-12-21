@@ -1,4 +1,4 @@
-export interface CharacteristicProductInterface {
+export interface ICharacteristicProduct {
   manufacturer: string | undefined,
   quantity: number | undefined,
   power: string | undefined,

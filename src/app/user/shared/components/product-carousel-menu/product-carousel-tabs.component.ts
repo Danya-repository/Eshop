@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TabMenuService} from "../../../../shared/services/tab-menu.service";
-import {ButtonStateInterface} from "../../../../shared/models/buttonState.interface";
+import {IButtonState} from "../../../../shared/models/buttonState.interface";
 import {CarouselMenuEnum} from "../../../../shared/enums/сarouselMenu.enum";
 
 @Component({
@@ -12,7 +12,7 @@ export class ProductCarouselTabsComponent implements OnInit {
 
   @Input() isLoad: boolean = false;
 
-  buttons: ButtonStateInterface[] = [
+  buttons: IButtonState[] = [
     {active: false, text: 'Запчасти', identifier: CarouselMenuEnum.SPARES},
     {active: false, text: 'Моторы', identifier: CarouselMenuEnum.ENGINES},
     {active: false, text: 'Шины', identifier: CarouselMenuEnum.TIRES},
@@ -21,7 +21,7 @@ export class ProductCarouselTabsComponent implements OnInit {
     {active: false, text: 'Аксессуары', identifier: CarouselMenuEnum.ACCESSORIES}
   ];
 
-  tabs: ButtonStateInterface[] = []
+  tabs: IButtonState[] = []
 
   constructor(
     public tabMenuService: TabMenuService
@@ -32,7 +32,7 @@ export class ProductCarouselTabsComponent implements OnInit {
     this.tabs = this.tabMenuService.state
   }
 
-  toggleActivate(button: ButtonStateInterface) {
+  toggleActivate(button: IButtonState) {
     if (this.isLoad) return
     this.tabMenuService.setActiveButton(button);
   }

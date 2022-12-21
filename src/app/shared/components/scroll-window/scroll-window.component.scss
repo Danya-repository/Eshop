@@ -1,0 +1,36 @@
+@import "../../../styles/vars";
+
+.scroll-window {
+    height: 100%;
+    overflow: hidden;
+    
+    &__inner {
+        display: flex;
+        max-height: 100%;
+        position: relative;
+    }
+
+    &__container {
+        width: 100%;
+        height: 100%;
+        transition: all .21s;
+        position: relative;
+        padding-right: 10px;
+    }
+
+    &__strip {
+        width: 10px;
+        background-color: $gray;
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        height: 100%;
+    }
+
+    &__handle {
+        position: absolute;
+        width: 100%;
+        height: 40px;
+        background-color: $light-gray;
+    }
+}

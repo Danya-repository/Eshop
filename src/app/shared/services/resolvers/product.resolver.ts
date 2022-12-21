@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {ActivatedRoute, ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from "@angular/router";
-import {ProductInterface} from "../../models/product.interface";
+import {IProduct} from "../../models/product.interface";
 import {Observable} from "rxjs";
 import {ProductService} from "../product.service";
 
@@ -8,11 +8,11 @@ import {ProductService} from "../product.service";
 @Injectable({
   providedIn: 'root'
 })
-export class ProductResolver implements Resolve<ProductInterface>{
+export class ProductResolver implements Resolve<IProduct>{
 
   constructor(private productService: ProductService) {}
 
-  resolve(route: ActivatedRouteSnapshot): Observable<ProductInterface> {
+  resolve(route: ActivatedRouteSnapshot): Observable<IProduct> {
     return this.productService.getOne(+route.params['id'])
     }
 }

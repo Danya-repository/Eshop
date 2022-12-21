@@ -1,8 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ProductInterface} from "../../../../shared/models/product.interface";
+import {IProduct} from "../../../../shared/models/product.interface";
 import {ProductService} from "../../../../shared/services/product.service";
 import {Subscription} from "rxjs";
 import {Router} from "@angular/router";
+import { BasketService } from 'src/app/shared/services/basket.service';
 
 @Component({
   selector: 'app-product',
@@ -11,11 +12,12 @@ import {Router} from "@angular/router";
 })
 export class ProductComponent implements OnInit {
 
-  @Input() productData: ProductInterface = {name: "", price: 0, type: "", available: true};
+  @Input() productData: IProduct = {name: "", price: 0, type: "", available: true};
   private subscription: Subscription | undefined;
 
   constructor(
     private productService: ProductService,
+    private basketService: BasketService,
     private router: Router
   ) {}
 
@@ -24,8 +26,7 @@ export class ProductComponent implements OnInit {
   favoriteToggle(event: Event) {
     event.stopPropagation();
 
-    this.subscription = this.productService
-                                      .putOne({...this.productData, favorite: !this.productData.favorite})
+    this.subscription = this.productService.putOne({...this.productData, favorite: !this.productData.favorite})
                                       .subscribe(data => {
                                         this.productData = data;
                                         console.log(this.productData)
@@ -51,5 +52,6 @@ export class ProductComponent implements OnInit {
   toggleAddToBasket(event: Event) {
     event.stopPropagation()
     console.log('TOGGLE BASKET')
+    this.basketService.addProduct(this.productData)
   }
 }

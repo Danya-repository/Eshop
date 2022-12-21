@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ProductInterface} from "../../shared/models/product.interface";
+import {IProduct} from "../../shared/models/product.interface";
 import {ProductService} from "../../shared/services/product.service";
 import {Subscription} from "rxjs";
 
@@ -10,7 +10,7 @@ import {Subscription} from "rxjs";
 })
 export class CatalogPageComponent implements OnInit, OnDestroy {
 
-  products: ProductInterface[] | undefined;
+  products: IProduct[] | undefined;
   sub: Subscription = new Subscription();
 
   constructor(

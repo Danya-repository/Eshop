@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ButtonStateInterface} from "../../../../shared/models/buttonState.interface";
+import {IButtonState} from "../../../../shared/models/buttonState.interface";
 
 @Component({
   selector: 'app-decorate-button',
@@ -8,7 +8,7 @@ import {ButtonStateInterface} from "../../../../shared/models/buttonState.interf
 })
 export class DecorateButtonComponent implements OnInit {
 
-  @Input() buttonData: ButtonStateInterface = {identifier: ''}
+  @Input() buttonData: IButtonState = {identifier: ''}
 
   constructor() {}
 

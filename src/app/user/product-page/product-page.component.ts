@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs";
 import {ProductService} from "../../shared/services/product.service";
-import {ProductInterface} from "../../shared/models/product.interface";
+import {IProduct} from "../../shared/models/product.interface";
 
 @Component({
   selector: 'app-product-page',
@@ -13,7 +13,7 @@ export class ProductPageComponent implements OnInit, OnDestroy {
 
   sub: Subscription = new Subscription();
   // @ts-ignore
-  public product: ProductInterface;
+  public product: IProduct;
 
 
   constructor(

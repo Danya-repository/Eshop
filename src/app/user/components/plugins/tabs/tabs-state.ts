@@ -1,23 +1,23 @@
 import {ITabs} from "./interface/tabs.interface";
-import {ButtonStateInterface} from "../../../../shared/models/buttonState.interface";
+import {IButtonState} from "../../../../shared/models/buttonState.interface";
 
 export class TabsState implements ITabs {
-  tabs: ButtonStateInterface[]= [];
+  tabs: IButtonState[]= [];
 
-  constructor(state: ButtonStateInterface[], indexActivatedButton: number = 0) {
+  constructor(state: IButtonState[], indexActivatedButton: number = 0) {
     this.tabs = state;
     this.activateTab(this.tabs[indexActivatedButton])
   }
 
-  public activateTab(button: ButtonStateInterface) {
+  public activateTab(button: IButtonState) {
       this.tabs.map(buttonInState => buttonInState.active = buttonInState.identifier === button.identifier)
   }
 
-  get getState(): ButtonStateInterface[] {
+  get getState(): IButtonState[] {
     return this.tabs
   }
 
-  get getActiveButton(): ButtonStateInterface | undefined {
+  get getActiveButton(): IButtonState | undefined {
     return this.tabs.find(btn => btn.active)
   }
 }

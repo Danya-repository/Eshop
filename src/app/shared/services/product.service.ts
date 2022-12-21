@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ProductInterface} from "../models/product.interface";
+import {IProduct} from "../models/product.interface";
 import {Observable} from "rxjs";
 import {products, products as data} from "../mocks/products";
 
@@ -10,28 +10,28 @@ export class ProductService {
 
   constructor() { }
 
-  getOne(id: number | undefined): Observable<ProductInterface> {
-    return new Observable<ProductInterface>(subscriber => {
+  getOne(id: number | undefined): Observable<IProduct> {
+    return new Observable<IProduct>(subscriber => {
       // @ts-ignore
       let prodItem = data.find(p => p.id === +id)
       subscriber.next(prodItem);
     })
   }
 
-  getAll(type: string): Observable<ProductInterface[]> {
-    return new Observable<ProductInterface[]>(subscriber => {
+  getAll(type: string): Observable<IProduct[]> {
+    return new Observable<IProduct[]>(subscriber => {
       subscriber.next(products.filter(item => item.type === type));
     })
   }
 
-  deleteOne(id: number): Observable<ProductInterface> {
-    return new Observable<ProductInterface>(subscriber => {
+  deleteOne(id: number): Observable<IProduct> {
+    return new Observable<IProduct>(subscriber => {
       data.filter((p) => p.id != +id);
     })
   }
 
-  putOne(product: ProductInterface): Observable<ProductInterface> {
-    return new Observable<ProductInterface>(subscriber => {
+  putOne(product: IProduct): Observable<IProduct> {
+    return new Observable<IProduct>(subscriber => {
 
       data.map(item => {
         // @ts-ignore

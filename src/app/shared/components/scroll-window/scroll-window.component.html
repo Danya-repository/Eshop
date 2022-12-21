@@ -1,0 +1,23 @@
+<div class="scroll-window" 
+    #window
+    (mousemove)="mousemove($event)"
+    (mouseup)="mouseup($event)"
+    (mouseleave)="mouseleave($event)"
+    (mousewheel)="mousescroll($event)">
+    <div class="scroll-window__inner">
+        <div class="scroll-window__container" 
+            #container
+            [style.top]="containerPosition + 'px'"
+            ><ng-content></ng-content>
+        </div>
+        <div class="scroll-window__strip" *ngIf="containerHeight > windowHeight" #strip>
+            <div class="scroll-window__handle" 
+                [style.top]="handlePosition + 'px'"
+                [style.transition]="transition ? 'all .11s' : 'none'"
+                #handle
+                (mousedown)="mousedown($event)"
+                (scroll)="mousescroll($event)"
+            ></div>
+        </div>
+    </div>
+</div>

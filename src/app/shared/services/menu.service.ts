@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Subject} from "rxjs";
-import {ButtonStateInterface} from "../models/buttonState.interface";
+import {IButtonState} from "../models/buttonState.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ export class MenuService {
 
   constructor() {}
 
-  get getState(): ButtonStateInterface[] {
+  get getState(): IButtonState[] {
     return this.state
   }
 }

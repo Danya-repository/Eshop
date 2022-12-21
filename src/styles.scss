@@ -2,3 +2,8 @@
 @import "app/styles/fonts";
 @import "app/styles/vars";
 @import "app/styles/global";
+
+body {
+    overflow: hidden;
+    height: 100vh;
+}
