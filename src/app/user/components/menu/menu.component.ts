@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MenuService} from "../../../shared/services/menu.service";
-import {ButtonStateInterface} from "../../../shared/models/buttonState.interface";
+import {IButtonState} from "../../../shared/models/buttonState.interface";
 
 @Component({
   selector: 'app-menu',
@@ -9,7 +9,7 @@ import {ButtonStateInterface} from "../../../shared/models/buttonState.interface
 })
 export class MenuComponent implements OnInit {
 
-  buttons: ButtonStateInterface[] = [];
+  buttons: IButtonState[] = [];
 
   constructor(private menuService: MenuService) {}
 

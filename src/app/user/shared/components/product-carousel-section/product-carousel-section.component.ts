@@ -1,8 +1,8 @@
 import {Component, Input} from "@angular/core";
-import {ProductInterface} from "../../../../shared/models/product.interface";
+import {IProduct} from "../../../../shared/models/product.interface";
 import {delay, Subscription} from "rxjs";
 import {ProductService} from "../../../../shared/services/product.service";
-import {ButtonStateInterface} from "../../../../shared/models/buttonState.interface";
+import {IButtonState} from "../../../../shared/models/buttonState.interface";
 import {TabMenuService} from "../../../../shared/services/tab-menu.service";
 
 @Component({
@@ -18,7 +18,7 @@ export class ProductCarouselSectionComponent {
   productCarouselSectionSub: Subscription = new Subscription();
   productsSub: Subscription = new Subscription();
 
-  products: ProductInterface[] = [];
+  products: IProduct[] = [];
   isLoad: boolean = false;
 
   constructor(
@@ -32,7 +32,7 @@ export class ProductCarouselSectionComponent {
     })
   }
 
-  getProducts(button: ButtonStateInterface | undefined) {
+  getProducts(button: IButtonState | undefined) {
     if (!button) {
       this.isLoad = false;
       this.products = [];

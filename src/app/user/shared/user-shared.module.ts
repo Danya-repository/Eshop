@@ -7,6 +7,7 @@ import {ProductComponent} from "./components/product/product.component";
 import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
 import {CarouselDotsComponent} from "./components/carousel-dots/carousel-dots.component";
+import { SharedModule } from "src/app/shared/shared.module";
 
 
 @NgModule({

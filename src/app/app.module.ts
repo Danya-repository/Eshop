@@ -9,28 +9,32 @@ import {UserBaseLayoutComponent} from './user/user-base-layout.component';
 import {UserModule} from "./user/user.module";
 import {AdminBaseLayoutComponent} from "./admin/components/admin-base-layout/admin-base-layout.component";
 import {AdminModule} from "./admin/admin.module";
-
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AdminBaseLayoutComponent,
-    UserBaseLayoutComponent
-  ],
-  imports: [
-    BrowserModule,
-    UserModule,
-    AdminModule,
-    AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production,
-      // Register the ServiceWorker as soon as the application is stable
-      // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
-    })
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        AdminBaseLayoutComponent,
+        UserBaseLayoutComponent
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        UserModule,
+        AdminModule,
+        AppRoutingModule,
+        SharedModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: environment.production,
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000'
+        })
+    ],
+    exports: [
+        SharedModule
+    ]
 })
 
 export class AppModule {
