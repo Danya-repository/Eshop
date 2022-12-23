@@ -1,19 +1,27 @@
 <div class="scroll-window" 
     #window
     (mousemove)="mousemove($event)"
-    (mouseup)="mouseup($event)"
-    (mouseleave)="mouseleave($event)"
+    (mouseup)="mouseup()"
+    (mouseleave)="mouseleave()"
     (mousewheel)="mousescroll($event)">
     <div class="scroll-window__inner">
         <div class="scroll-window__container" 
             #container
-            [style.top]="containerPosition + 'px'"
+            [style.top.px]="scrollWindowService.containerPosition"
+            [style.transition]="!scrollWindowService.draggable ? 'top .11s' : 'none'"
             ><ng-content></ng-content>
         </div>
-        <div class="scroll-window__strip" *ngIf="containerHeight > windowHeight" #strip>
+        <div class="scroll-window__strip"
+         *ngIf="scrollWindowService.containerHeight > scrollWindowService.windowHeight" 
+         #strip
+         (mouseenter)="scrollWindowService.visible = true; scrollWindowService.disableStripOpacityTransition()"
+         (mouseleave)="scrollWindowService.visibleTimeoutActivate()"
+         [style.opacity]="scrollWindowService.visible ? '1' : '0'"
+         >
             <div class="scroll-window__handle" 
-                [style.top]="handlePosition + 'px'"
-                [style.transition]="transition ? 'all .11s' : 'none'"
+                [style.top.px]="scrollWindowService.handlePosition"
+                [style.transition]="!scrollWindowService.draggable ? 'top .11s' : 'none'"
+                [style.backgroundColor]="scrollWindowService.draggable ? '#1C62CD': ''"
                 #handle
                 (mousedown)="mousedown($event)"
                 (scroll)="mousescroll($event)"
