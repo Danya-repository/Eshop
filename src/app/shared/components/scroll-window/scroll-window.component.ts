@@ -14,7 +14,7 @@ export class ScrollWindowComponent implements AfterContentChecked {
   @ViewChild('window', {static: true}) window!: ElementRef;
   @ViewChild('strip', {static: false}) strip!: ElementRef;
 
-  
+
   constructor(protected scrollWindowService: ScrollWindowService) { }
 
   ngAfterContentChecked(): void {
@@ -31,7 +31,7 @@ export class ScrollWindowComponent implements AfterContentChecked {
   mousemove(event: MouseEvent) {
     event.stopPropagation();
     event.preventDefault();
-    
+
     this.scrollWindowService.mousemove(event)
   }
 
@@ -48,5 +48,12 @@ export class ScrollWindowComponent implements AfterContentChecked {
     event.preventDefault();
 
     this.scrollWindowService.mousescroll(event);
+  }
+
+  goToPercentage(event: MouseEvent) {
+    event.stopPropagation();
+    event.preventDefault();
+
+    this.scrollWindowService.goToPercentage(event)
   }
 }
