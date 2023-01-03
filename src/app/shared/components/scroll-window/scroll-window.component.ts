@@ -7,21 +7,31 @@ import { ScrollWindowService } from '../../services/scroll-window.service';
   styleUrls: ['./scroll-window.component.scss'],
   providers: [ScrollWindowService]
 })
-export class ScrollWindowComponent implements AfterContentChecked {
+export class ScrollWindowComponent implements AfterContentChecked, OnInit {
 
   @ViewChild('container', {static: true}) container!: ElementRef;
   @ViewChild('handle', {static: false}) handle!: ElementRef;
   @ViewChild('window', {static: true}) window!: ElementRef;
   @ViewChild('strip', {static: false}) strip!: ElementRef;
 
+  // scrollWindowService.containerPosition
+  // scrollWindowService.draggable
+  // scrollWindowService.containerHeight
+  // scrollWindowService.windowHeight
+  // scrollWindowService.visible
 
   constructor(protected scrollWindowService: ScrollWindowService) { }
 
+  ngOnInit(): void {
+
+  }
+
   ngAfterContentChecked(): void {
-    this.scrollWindowService.initialize(this.window, this.container, this.strip, this.handle)
+    this.scrollWindowService.initialize(this.window, this.container, this.strip)
   }
 
   mousedown(event: MouseEvent) {
+    if (!this.handle.nativeElement.contains(event.target)) return
     event.stopPropagation();
     event.preventDefault();
 
@@ -43,7 +53,7 @@ export class ScrollWindowComponent implements AfterContentChecked {
     this.scrollWindowService.mouseleave()
   }
 
-  mousescroll(event: WheelEvent) {
+  mousewheel(event: WheelEvent) {
     event.stopPropagation();
     event.preventDefault();
 
@@ -51,9 +61,12 @@ export class ScrollWindowComponent implements AfterContentChecked {
   }
 
   goToPercentage(event: MouseEvent) {
+    if (this.handle.nativeElement.contains(event.target)) return;
     event.stopPropagation();
     event.preventDefault();
 
-    this.scrollWindowService.goToPercentage(event)
+    let distanceToTop = this.strip.nativeElement.getBoundingClientRect().top
+
+    this.scrollWindowService.goToPercentage(event, distanceToTop)
   }
 }

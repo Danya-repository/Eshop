@@ -3,7 +3,7 @@
 .scroll-window {
     height: 100%;
     overflow: hidden;
-    
+
     &__inner {
         display: flex;
         max-height: 100%;
@@ -36,4 +36,12 @@
             background-color: $accent-color;
         }
     }
+
+  .top-transition-enable {
+    transition: top .25s;
+  }
+
+ .background-handle-enable {
+    background-color: $accent-color;
+  }
 }

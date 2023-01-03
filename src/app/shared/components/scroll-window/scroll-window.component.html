@@ -1,32 +1,30 @@
 <div class="scroll-window"
     #window
+    appScrollVisible
     (mousemove)="mousemove($event)"
     (mouseup)="mouseup()"
     (mouseleave)="mouseleave()"
-    (mousewheel)="mousescroll($event)">
+    (mousewheel)="mousewheel($event)">
     <div class="scroll-window__inner">
         <div class="scroll-window__container"
             #container
-            [style.top.px]="scrollWindowService.containerPosition"
-            [style.transition]="!scrollWindowService.draggable ? 'top .25s' : 'none'"
+            [ngStyle]="{'top': scrollWindowService.containerPosition + 'px'}"
+            [ngClass]="{'top-transition-enable': !scrollWindowService.draggable}"
             ><ng-content></ng-content>
         </div>
         <div class="scroll-window__strip"
-         *ngIf="scrollWindowService.containerHeight > scrollWindowService.windowHeight"
          #strip
-         (mouseenter)="scrollWindowService.visible = true; scrollWindowService.disableStripOpacityTransition()"
-         (mouseleave)="scrollWindowService.visibleTimeoutActivate()"
-         (click)="goToPercentage($event)"
+         appScrollStrip
+         *ngIf="scrollWindowService.containerHeight > scrollWindowService.windowHeight"
+         (mouseenter)="scrollWindowService.visible = true;"
          [style.opacity]="scrollWindowService.visible ? '1' : '0'"
-         >
+         (click)="goToPercentage($event)">
             <div class="scroll-window__handle"
-                [style.top.px]="scrollWindowService.handlePosition"
-                [style.transition]="!scrollWindowService.draggable ? 'top .25s' : 'none'"
-                [style.backgroundColor]="scrollWindowService.draggable ? '#1C62CD': ''"
                 #handle
-                (mousedown)="mousedown($event)"
-                (scroll)="mousescroll($event)"
-            ></div>
+                [ngStyle]="{'top': scrollWindowService.handlePosition + 'px'}"
+                [ngClass]="scrollWindowService.draggable ? 'background-handle-enable' : 'top-transition-enable'"
+                (mousedown)="mousedown($event)">
+            </div>
         </div>
     </div>
 </div>
