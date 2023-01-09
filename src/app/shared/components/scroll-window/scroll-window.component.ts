@@ -7,7 +7,7 @@ import { ScrollWindowService } from '../../services/scroll-window.service';
   styleUrls: ['./scroll-window.component.scss'],
   providers: [ScrollWindowService]
 })
-export class ScrollWindowComponent implements AfterContentChecked, OnInit {
+export class ScrollWindowComponent implements OnInit {
 
   @ViewChild('container', {static: true}) container!: ElementRef;
   @ViewChild('handle', {static: false}) handle!: ElementRef;
@@ -20,14 +20,21 @@ export class ScrollWindowComponent implements AfterContentChecked, OnInit {
   // scrollWindowService.windowHeight
   // scrollWindowService.visible
 
+  containerPosition: number = 0;
+  containerHeight!: number;
+  windowHeight!: number;
+  draggable!: boolean;
+  visible!: boolean;
+
+
   constructor(protected scrollWindowService: ScrollWindowService) { }
 
   ngOnInit(): void {
-
-  }
-
-  ngAfterContentChecked(): void {
-    this.scrollWindowService.initialize(this.window, this.container, this.strip)
+    this.scrollWindowService.$stream.subscribe(() => {
+      console.log('i am in scroll window');
+      
+      this.scrollWindowService.initialize(this.window, this.container);
+    })
   }
 
   mousedown(event: MouseEvent) {

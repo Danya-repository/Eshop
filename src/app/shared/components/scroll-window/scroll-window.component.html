@@ -8,21 +8,21 @@
     <div class="scroll-window__inner">
         <div class="scroll-window__container"
             #container
-            [ngStyle]="{'top': scrollWindowService.containerPosition + 'px'}"
-            [ngClass]="{'top-transition-enable': !scrollWindowService.draggable}"
+            [appRelationToTopPosition]="scrollWindowService.containerPosition"
+            [ngClass]="{'top-transition': !scrollWindowService.draggable}"
             ><ng-content></ng-content>
         </div>
         <div class="scroll-window__strip"
          #strip
          appScrollStrip
          *ngIf="scrollWindowService.containerHeight > scrollWindowService.windowHeight"
-         (mouseenter)="scrollWindowService.visible = true;"
-         [style.opacity]="scrollWindowService.visible ? '1' : '0'"
+         [ngClass]="{'strip-visible':    scrollWindowService.visible,
+                     'strip-transition': scrollWindowService.stripOpacityTransition}"
          (click)="goToPercentage($event)">
             <div class="scroll-window__handle"
                 #handle
-                [ngStyle]="{'top': scrollWindowService.handlePosition + 'px'}"
-                [ngClass]="scrollWindowService.draggable ? 'background-handle-enable' : 'top-transition-enable'"
+                [appRelationToTopPosition]="scrollWindowService.handlePosition"
+                [ngClass]="scrollWindowService.draggable ? 'handle-background' : 'top-transition'"
                 (mousedown)="mousedown($event)">
             </div>
         </div>

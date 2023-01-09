@@ -37,11 +37,19 @@
         }
     }
 
-  .top-transition-enable {
+  .top-transition {
     transition: top .25s;
   }
 
- .background-handle-enable {
+ .handle-background {
     background-color: $accent-color;
+  }
+
+  .strip-visible {
+    opacity: 1;
+  }
+
+  .strip-transition {
+    transition: opacity 2s;
   }
 }

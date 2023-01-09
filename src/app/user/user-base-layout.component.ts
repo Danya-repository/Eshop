@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ScrollWindowService } from '../shared/services/scroll-window.service';
 
 @Component({
   selector: 'app-user-base-layout',

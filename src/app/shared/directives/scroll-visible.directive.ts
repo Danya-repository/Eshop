@@ -11,7 +11,7 @@ export class ScrollVisibleDirective {
   ) { }
 
   @HostListener('mousewheel') animateVanishStripAfterScroll() {
-    this.scrollWindowService.disableStripOpacityTransition();
+    this.scrollWindowService.stripOpacityTransition = false;
     this.scrollWindowService.visibleTimeoutActivate();
   }
 }

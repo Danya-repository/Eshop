@@ -10,7 +10,7 @@ export class ScrollStripDirective {
 
   @HostListener('mouseup') animateScrollAndVanish() {
     this.scrollWindowService.visibleTimeoutActivate();
-    this.scrollWindowService.enableStripOpacityTransition();
+    this.scrollWindowService.stripOpacityTransition = true;
   }
 
   @HostListener('mouseleave') animateVanishStripAfterMouseLeave() {
@@ -18,6 +18,7 @@ export class ScrollStripDirective {
   }
 
   @HostListener('mouseenter') disableAnimationStripBeforeEnter() {
-    this.scrollWindowService.disableStripOpacityTransition();
+    this.scrollWindowService.visible = true;
+    this.scrollWindowService.stripOpacityTransition = false;
   }
 }

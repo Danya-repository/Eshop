@@ -1,4 +1,5 @@
 import { ElementRef, Injectable, Renderer2 } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class ScrollWindowService {
@@ -25,13 +26,15 @@ export class ScrollWindowService {
 
   private visibleTimeout: any;
   private disableStripOpacityTransitionTimeout: any;
+  public stripOpacityTransition: boolean = false;
 
-  constructor(private renderer: Renderer2) { }
+  public $stream: Subject<null> = new Subject()
 
-  initialize(window: ElementRef, container: ElementRef, strip: ElementRef) {
+  constructor() { }
+
+  initialize(window: ElementRef, container: ElementRef) {
     this.window = window;
     this.container = container;
-    this.strip = strip;
 
     this.windowHeight = this.window.nativeElement.offsetHeight;
     this.containerHeight = this.container.nativeElement.offsetHeight;
@@ -75,7 +78,7 @@ export class ScrollWindowService {
   mouseup() {
     if (!this.draggable) return;
     this.draggable = false;
-    // this.visibleTimeoutActivate();
+    this.visibleTimeoutActivate();
     // this.enableStripOpacityTransition();
     // this.enableTopTransition()
     this.startMouseHandlePosition = this.handlePosition;
@@ -183,24 +186,17 @@ export class ScrollWindowService {
     if (this.draggable) return;
 
     this.visibleTimeout = setTimeout(() => {
-      this.enableStripOpacityTransition();
+      this.stripOpacityTransition = true;
       this.visible = false;
       this.disableStripOpacityTransitionTimeoutActivate();
     }, 4000)
     this.visible = true;
-  }
-
-  enableStripOpacityTransition() {
-    this.renderer.setStyle(this.strip.nativeElement, 'transition', 'opacity 2s');
-  }
-
-  disableStripOpacityTransition() {
-    this.renderer.setStyle(this.strip.nativeElement, 'transition', 'opacity 0s');
+    console.log(this.visible);
   }
 
   disableStripOpacityTransitionTimeoutActivate() {
     this.disableStripOpacityTransitionTimeout = setTimeout(() => {
-      this.disableStripOpacityTransition();
+      this.stripOpacityTransition = false;
       clearTimeout(this.disableStripOpacityTransitionTimeout);
     }, 6000)
   }
