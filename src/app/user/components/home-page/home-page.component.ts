@@ -6,14 +6,8 @@ import {ScrollService} from "../../../shared/services/scroll.service";
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
 })
-export class HomePageComponent implements AfterContentInit{
+export class HomePageComponent {
 
-  // constructor() {}
-  constructor(private scrollService: ScrollService) { }
-
-  ngAfterContentInit(): void {
-    this.scrollService.$scrollResizeStream.next({})
+  constructor() {
   }
-
-
 }

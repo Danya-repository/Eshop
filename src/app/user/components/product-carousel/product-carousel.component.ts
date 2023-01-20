@@ -1,12 +1,11 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   DoCheck,
   ElementRef,
   Input,
   OnChanges,
   OnDestroy,
-  OnInit,
-  SimpleChanges,
   ViewChild
 } from '@angular/core';
 import {ProductInterface} from "../../../shared/models/product.interface";
@@ -18,7 +17,8 @@ import {Subscription} from "rxjs";
   selector: 'app-product-carousel',
   templateUrl: './product-carousel.component.html',
   styleUrls: ['./product-carousel.component.scss'],
-  providers: [CarouselService]
+  providers: [CarouselService],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductCarouselComponent implements OnChanges, DoCheck, OnDestroy {
 
@@ -29,6 +29,9 @@ export class ProductCarouselComponent implements OnChanges, DoCheck, OnDestroy {
   @ViewChild('carouselTrack', {static: true}) carouselTrack: ElementRef | undefined;
   sub: Subscription = new Subscription();
 
+  @Input()
+  isLoad: boolean = true;
+
 
   constructor(
     public carouselService: CarouselService
@@ -38,7 +41,7 @@ export class ProductCarouselComponent implements OnChanges, DoCheck, OnDestroy {
     this.carouselService.state
         .setCurrentTrackPosition(0)
         .setCurrentSlide(0)
-        .setCountSlides(this.carouselItems.length)
+        .setCountSlides(this.carouselItems?.length)
         .setCountOfSlideToDisplay(this.countOfSlideToDisplay)
   }
 

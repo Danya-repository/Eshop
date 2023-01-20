@@ -1,17 +1,16 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve} from '@angular/router';
 import {Observable} from 'rxjs';
-import {ProductInterface} from "../../models/product.interface";
-import {ProductService} from "../product.service";
+import {ProductService, ResponseInterface} from "../product.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsResolver implements Resolve<ProductInterface[]> {
+export class ProductsResolver implements Resolve<ResponseInterface> {
 
   constructor(private productService: ProductService) {}
 
-  resolve(route: ActivatedRouteSnapshot): Observable<ProductInterface[]> {
+  resolve(route: ActivatedRouteSnapshot): Observable<ResponseInterface> {
     return this.productService.getAll(route.params?.['productType']);
   }
 }

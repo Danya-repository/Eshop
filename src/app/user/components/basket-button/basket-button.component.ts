@@ -13,7 +13,7 @@ export class BasketButtonComponent implements OnInit {
   sub: Subscription = new Subscription();
 
   constructor(
-    protected basketService: BasketService 
+    protected basketService: BasketService
   ) { }
 
   ngOnInit(): void {

@@ -4,6 +4,11 @@ import {Observable} from "rxjs";
 import {products, products as data} from "../mocks/products";
 import {HttpClient} from "@angular/common/http";
 
+export interface ResponseInterface {
+  key: string,
+  products: []
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -21,8 +26,8 @@ export class ProductService {
     })
   }
 
-  getAll(type: string): Observable<ProductInterface[]> {
-    return this.http.get<ProductInterface[]>(`${this.url}/products/${type}.json`)
+  getAll(type: string): Observable<ResponseInterface> {
+    return this.http.get<ResponseInterface>(`${this.url}/products/${type}.json`)
   }
 
   deleteOne(id: number): Observable<ProductInterface> {
