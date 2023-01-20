@@ -1,0 +1,27 @@
+<div class="carousel">
+  <div class="carousel__inner">
+    <div class="carousel__window" #carouselWindow>
+      <div class="carousel__track"
+           #carouselTrack
+           [style.width.px]="trackWidth"
+           [style.transform]="currentTrackPosition"
+           [style.transition]="transition ? 'all 1s' : 'none'"
+           (mousedown)="down($event)"
+           (mouseup)="up($event)"
+           (mousemove)="move($event)"
+           (mouseleave)="leave()"
+      >
+        <div class="carousel__item" [style.width.px]="itemWidth" *ngFor="let carouselItem of carouselItems">
+          <app-product [productData]="carouselItem"></app-product>
+        </div>
+      </div>
+      <div class="carousel__loader" *ngIf="!carouselItems.length">
+        <img class="carousel__loader-img" src="../../../../assets/1488.gif" alt="loader" >
+      </div>
+    </div>
+  </div>
+  <div class="carousel-arrows">
+    <button class="carousel-arrows__button left-arrow" (click)="prev()" [hidden]="!isArrowPrev"></button>
+    <button class="carousel-arrows__button right-arrow" (click)="next()" [hidden]="!isArrowNext"></button>
+  </div>
+</div>

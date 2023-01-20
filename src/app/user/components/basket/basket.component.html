@@ -1,22 +1,24 @@
 <div class="basket" [ngStyle]="{'transform': basketOpen ? 'translateX(0)' : 'translateX(100%)'}">
-    <div class="basket__inner">
-        <div class="basket__head">
-            <h4 class="basket__title">Корзина</h4>
-            <button class="basket__close-button" (click)="basketToggle()"></button>
-        </div>
-        <div class="basket__body">
-            <app-scroll-window>
-                <div class="basket__item-wrapper" *ngFor="let product of products">
-                    <app-product [productData]="product"></app-product>
-                </div>
-            </app-scroll-window>
-        </div>
-        <div class="basket__total-bar">
-            <div class="basket__total-bar-inner">
-                <p class="basket__total-text">Сумма:</p>
-                <p class="basket__total-price">{{totalSumm}}</p>
-            </div>
-            <button class="basket__buy-button">Купить</button>
-        </div>
+  <div class="basket__inner">
+    <div class="basket__head">
+      <h4 class="basket__title">Корзина</h4>
+      <button class="basket__close-button" (click)="basketToggle()"></button>
     </div>
+    <div class="basket__body">
+      <app-scroll-window>
+          <ng-template class="basket__item-wrapper" #scrollWindowChild *ngFor="let product of products">
+            <div class="basket__item-wrapper">
+              <app-basket-product [productData]="product"></app-basket-product>
+            </div>
+          </ng-template>
+      </app-scroll-window>
+    </div>
+    <div class="basket__total-bar">
+      <div class="basket__total-bar-inner">
+        <p class="basket__total-text">Сумма:</p>
+        <p class="basket__total-price">{{totalSum}}</p>
+      </div>
+      <button class="basket__buy-button">Купить</button>
+    </div>
+  </div>
 </div>

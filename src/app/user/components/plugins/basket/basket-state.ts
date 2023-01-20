@@ -1,9 +1,9 @@
-import { IProduct } from "src/app/shared/models/product.interface";
-import { IBasket } from "./interface/basket.interface";
-export class BasketState implements IBasket {
+import { ProductInterface } from "src/app/shared/models/product.interface";
+import { BasketInterface } from "../interface/basket.interface";
+export class BasketState implements BasketInterface {
     open: boolean = false;
     totalPrice: number = 0;
-    products: IProduct[] = [];
+    products: ProductInterface[] = [];
 
     updateTotal() {
         this.totalPrice = 0
@@ -16,7 +16,7 @@ export class BasketState implements IBasket {
         return this.totalPrice;
     }
 
-    getProducts(): IProduct[] {
+    getProducts(): ProductInterface[] {
         return this.products;
     }
 
@@ -24,13 +24,13 @@ export class BasketState implements IBasket {
         this.products = [];
     }
 
-    addProduct(product: IProduct) {
+    addProduct(product: ProductInterface) {
         if (this.products.includes(product)) return;
         this.products.push(product)
         this.updateTotal();
     }
 
-    removeProduct(product: IProduct) {
+    removeProduct(product: ProductInterface) {
         this.products.filter(p => p.id == product.id)
         this.updateTotal();
     }

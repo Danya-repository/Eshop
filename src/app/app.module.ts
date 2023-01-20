@@ -9,7 +9,8 @@ import {UserBaseLayoutComponent} from './user/user-base-layout.component';
 import {UserModule} from "./user/user.module";
 import {AdminBaseLayoutComponent} from "./admin/components/admin-base-layout/admin-base-layout.component";
 import {AdminModule} from "./admin/admin.module";
-import { SharedModule } from './shared/shared.module';
+import {SharedModule} from './shared/shared.module';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
     declarations: [
@@ -25,6 +26,7 @@ import { SharedModule } from './shared/shared.module';
         AdminModule,
         AppRoutingModule,
         SharedModule,
+        HttpClientModule,
         ServiceWorkerModule.register('ngsw-worker.js', {
             enabled: environment.production,
             // Register the ServiceWorker as soon as the application is stable

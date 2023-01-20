@@ -3,7 +3,7 @@
 .scroll-window {
     height: 100%;
     overflow: hidden;
-    
+
     &__inner {
         display: flex;
         max-height: 100%;
@@ -14,7 +14,7 @@
         width: 100%;
         height: 100%;
         position: relative;
-        padding-right: 10px;
+        padding-right: 15px;
     }
 
     &__strip {
@@ -30,10 +30,25 @@
     &__handle {
         position: absolute;
         width: 100%;
-        height: 40px;
         background-color: $light-gray;
         &:hover {
             background-color: $accent-color;
         }
     }
+
+  .top-transition {
+    transition: top .25s;
+  }
+
+ .handle-background {
+    background-color: $accent-color;
+  }
+
+  .strip-visible {
+    opacity: 1;
+  }
+
+  .strip-transition {
+    transition: opacity 2s;
+  }
 }

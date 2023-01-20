@@ -1,32 +1,31 @@
 import {Injectable} from '@angular/core';
-import {IButtonState} from "../models/buttonState.interface";
-import {Subject} from "rxjs";
+import {ButtonStateInterface} from "../models/buttonState.interface";
 import {TabsState} from "../../user/components/plugins/tabs/tabs-state";
+import {Subject} from "rxjs";
 
 @Injectable()
 export class TabMenuService {
 
-  $stream: Subject<IButtonState> = new Subject<IButtonState>();
   private _state: TabsState = new TabsState([]);
+  public $stream: Subject<ButtonStateInterface> = new Subject<ButtonStateInterface>();
 
   constructor() {}
 
-  initialize(buttons: IButtonState[], indexOfActivateButton: number) {
-    this._state = new TabsState(buttons, indexOfActivateButton)
-    this.$stream.next(<IButtonState>this.getActiveButton())
+  initialize(buttons: ButtonStateInterface[]) {
+    this._state = new TabsState(buttons)
   }
 
   get state() {
     return this._state.getState;
   }
 
-  getActiveButton(): IButtonState {
-    return <IButtonState>this._state.getActiveButton;
+  getActiveButton(): ButtonStateInterface {
+    return <ButtonStateInterface>this._state.getActiveButton;
   }
 
-  setActiveButton(button: IButtonState) {
+  setActiveButton(button: ButtonStateInterface) {
     this._state.activateTab(button)
-    this.$stream.next(button)
+    this.$stream.next(button);
   }
 }
 

@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MenuService} from "../../../shared/services/menu.service";
-import {IButtonState} from "../../../shared/models/buttonState.interface";
+import {ButtonStateInterface} from "../../../shared/models/buttonState.interface";
 
 @Component({
   selector: 'app-menu',
@@ -9,11 +8,20 @@ import {IButtonState} from "../../../shared/models/buttonState.interface";
 })
 export class MenuComponent implements OnInit {
 
-  buttons: IButtonState[] = [];
+  buttons: ButtonStateInterface[] = [
+    {text: "Квадроциклы", identifier: "atvs"},
+    {text: "Катера", identifier: "launches"},
+    {text: "Гидроциклы", identifier: "jet-skins"},
+    {text: "Лодки", identifier: "boats"},
+    {text: "Вездеходы", identifier: "cross-country-vehicles"},
+    {text: "Снегоходы", identifier: "snowmobiles"},
+    {text: "Двигатели", identifier: "engines"},
+    {text: "Запчасти", identifier: "spares"}
+  ]
 
-  constructor(private menuService: MenuService) {}
+  // Двигателей нет
 
-  ngOnInit(): void {
-    this.buttons = this.menuService.getState;
-  }
+  constructor() {}
+
+  ngOnInit(): void {}
 }

@@ -1,6 +1,6 @@
-import {ICarouselState} from "./interface/state-carousel.interface";
+import {CarouselStateInterface} from "../interface/state-carousel.interface";
 
-export class CarouselState implements ICarouselState {
+export class CarouselState implements CarouselStateInterface {
 
   private _windowWidth: number = 0;
   private _itemWidth: number = 0;

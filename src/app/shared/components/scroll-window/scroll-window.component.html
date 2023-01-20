@@ -1,31 +1,35 @@
-<div class="scroll-window" 
-    #window
-    (mousemove)="mousemove($event)"
-    (mouseup)="mouseup()"
-    (mouseleave)="mouseleave()"
-    (mousewheel)="mousescroll($event)">
-    <div class="scroll-window__inner">
-        <div class="scroll-window__container" 
-            #container
-            [style.top.px]="scrollWindowService.containerPosition"
-            [style.transition]="!scrollWindowService.draggable ? 'top .11s' : 'none'"
-            ><ng-content></ng-content>
-        </div>
-        <div class="scroll-window__strip"
-         *ngIf="scrollWindowService.containerHeight > scrollWindowService.windowHeight" 
-         #strip
-         (mouseenter)="scrollWindowService.visible = true; scrollWindowService.disableStripOpacityTransition()"
-         (mouseleave)="scrollWindowService.visibleTimeoutActivate()"
-         [style.opacity]="scrollWindowService.visible ? '1' : '0'"
-         >
-            <div class="scroll-window__handle" 
-                [style.top.px]="scrollWindowService.handlePosition"
-                [style.transition]="!scrollWindowService.draggable ? 'top .11s' : 'none'"
-                [style.backgroundColor]="scrollWindowService.draggable ? '#1C62CD': ''"
-                #handle
-                (mousedown)="mousedown($event)"
-                (scroll)="mousescroll($event)"
-            ></div>
-        </div>
+<div class="scroll-window"
+     #window
+     (mousemove)="mousemove($event)"
+     (mousewheel)="mousewheel($event)"
+     (mousedown)="mousedown($event)"
+     (mouseup)="mouseup()">
+  <div class="scroll-window__inner">
+    <div class="scroll-window__container"
+         #container
+         [style.top.px]="containerPosition"
+         [ngClass]="{'top-transition': !draggable}">
+        <app-scroll-window-child
+          *ngFor="let child of children;"
+          (childRenderedReady)="resize()"
+          [contentChild]="child">
+        </app-scroll-window-child>
     </div>
+    <div class="scroll-window__strip"
+         #strip
+         (mouseenter)="mouseenter()"
+         (mouseleave)="mouseleave()"
+         (mouseup)="mouseup()"
+         *ngIf="containerHeight > windowHeight"
+         [ngClass]="{'strip-visible':    visible,
+                     'strip-transition': stripOpacityTransition}"
+         (click)="goToPercentage($event)">
+      <div class="scroll-window__handle"
+           #handle
+           [style.height.px]="handleHeight"
+           [style.top.px]="handlePosition"
+           [ngClass]="draggable ? 'handle-background' : 'top-transition'">
+      </div>
+    </div>
+  </div>
 </div>

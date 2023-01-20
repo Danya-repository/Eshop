@@ -1,6 +1,6 @@
-import {ICharacteristicProduct} from "./characteristic-product.interface";
+import {ProductCharacteristicInterface} from "./characteristic-product.interface";
 
-export interface IProduct {
+export interface ProductInterface {
   id?: number,
   name: string,
   price: number,
@@ -11,5 +11,5 @@ export interface IProduct {
   discount?: boolean
   favorite?: boolean
   code?: string,
-  characteristic?: ICharacteristicProduct
+  characteristic?: ProductCharacteristicInterface
 }

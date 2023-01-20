@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { IProduct } from 'src/app/shared/models/product.interface';
-import { BasketService } from 'src/app/shared/services/basket.service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Subscription} from 'rxjs';
+import {ProductInterface} from 'src/app/shared/models/product.interface';
+import {BasketService} from 'src/app/shared/services/basket.service';
 
 @Component({
   selector: 'app-basket',
@@ -10,9 +10,9 @@ import { BasketService } from 'src/app/shared/services/basket.service';
 })
 export class BasketComponent implements OnInit, OnDestroy {
 
-  totalSumm: number = 0;
+  totalSum: number = 0;
   basketOpen: boolean = true;
-  products: IProduct[] = [];
+  products: ProductInterface[] = [];
 
   sub: Subscription = new Subscription()
 
@@ -22,7 +22,7 @@ export class BasketComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.sub = this.basketService.$basketStream.subscribe(state => {
-        this.totalSumm = state.getTotalPrice();
+        this.totalSum = state.getTotalPrice();
         this.products = state.getProducts();
         this.basketOpen = state.open;
     })
@@ -32,13 +32,9 @@ export class BasketComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
-  buyProducts() {
-    console.log('Ура! Поздравляем с покупкой!');
-  }
+  buyProducts() {}
 
   basketToggle() {
     this.basketService.basketToggle();
   }
-
 }
- 
