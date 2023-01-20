@@ -1,41 +1,61 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {UserRoutingModule} from "./user-routing.module";
 import {HeaderComponent} from "./components/header/header.component";
 import {FooterComponent} from "./components/footer/footer.component";
 import {MenuComponent} from "./components/menu/menu.component";
-import {ProductPageModule} from "./product-page/product-page.module";
-import {AboutPageModule} from "./about-page/about-page.module";
-import {CatalogPageModule} from "./catalog-page/catalog-page.module";
-import {HomePageModule} from "./home-page/home-page.module";
-import {UserSharedModule} from "./shared/user-shared.module";
 import {BasketComponent} from './components/basket/basket.component';
-import { BasketButtonComponent } from './components/basket-button/basket-button.component';
-import { SharedModule } from "../shared/shared.module";
+import {BasketButtonComponent} from './components/basket-button/basket-button.component';
+import {SharedModule} from "../shared/shared.module";
+import {RouterModule} from "@angular/router";
+import {ProductCarouselComponent} from "./components/product-carousel/product-carousel.component";
+import {
+  ProductCarouselSectionComponent
+} from "./components/product-carousel-section/product-carousel-section.component";
+import {DotsComponent} from "./components/dots/dots.component";
+import {ProductComponent} from "./components/product/product.component";
+import {ProductPageComponent} from "./components/product-page/product-page.component";
+import {HomePageComponent} from "./components/home-page/home-page.component";
+import {TilesComponent} from "./components/tiles/tiles.component";
+import {HomeSearchComponent} from "./components/search/home-search.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {CarouselComponent} from "./components/carousel/carousel.component";
+import {CatalogPageComponent} from "./components/catalog-page/catalog-page.component";
+import {TabsComponent} from "./components/tabs/tabs.component";
+import {BasketProductComponent} from './components/basket-product/basket-product.component';
 
 @NgModule({
     declarations: [
-        HeaderComponent,
-        MenuComponent,
-        FooterComponent,
-        BasketComponent,
-        BasketButtonComponent
-    ],
-    exports: [
-        HeaderComponent,
-        MenuComponent,
-        FooterComponent,
-        BasketComponent
+      HeaderComponent,
+      MenuComponent,
+      FooterComponent,
+      BasketComponent,
+      BasketButtonComponent,
+      ProductCarouselComponent,
+      ProductCarouselSectionComponent,
+      DotsComponent,
+      ProductComponent,
+      ProductPageComponent,
+      HomePageComponent,
+      TilesComponent,
+      TabsComponent,
+      HomeSearchComponent,
+      CarouselComponent,
+      CatalogPageComponent,
+      BasketProductComponent
     ],
     imports: [
-        CommonModule,
-        AboutPageModule,
-        ProductPageModule,
-        CatalogPageModule,
-        HomePageModule,
-        UserRoutingModule,
-        UserSharedModule,
-        SharedModule
+      CommonModule,
+      SharedModule,
+      RouterModule,
+      FormsModule,
+      ReactiveFormsModule
+    ],
+    exports: [
+      HeaderComponent,
+      MenuComponent,
+      FooterComponent,
+      BasketComponent,
+      SharedModule
     ]
 })
 export class UserModule { }

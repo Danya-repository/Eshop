@@ -1,16 +1,21 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ScrollWindowService } from '../shared/services/scroll-window.service';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ScrollService} from "../shared/services/scroll.service";
 
 @Component({
   selector: 'app-user-base-layout',
   templateUrl: './user-base-layout.component.html',
-  styleUrls: ['./user-base-layout.component.scss']
+  styleUrls: ['./user-base-layout.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserBaseLayoutComponent implements OnInit {
 
-  constructor() { }
+  routeActualComponent!: any;
 
-  ngOnInit(): void {
+  constructor(private scrollService: ScrollService) { }
+
+  ngOnInit(): void {}
+
+  onActivate($event: any) {
+    this.routeActualComponent = $event;
   }
-
 }

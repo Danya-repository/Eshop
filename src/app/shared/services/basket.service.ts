@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { BasketState } from 'src/app/user/components/plugins/basket/basket-state';
-import { IProduct } from '../models/product.interface';
+import { ProductInterface } from '../models/product.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class BasketService {
 
   constructor() { }
 
-  getProducts(): IProduct[] {
+  getProducts(): ProductInterface[] {
     return this.state.getProducts();
   }
 
@@ -22,12 +22,12 @@ export class BasketService {
     this.$basketStream.next(this.state);
   }
 
-  addProduct(product: IProduct) {
+  addProduct(product: ProductInterface) {
     this.state.addProduct(product);
     this.$basketStream.next(this.state);
   }
 
-  removeProduct(product: IProduct) {
+  removeProduct(product: ProductInterface) {
     this.state.removeProduct(product);
     this.$basketStream.next(this.state);
   }

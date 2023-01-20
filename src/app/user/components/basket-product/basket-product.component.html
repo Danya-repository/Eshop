@@ -1,0 +1,20 @@
+<div class="basket-product">
+  <div class="basket-product__inner">
+    <div class="basket-product__image-wrapper">
+      <img class="basket-product__image" alt="vest" [src]="productData.image">
+      <span class="basket-product__view-good" (click)="openImage($event)">посмотреть товар</span>
+    </div>
+    <p class="basket-product__text">{{productData.name}}</p>
+    <p class="basket-product__label-for-text">Количество:</p>
+    <div class="basket-product__buttons-implement">
+      <button class="basket-product__button-implement basket-product__minus blue-button rectangle-button">-</button>
+      <span class="basket-product__count">5</span>
+      <button class="basket-product__button-implement basket-product__plus blue-button rectangle-button">+</button>
+    </div>
+  </div>
+</div>
+<div class="delete-button__wrapper">
+  <button class="delete-button blue-button">
+    Удалить из корзины
+  </button>
+</div>

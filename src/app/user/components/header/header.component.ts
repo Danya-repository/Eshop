@@ -1,15 +1,11 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { ScrollWindowService } from 'src/app/shared/services/scroll-window.service';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements AfterViewInit {
+export class HeaderComponent {
 
-  constructor(private scrollWindowService: ScrollWindowService) { }
-  ngAfterViewInit(): void {
-    this.scrollWindowService.$stream.next(null);
-  }
+  constructor() { }
 }

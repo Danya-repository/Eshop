@@ -1,37 +1,38 @@
 import {Injectable} from '@angular/core';
-import {IProduct} from "../models/product.interface";
+import {ProductInterface} from "../models/product.interface";
 import {Observable} from "rxjs";
 import {products, products as data} from "../mocks/products";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor() { }
+  private readonly url: string = 'https://eshopangular-88d74-default-rtdb.firebaseio.com'
 
-  getOne(id: number | undefined): Observable<IProduct> {
-    return new Observable<IProduct>(subscriber => {
+  constructor(private http: HttpClient) { }
+
+  getOne(id: number): Observable<ProductInterface> {
+    return new Observable<ProductInterface>(subscriber => {
       // @ts-ignore
       let prodItem = data.find(p => p.id === +id)
       subscriber.next(prodItem);
     })
   }
 
-  getAll(type: string): Observable<IProduct[]> {
-    return new Observable<IProduct[]>(subscriber => {
-      subscriber.next(products.filter(item => item.type === type));
-    })
+  getAll(type: string): Observable<ProductInterface[]> {
+    return this.http.get<ProductInterface[]>(`${this.url}/products/${type}.json`)
   }
 
-  deleteOne(id: number): Observable<IProduct> {
-    return new Observable<IProduct>(subscriber => {
+  deleteOne(id: number): Observable<ProductInterface> {
+    return new Observable<ProductInterface>(subscriber => {
       data.filter((p) => p.id != +id);
     })
   }
 
-  putOne(product: IProduct): Observable<IProduct> {
-    return new Observable<IProduct>(subscriber => {
+  putOne(product: ProductInterface): Observable<ProductInterface> {
+    return new Observable<ProductInterface>(subscriber => {
 
       data.map(item => {
         // @ts-ignore

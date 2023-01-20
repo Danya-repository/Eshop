@@ -1,7 +1,16 @@
 <nav class="menu">
   <ul class="menu__list">
     <li class="menu__list-item" *ngFor="let button of buttons">
-      <app-decorate-button [buttonData]="button" [routerLink]="['/catalog', button.identifier]">{{button.text}}</app-decorate-button>
+      <button class="button-decorate"
+              [routerLink]="['/catalog', button.identifier]"
+              [routerLinkActive]="'active'">
+              <span class="button-decorate__wrapper">
+                <a class="button-decorate__link">
+                  {{button.text}}
+                  <span class="button-decorate__underline"></span>
+                </a>
+              </span>
+      </button>
     </li>
   </ul>
   <div class="menu__address">
