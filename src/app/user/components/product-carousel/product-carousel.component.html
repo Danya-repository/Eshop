@@ -15,7 +15,7 @@
           <app-product [productData]="carouselItem"></app-product>
         </div>
       </div>
-      <div class="carousel__loader" *ngIf="!carouselItems.length">
+      <div class="carousel__loader" *ngIf="!carouselItems?.length">
         <img class="carousel__loader-img" src="../../../../assets/1488.gif" alt="loader" >
       </div>
     </div>

@@ -3,7 +3,10 @@
 @import "app/styles/vars";
 @import "app/styles/global";
 
+html {
+  height: 100%;
+}
 body {
-    overflow: hidden;
-    height: 100vh;
+  overflow: hidden;
+  height: 100%;
 }

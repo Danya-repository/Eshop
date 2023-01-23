@@ -4,7 +4,7 @@
       <h4 class="product-goods-tabs__title section-title">{{titleSection}}</h4>
       <div class="tab-buttons">
         <div class="tab-button" *ngFor="let button of buttons">
-          <button class="button-decorate" [routerLinkActive]="'active'" [ngClass]="{'active': button.active}" (click)="toggleActivate(button)">
+          <button class="button-decorate" [routerLinkActive]="'active'" [ngClass]="{'active': button.active}" (click)="toggleActivate(button.id)">
             <span class="button-decorate__wrapper">
               <a class="button-decorate__link">
                 {{button.text}}
@@ -14,7 +14,7 @@
           </button>
         </div>
       </div>
-      <app-product-carousel [countOfSlideToDisplay]="4" [carouselItems]="products" ></app-product-carousel>
+      <app-product-carousel [isLoad]="isLoad" [countOfSlideToDisplay]="4" [carouselItems]="products" ></app-product-carousel>
     </div>
   </div>
 </section>

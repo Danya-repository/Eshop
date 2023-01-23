@@ -1,18 +1,5 @@
-import {
-  AfterContentChecked, AfterContentInit,
-  AfterViewChecked,
-  AfterViewInit,
-  Component,
-  DoCheck,
-  ElementRef,
-  Input,
-  OnChanges,
-  OnDestroy,
-  OnInit,
-  ViewChild
-} from '@angular/core';
+import {AfterContentInit, Component, ElementRef, Input, OnChanges, OnDestroy, ViewChild} from '@angular/core';
 import {CarouselService} from "../../../shared/services/carousel.service";
-import {CarouselState} from "../plugins/carousel/carousel-state";
 import {Subscription} from "rxjs";
 
 @Component({

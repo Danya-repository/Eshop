@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ProductInterface} from "../../../shared/models/product.interface";
 
 @Component({
@@ -10,13 +10,15 @@ export class BasketProductComponent implements OnInit {
   image: any;
   text: any = 'sfads'
   @Input() productData: ProductInterface = {name: "", price: 0, type: "", available: true};
+  @Output() removeEmitter: EventEmitter<ProductInterface> = new EventEmitter<ProductInterface>()
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  openImage($event: MouseEvent) {
-    
+  openImage($event: MouseEvent) {}
+
+  removeFromBasket() {
+    this.removeEmitter.emit()
   }
 }

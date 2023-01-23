@@ -9,26 +9,19 @@ import { ProductInterface } from '../models/product.interface';
 export class BasketService {
 
   state: BasketState = new BasketState();
-  $basketStream: Subject<BasketState> = new Subject();
+  $basketStream: Subject<ProductInterface> = new Subject();
 
   constructor() { }
 
-  getProducts(): ProductInterface[] {
-    return this.state.getProducts();
-  }
-
-  basketToggle() {
-    this.state.toggleBasket();
-    this.$basketStream.next(this.state);
-  }
+  // getProducts(): ProductInterface[] {
+  //   return this.state.getProducts();
+  // }
 
   addProduct(product: ProductInterface) {
-    this.state.addProduct(product);
-    this.$basketStream.next(this.state);
+    this.$basketStream.next(product);
   }
-
+  //
   removeProduct(product: ProductInterface) {
-    this.state.removeProduct(product);
-    this.$basketStream.next(this.state);
+    this.$basketStream.next(product);
   }
 }

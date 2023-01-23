@@ -1,0 +1,13 @@
+<header class="header">
+  <div class="logo">
+    <a class="logo__link" [routerLink]="['/admin']">Панель администратора</a>
+  </div>
+  <menu class="menu">
+    <ul class="menu__list">
+      <li class="menu__list-item" *ngFor="let button of buttons">
+        <a [routerLink]="['/admin',button.identifier]" routerLinkActive="active" class="menu__link">{{button.text}}</a>
+      </li>
+    </ul>
+  </menu>
+  <button class="logout" (click)="logout()">Выход</button>
+</header>

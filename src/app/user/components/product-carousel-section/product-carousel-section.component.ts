@@ -1,97 +1,81 @@
 import {Component, Input} from "@angular/core";
 import {ProductInterface} from "../../../shared/models/product.interface";
 import {delay, Subscription} from "rxjs";
-import {ProductService} from "../../../shared/services/product.service";
+import {ProductService, ResponseInterface} from "../../../shared/services/product.service";
 import {ButtonStateInterface} from "../../../shared/models/buttonState.interface";
-import {TabMenuService} from "../../../shared/services/tab-menu.service";
-import {MenuEnum} from "../../../shared/enums/menu.enum";
 
 @Component({
   selector: 'app-product-carousel-section',
   templateUrl: './product-carousel-section.component.html',
-  styleUrls: ['./product-carousel-section.component.scss'],
-  providers: [TabMenuService]
+  styleUrls: ['./product-carousel-section.component.scss']
 })
 export class ProductCarouselSectionComponent {
 
   @Input() titleSection = '';
 
-  productCarouselSectionSub: Subscription = new Subscription();
   productsSub: Subscription = new Subscription();
 
   products!: ProductInterface[];
 
   buttons: ButtonStateInterface[] = [
-    {id: 1,active: true, text: 'Запчасти', identifier: "spares"},
-    {id: 2,active: false, text: 'Двигатели', identifier: "engines"},
-    {id: 3,active: false, text: "Снегоходы", identifier: "snowmobiles"},
-    {id: 4,active: false, text: "Вездеходы", identifier: "cross-country-vehicles"},
-    {id: 5,active: false, text: "Лодки", identifier: "boats"},
-    {id: 6,active: false, text: "Катера", identifier: "launches"},
+    {id: 1, active: true, text: 'Запчасти', identifier: "spares"},
+    {id: 2, active: false, text: 'Двигатели', identifier: "engines"},
+    {id: 3, active: false, text: "Снегоходы", identifier: "snowmobiles"},
+    {id: 4, active: false, text: "Вездеходы", identifier: "cross-country-vehicles"},
+    {id: 5, active: false, text: "Лодки", identifier: "boats"},
+    {id: 6, active: false, text: "Катера", identifier: "launches"},
   ];
   isLoad: boolean = false;
 
-  constructor(
-    private tabMenuService: TabMenuService,
-    private productService: ProductService,
-  ) {}
-
-  getActiveButton(): ButtonStateInterface | undefined {
-    return this.buttons.find(button => button.active);
+  constructor(private productService: ProductService) {
   }
 
+  getActiveButtonType(): string {
+    let activeButtonType = this.buttons.find(button => button.active);
+    if (activeButtonType) {
+      return activeButtonType.identifier;
+    }
+    this.toggleActivate(1)
+    return this.buttons[0].identifier
+  }
 
   ngOnInit(): void {
-    let activeIdentifier = this.getActiveButton()?.identifier || '';
-    this.productService.getAll('spares').subscribe(data => {
+    let activeIdentifier = this.getActiveButtonType();
+    this.getProducts(activeIdentifier)
+  }
 
-      // this.products = Object.values(data)[0];
+  toggleActivate(buttonId: number) {
+    if (this.isLoad) return
 
-
-    }, (errorData) => {
-      console.log(errorData)
+    this.buttons.map(buttonItem => {
+      buttonItem.active = buttonItem.id === buttonId;
     })
 
-
-
-
-    // this.tabMenuService.initialize(this.buttons);
-    //To
-    // this.productService.getAll()
-
-
-
-
-    // this.buttons = this.tabMenuService.state;
-    // this.productCarouselSectionSub = this.tabMenuService.$stream.subscribe(button => {
-    //   this.getProducts(button);
-    // })
-    // асинхронный запрос здесь будет
-    // setTimeout(() => {
-    //   this.tabMenuService.$stream.next(this.tabMenuService.getActiveButton());
-    // }, 1000);
+    let activeIdentifier = this.getActiveButtonType();
+    this.getProducts(activeIdentifier);
   }
 
-  toggleActivate(button: ButtonStateInterface) {
-    if (this.isLoad) return
-    this.tabMenuService.setActiveButton(button);
-    this.buttons = this.tabMenuService.state;
-  }
+  getProducts(type: string) {
+    this.isLoad = true;
+    this.products = [];
 
-  getProducts(button: ButtonStateInterface) {
-    // this.products = [];
-    // this.isLoad = true;
-    // this.productsSub = this.productService
-    //   .getAll(button.identifier)
-    //   .pipe(delay(1000))
-    //   .subscribe((products) => {
-    //     this.isLoad = false;
-    //     this.products = products;
-    //   });
+    if (type) {
+      this.productService.getAll(type)
+        .pipe(delay(1000))
+        .subscribe((data: ResponseInterface) => {
+          let key: string = Object.keys(data)[0];
+
+          this.products = data[key as keyof ResponseInterface] as ProductInterface[];
+          this.isLoad = false;
+        }, (errorData) => {
+          console.log(errorData)
+        }, () => {
+          this.isLoad = false;
+        })
+    }
   }
 
   ngOnDestroy(): void {
-    this.productCarouselSectionSub.unsubscribe();
     this.productsSub.unsubscribe();
   }
 }
