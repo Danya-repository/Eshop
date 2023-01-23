@@ -16,6 +16,7 @@ import {Subscription} from "rxjs";
   selector: 'app-scroll-window',
   templateUrl: './scroll-window.component.html',
   styleUrls: ['./scroll-window.component.scss'],
+  providers: [ScrollService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ScrollWindowComponent implements OnInit {
@@ -67,9 +68,9 @@ export class ScrollWindowComponent implements OnInit {
   public stripOpacityTransition: boolean = false;
 
   mousedown(event: MouseEvent) {
-    if (!this.handle.nativeElement.contains(event.target)) return
     event.stopPropagation();
     event.preventDefault();
+    if (!this.handle?.nativeElement.contains(event.target)) return
 
     this.draggable = true;
     this.startMouseHandlePosition = event.clientY;

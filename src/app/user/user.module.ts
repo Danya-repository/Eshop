@@ -4,7 +4,6 @@ import {HeaderComponent} from "./components/header/header.component";
 import {FooterComponent} from "./components/footer/footer.component";
 import {MenuComponent} from "./components/menu/menu.component";
 import {BasketComponent} from './components/basket/basket.component';
-import {BasketButtonComponent} from './components/basket-button/basket-button.component';
 import {SharedModule} from "../shared/shared.module";
 import {RouterModule} from "@angular/router";
 import {ProductCarouselComponent} from "./components/product-carousel/product-carousel.component";
@@ -29,7 +28,6 @@ import {BasketProductComponent} from './components/basket-product/basket-product
       MenuComponent,
       FooterComponent,
       BasketComponent,
-      BasketButtonComponent,
       ProductCarouselComponent,
       ProductCarouselSectionComponent,
       DotsComponent,

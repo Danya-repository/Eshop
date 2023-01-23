@@ -1,11 +1,11 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  DoCheck,
   ElementRef,
   Input,
   OnChanges,
   OnDestroy,
+  OnInit,
   ViewChild
 } from '@angular/core';
 import {ProductInterface} from "../../../shared/models/product.interface";
@@ -20,7 +20,7 @@ import {Subscription} from "rxjs";
   providers: [CarouselService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductCarouselComponent implements OnChanges, DoCheck, OnDestroy {
+export class ProductCarouselComponent implements OnInit, OnChanges, OnDestroy {
 
   state: CarouselState = new CarouselState();
   @Input() carouselItems: ProductInterface[] = [];
@@ -30,12 +30,13 @@ export class ProductCarouselComponent implements OnChanges, DoCheck, OnDestroy {
   sub: Subscription = new Subscription();
 
   @Input()
-  isLoad: boolean = true;
+  isLoad: boolean = false;
 
+  constructor(public carouselService: CarouselService) {}
 
-  constructor(
-    public carouselService: CarouselService
-  ) {}
+  ngOnInit(): void {
+    this.carouselService.actualizeArrowButtons();
+  }
 
   ngOnChanges(): void {
     this.carouselService.state
@@ -43,11 +44,7 @@ export class ProductCarouselComponent implements OnChanges, DoCheck, OnDestroy {
         .setCurrentSlide(0)
         .setCountSlides(this.carouselItems?.length)
         .setCountOfSlideToDisplay(this.countOfSlideToDisplay)
-  }
-
-  ngDoCheck(): void {
     this.carouselService.initialize(this.carouselWindow, this.carouselTrack)
-    this.carouselService.actualizeArrowButtons();
   }
 
   next() {

@@ -5,6 +5,7 @@ import {ScrollService} from "../shared/services/scroll.service";
   selector: 'app-user-base-layout',
   templateUrl: './user-base-layout.component.html',
   styleUrls: ['./user-base-layout.component.scss'],
+  providers: [ScrollService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserBaseLayoutComponent implements OnInit {

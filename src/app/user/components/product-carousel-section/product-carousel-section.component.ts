@@ -31,16 +31,13 @@ export class ProductCarouselSectionComponent {
   }
 
   getActiveButtonType(): string {
-    let activeButtonType = this.buttons.find(button => {
-      return button.active
-    });
+    let activeButtonType = this.buttons.find(button => button.active);
     if (activeButtonType) {
       return activeButtonType.identifier;
     }
     this.toggleActivate(1)
     return this.buttons[0].identifier
   }
-
 
   ngOnInit(): void {
     let activeIdentifier = this.getActiveButtonType();

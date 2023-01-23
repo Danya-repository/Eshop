@@ -7,5 +7,12 @@ import {Component} from '@angular/core';
 })
 export class HeaderComponent {
 
+  basketOpen: boolean = false;
+  countItemBasket: number = 0;
+
   constructor() { }
+
+  basketToggle() {
+    this.basketOpen = !this.basketOpen;
+  }
 }

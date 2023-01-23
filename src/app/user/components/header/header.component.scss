@@ -173,3 +173,27 @@
     top: 30%;
   }
 }
+
+.basket-button {
+  max-height: 24px;
+  position: relative;
+  margin-left: 10px;
+  display: flex;
+  align-items: flex-end;
+
+  &__counter {
+    position: absolute;
+    bottom: -9px;
+    right: -12px;
+    background-color: $accent-color;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    color: #FFFFFF;
+    text-align: center;
+    padding-top: 3px;
+
+    font-size: 10px;
+    line-height: 12px;
+  }
+}
