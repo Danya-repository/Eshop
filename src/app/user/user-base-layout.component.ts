@@ -18,5 +18,6 @@ export class UserBaseLayoutComponent implements OnInit {
 
   onActivate($event: any) {
     this.routeActualComponent = $event;
+    // console.log($event);
   }
 }

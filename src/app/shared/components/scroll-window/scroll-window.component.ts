@@ -4,8 +4,11 @@ import {
   ContentChildren,
   ElementRef,
   Input,
+  OnChanges,
   OnInit,
   QueryList,
+  SimpleChange,
+  SimpleChanges,
   TemplateRef,
   ViewChild
 } from '@angular/core';
@@ -19,7 +22,7 @@ import {Subscription} from "rxjs";
   providers: [ScrollService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ScrollWindowComponent implements OnInit {
+export class ScrollWindowComponent implements OnInit, OnChanges {
 
   @Input()
   actualComponent!: any;
@@ -35,6 +38,11 @@ export class ScrollWindowComponent implements OnInit {
   constructor(private scrollService: ScrollService) {}
 
   private scrollSub!: Subscription;
+
+  ngOnChanges(change: SimpleChanges) {
+    console.log(change);
+    this.resize();
+  }
 
   ngOnInit(): void {
     this.scrollSub = this.scrollService.$scrollResizeStream.subscribe(({}) => {
