@@ -1,25 +1,10 @@
-<app-scroll-window [actualComponent]="routeActualComponent">
-  <ng-template #scrollWindowChild>
-    <app-header></app-header>
-  </ng-template>
-  <ng-template #scrollWindowChild>
-    <app-menu></app-menu>
-  </ng-template>
-  <ng-template #scrollWindowChild>
-      <main class="main">
-        <router-outlet (activate)="onActivate($event)"></router-outlet>
-      </main>
-  </ng-template>
-  <ng-template #scrollWindowChild>
-    <app-footer></app-footer>
-  </ng-template>
+<app-scroll-window>
+  <app-header *appScrollWindowChild></app-header>
+  <app-menu *appScrollWindowChild></app-menu>
+  <main class="main"*appScrollWindowChild>
+    <router-outlet></router-outlet>
+  </main>
+  <app-footer *appScrollWindowChild></app-footer>
 </app-scroll-window>
-
-<!--<app-header></app-header>-->
-<!--<app-menu></app-menu>-->
-<!--<main class="main">-->
-<!--  <router-outlet (activate)="onActivate($event)"></router-outlet>-->
-<!--</main>-->
-<!--<app-footer></app-footer>-->
 
 

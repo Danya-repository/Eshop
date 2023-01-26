@@ -1,5 +1,4 @@
-import {AfterContentInit, Component} from '@angular/core';
-import {ScrollService} from "../../../shared/services/scroll.service";
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-home',

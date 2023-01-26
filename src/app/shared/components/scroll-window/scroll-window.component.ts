@@ -1,56 +1,47 @@
 import {
-  ChangeDetectionStrategy,
-  Component,
+  AfterContentInit,
+  AfterViewInit,
+  Component, ComponentFactory, ComponentFactoryResolver, ComponentRef,
   ContentChildren,
   ElementRef,
-  Input,
-  OnChanges,
-  OnInit,
   QueryList,
-  SimpleChange,
-  SimpleChanges,
-  TemplateRef,
-  ViewChild
+  ViewChild,
+  ViewContainerRef
 } from '@angular/core';
-import {ScrollService} from "../../services/scroll.service";
-import {Subscription} from "rxjs";
+import {AppScrollWindowChildDirective} from "../../directives/app-scroll-window-child.directive";
 
 @Component({
   selector: 'app-scroll-window',
   templateUrl: './scroll-window.component.html',
   styleUrls: ['./scroll-window.component.scss'],
-  providers: [ScrollService],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ScrollWindowComponent implements OnInit, OnChanges {
+export class ScrollWindowComponent implements AfterViewInit {
 
-  @Input()
-  actualComponent!: any;
-
-  @ContentChildren('scrollWindowChild', {read: TemplateRef})
-  children: QueryList<TemplateRef<any>> = new QueryList<TemplateRef<any>>()
+  @ContentChildren(AppScrollWindowChildDirective, {read: AppScrollWindowChildDirective})
+  children!: QueryList<AppScrollWindowChildDirective>;
 
   @ViewChild('container', {static: true}) container!: ElementRef;
   @ViewChild('handle', {static: false}) handle!: ElementRef;
   @ViewChild('window', {static: true}) window!: ElementRef;
   @ViewChild('strip', {static: false}) strip!: ElementRef;
 
-  constructor(private scrollService: ScrollService) {}
 
-  private scrollSub!: Subscription;
+  @ViewChild('ref', {read: ViewContainerRef,static: false}) ref!: ViewContainerRef;
 
-  ngOnChanges(change: SimpleChanges) {
-    console.log(change);
-    this.resize();
-  }
 
-  ngOnInit(): void {
-    this.scrollSub = this.scrollService.$scrollResizeStream.subscribe(({}) => {
-      console.log('resize')
-      setTimeout(() => {
-        this.resize();
-      },2000)
-    })
+  constructor() {}
+
+  ngAfterViewInit(): void {
+    // this.children.forEach(child => {
+    //   this.ref.createEmbeddedView(child.Template)
+    // })
+    // console.log(this.components.get(0))
+    // let f = this.resolver.resolveComponentFactory(this.components.get(0))
+
+    // @ts-ignore
+    // this.ref.createComponent(this.children.get(0))
+    // console.log('Components!', typeof this.components.get(0))
   }
 
   private readonly _slowdown: number = 1.7;
@@ -74,6 +65,7 @@ export class ScrollWindowComponent implements OnInit, OnChanges {
   public handleHeight: number = 40;
 
   public stripOpacityTransition: boolean = false;
+
 
   mousedown(event: MouseEvent) {
     event.stopPropagation();
@@ -176,7 +168,6 @@ export class ScrollWindowComponent implements OnInit, OnChanges {
   resize() {
     this.windowHeight = this.window.nativeElement.offsetHeight;
     this.containerHeight = this.container.nativeElement.offsetHeight;
-
     this._setSizeHandler();
   }
 
