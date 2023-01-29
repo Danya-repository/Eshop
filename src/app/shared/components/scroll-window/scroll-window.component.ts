@@ -1,47 +1,70 @@
 import {
-  AfterContentInit,
   AfterViewInit,
-  Component, ComponentFactory, ComponentFactoryResolver, ComponentRef,
+  ChangeDetectionStrategy,
+  Component, ComponentRef,
   ContentChildren,
   ElementRef,
+  Input, OnInit,
   QueryList,
   ViewChild,
-  ViewContainerRef
+  ViewContainerRef, ViewRef
 } from '@angular/core';
 import {AppScrollWindowChildDirective} from "../../directives/app-scroll-window-child.directive";
+import {ScrollWindowChildComponent} from "../scroll-window-child/scroll-window-child.component";
+
+export interface ActualComponentInterface {
+  element: any,
+  position: number
+}
 
 @Component({
   selector: 'app-scroll-window',
   templateUrl: './scroll-window.component.html',
-  styleUrls: ['./scroll-window.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./scroll-window.component.scss']
 })
-export class ScrollWindowComponent implements AfterViewInit {
+export class ScrollWindowComponent implements AfterViewInit, OnInit {
 
   @ContentChildren(AppScrollWindowChildDirective, {read: AppScrollWindowChildDirective})
-  children!: QueryList<AppScrollWindowChildDirective>;
+  children: QueryList<AppScrollWindowChildDirective> = new QueryList<AppScrollWindowChildDirective>();
 
   @ViewChild('container', {static: true}) container!: ElementRef;
   @ViewChild('handle', {static: false}) handle!: ElementRef;
   @ViewChild('window', {static: true}) window!: ElementRef;
   @ViewChild('strip', {static: false}) strip!: ElementRef;
 
+  @ViewChild('ref', {read: ViewContainerRef, static: false}) ref!: ViewContainerRef;
 
-  @ViewChild('ref', {read: ViewContainerRef,static: false}) ref!: ViewContainerRef;
+  private _actualDynamicRouteComponentName: any;
 
+  @Input()
+  set actualDynamicRouteComponentName(parameters: ActualComponentInterface) {
+    if (this.ref && parameters) {
+      let elementName = parameters.element?.['__proto__'].constructor.name
+      if (this._actualDynamicRouteComponentName != elementName) {
+        this._actualDynamicRouteComponentName = elementName;
+        let componentRef = this.ref.createComponent(ScrollWindowChildComponent)
+
+        componentRef.instance.contentChild = this.children.get(parameters.position)?.template
+        componentRef.instance.resizeHandler = this.resize.bind(this);
+
+        this.ref.move(<ViewRef>this.ref.get(this.children.length), parameters.position)
+        this.ref.remove(parameters.position + 1)
+      }
+    }
+  };
 
   constructor() {}
 
-  ngAfterViewInit(): void {
-    // this.children.forEach(child => {
-    //   this.ref.createEmbeddedView(child.Template)
-    // })
-    // console.log(this.components.get(0))
-    // let f = this.resolver.resolveComponentFactory(this.components.get(0))
+  ngOnInit(): void {
 
-    // @ts-ignore
-    // this.ref.createComponent(this.children.get(0))
-    // console.log('Components!', typeof this.components.get(0))
+  }
+
+  ngAfterViewInit(): void {
+    this.children.forEach((child) => {
+      let componentRef = this.ref.createComponent(ScrollWindowChildComponent)
+      componentRef.instance.contentChild = child.template
+      componentRef.instance.resizeHandler = this.resize.bind(this);
+    })
   }
 
   private readonly _slowdown: number = 1.7;

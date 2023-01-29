@@ -7,7 +7,7 @@ import {
   Input,
   OnChanges, OnInit,
   Output,
-  SimpleChanges, ViewChild, ViewContainerRef
+  SimpleChanges, TemplateRef, ViewChild, ViewContainerRef
 } from '@angular/core';
 import {AppScrollWindowChildDirective} from "../../directives/app-scroll-window-child.directive";
 import {HomePageComponent} from "../../../user/components/home-page/home-page.component";
@@ -19,29 +19,17 @@ import {HomePageComponent} from "../../../user/components/home-page/home-page.co
   styleUrls: ['./scroll-window-child.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ScrollWindowChildComponent implements AfterContentInit, AfterViewInit, OnInit {
-
-  @Output()
-  public childRenderedReady: EventEmitter<any> = new EventEmitter<any>();
+export class ScrollWindowChildComponent implements AfterViewInit {
 
   @Input()
-  contentChild!: AppScrollWindowChildDirective;
+  contentChild!: TemplateRef<any> | undefined;
 
-  @ViewChild('ref', {read: ViewContainerRef,static: false}) ref!: ViewContainerRef;
+  @Input()
+  resizeHandler!: Function;
 
   constructor() {}
 
-  ngAfterContentInit(): void {
-    // this.ref.createEmbeddedView(this.contentChild.Template)
-  }
-
   ngAfterViewInit(): void {
-    // this.ref.createEmbeddedView(this.contentChild.Template)
-    this.childRenderedReady.emit();
+    this.resizeHandler();
   }
-
-  ngOnInit(): void {
-  }
-
-
 }

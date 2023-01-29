@@ -2,14 +2,9 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  Component,
-  ComponentRef,
-  ContentChild,
-  OnInit,
-  TemplateRef, ViewChild
+  Component
 } from '@angular/core';
-import {ScrollService} from "../shared/services/scroll.service";
-import {RouterOutlet} from "@angular/router";
+import {ActualComponentInterface} from "../shared/components/scroll-window/scroll-window.component";
 
 @Component({
   selector: 'app-user-base-layout',
@@ -17,7 +12,17 @@ import {RouterOutlet} from "@angular/router";
   styleUrls: ['./user-base-layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UserBaseLayoutComponent  {
+export class UserBaseLayoutComponent implements AfterViewInit {
 
-  constructor() { }
+  activeComponent!: ActualComponentInterface;
+
+  constructor(private changeDetector: ChangeDetectorRef) { }
+
+  onActivate($event: any) {
+    this.activeComponent = {element: $event, position: 2};
+  }
+
+  ngAfterViewInit(): void {
+    this.changeDetector.detectChanges();
+  }
 }

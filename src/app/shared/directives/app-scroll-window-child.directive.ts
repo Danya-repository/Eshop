@@ -1,12 +1,14 @@
-import {ComponentRef, Directive, TemplateRef, ViewContainerRef} from '@angular/core';
+import {Directive, TemplateRef} from '@angular/core';
 
 @Directive({
   selector: '[appScrollWindowChild]'
 })
 export class AppScrollWindowChildDirective {
-  constructor(private template: TemplateRef<any>) {}
 
-  get Template(): TemplateRef<any> {
-    return this.template;
+  constructor(private _template: TemplateRef<any>) {}
+
+  get template(): TemplateRef<any> {
+    return this._template;
   }
+
 }

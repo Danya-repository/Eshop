@@ -9,20 +9,7 @@
          #container
          [style.top.px]="containerPosition"
          [ngClass]="{'top-transition': !draggable}">
-
-<!--          <ng-template #ref></ng-template>-->
-          <ng-container *ngFor="let child of children">
-            <app-scroll-window-child
-              (childRenderedReady)="resize()"
-              [contentChild]="child">
-            </app-scroll-window-child>
-          </ng-container>
-
-<!--        <app-scroll-window-child-->
-<!--          *ngFor="let child of children;"-->
-<!--          (childRenderedReady)="resize()"-->
-<!--          [contentChild]="child">-->
-<!--        </app-scroll-window-child>-->
+          <ng-container #ref></ng-container>
     </div>
     <div class="scroll-window__strip"
          #strip
