@@ -16,20 +16,21 @@ import {HomePageComponent} from "../../../user/components/home-page/home-page.co
 @Component({
   selector: 'app-scroll-window-child',
   templateUrl: './scroll-window-child.component.html',
-  styleUrls: ['./scroll-window-child.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./scroll-window-child.component.scss']
 })
 export class ScrollWindowChildComponent implements AfterViewInit {
 
   @Input()
   contentChild!: TemplateRef<any> | undefined;
 
-  @Input()
-  resizeHandler!: Function;
+  @Output()
+  resizeHandler: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {}
 
   ngAfterViewInit(): void {
-    this.resizeHandler();
+    // console.log('resize')
+    this.resizeHandler.emit();
   }
+
 }

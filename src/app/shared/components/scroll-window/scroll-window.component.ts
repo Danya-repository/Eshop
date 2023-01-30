@@ -1,13 +1,16 @@
 import {
+  AfterContentInit,
   AfterViewInit,
-  ChangeDetectionStrategy,
-  Component, ComponentRef,
-  ContentChildren,
+  ChangeDetectionStrategy, ChangeDetectorRef,
+  Component,
+  ContentChildren, DoCheck,
   ElementRef,
-  Input, OnInit,
+  Input,
   QueryList,
+  TemplateRef,
   ViewChild,
-  ViewContainerRef, ViewRef
+  ViewContainerRef,
+  ViewRef
 } from '@angular/core';
 import {AppScrollWindowChildDirective} from "../../directives/app-scroll-window-child.directive";
 import {ScrollWindowChildComponent} from "../scroll-window-child/scroll-window-child.component";
@@ -22,10 +25,10 @@ export interface ActualComponentInterface {
   templateUrl: './scroll-window.component.html',
   styleUrls: ['./scroll-window.component.scss']
 })
-export class ScrollWindowComponent implements AfterViewInit, OnInit {
+export class ScrollWindowComponent implements AfterViewInit, AfterContentInit {
 
   @ContentChildren(AppScrollWindowChildDirective, {read: AppScrollWindowChildDirective})
-  children: QueryList<AppScrollWindowChildDirective> = new QueryList<AppScrollWindowChildDirective>();
+  children!: QueryList<AppScrollWindowChildDirective>;
 
   @ViewChild('container', {static: true}) container!: ElementRef;
   @ViewChild('handle', {static: false}) handle!: ElementRef;
@@ -35,17 +38,16 @@ export class ScrollWindowComponent implements AfterViewInit, OnInit {
   @ViewChild('ref', {read: ViewContainerRef, static: false}) ref!: ViewContainerRef;
 
   private _actualDynamicRouteComponentName: any;
+  private _childrenCount = 0;
 
   @Input()
   set actualDynamicRouteComponentName(parameters: ActualComponentInterface) {
-    if (this.ref && parameters) {
+    if (parameters) {
       let elementName = parameters.element?.['__proto__'].constructor.name
       if (this._actualDynamicRouteComponentName != elementName) {
         this._actualDynamicRouteComponentName = elementName;
-        let componentRef = this.ref.createComponent(ScrollWindowChildComponent)
 
-        componentRef.instance.contentChild = this.children.get(parameters.position)?.template
-        componentRef.instance.resizeHandler = this.resize.bind(this);
+        this.renderChild(this.children.get(parameters.position)?.template);
 
         this.ref.move(<ViewRef>this.ref.get(this.children.length), parameters.position)
         this.ref.remove(parameters.position + 1)
@@ -53,18 +55,30 @@ export class ScrollWindowComponent implements AfterViewInit, OnInit {
     }
   };
 
-  constructor() {}
+  renderChild(template?: TemplateRef<any>): void {
+    let componentRef = this.ref.createComponent(ScrollWindowChildComponent)
+    componentRef.instance.contentChild = template;
+    componentRef.instance.resizeHandler.subscribe(this.resize.bind(this));
+  }
 
-  ngOnInit(): void {
+  constructor(private changeDetector: ChangeDetectorRef) {}
 
+  ngAfterContentInit(): void {
+    this.children.changes.subscribe(changes => {
+      if (this.children.length === this._childrenCount) return
+      if (this.children.length > this._childrenCount) {
+        this.renderChild(changes.last.template);
+        this.ref.move(<ViewRef>this.ref.get(this.children.length - 1), 0)
+      }
+      this.ref.clear()
+      this.children.toArray().reverse().forEach((child) => this.renderChild(child.template))
+      this._childrenCount = this.children.length;
+    })
   }
 
   ngAfterViewInit(): void {
-    this.children.forEach((child) => {
-      let componentRef = this.ref.createComponent(ScrollWindowChildComponent)
-      componentRef.instance.contentChild = child.template
-      componentRef.instance.resizeHandler = this.resize.bind(this);
-    })
+    this.children.forEach(child => this.renderChild(child.template));
+    this._childrenCount = this.children.length;
   }
 
   private readonly _slowdown: number = 1.7;
@@ -81,7 +95,7 @@ export class ScrollWindowComponent implements AfterViewInit, OnInit {
   public canUp: boolean = true;
   public canDown: boolean = true;
   public transition: boolean = true;
-  public visible: boolean = true;
+  public visible: boolean = false;
 
   public windowHeight: number = 0;
   public containerHeight: number = 0;
@@ -127,7 +141,6 @@ export class ScrollWindowComponent implements AfterViewInit, OnInit {
   }
 
   mouseleave() {
-    this.mouseup();
     this._visibleTimeoutActivate();
   }
 
@@ -138,7 +151,6 @@ export class ScrollWindowComponent implements AfterViewInit, OnInit {
 
   mousewheel(event: WheelEvent) {
     event.stopPropagation();
-    event.preventDefault();
 
     if (this.windowHeight > this.containerHeight) return
 
@@ -157,6 +169,7 @@ export class ScrollWindowComponent implements AfterViewInit, OnInit {
     if (prevHandlePosition < nextHandlePosition) {
       this._downScrolling(event)
     }
+    this.visible = true;
   }
 
   goToPercentage(event: MouseEvent) {
@@ -290,8 +303,8 @@ export class ScrollWindowComponent implements AfterViewInit, OnInit {
       this.stripOpacityTransition = true;
       this.visible = false;
       this._disableStripOpacityTransitionTimeoutActivate();
+      this.changeDetector.detectChanges();
     }, 4000)
-    this.visible = true;
   }
 
   private _disableStripOpacityTransitionTimeoutActivate() {
