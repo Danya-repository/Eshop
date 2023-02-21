@@ -25,8 +25,8 @@ export class ProductCarouselComponent implements OnInit, OnChanges, OnDestroy {
   state: CarouselState = new CarouselState();
   @Input() carouselItems: ProductInterface[] = [];
   @Input() countOfSlideToDisplay: number = 0;
-  @ViewChild('carouselWindow', {static: true}) carouselWindow: ElementRef | undefined;
-  @ViewChild('carouselTrack', {static: true}) carouselTrack: ElementRef | undefined;
+  @ViewChild('carouselWindow', {static: true}) carouselWindow!: ElementRef;
+  @ViewChild('carouselTrack', {static: true}) carouselTrack!: ElementRef;
   sub: Subscription = new Subscription();
 
   @Input()

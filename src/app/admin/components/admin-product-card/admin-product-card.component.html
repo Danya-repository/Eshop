@@ -1,0 +1,39 @@
+<div class="admin-product-card">
+  <div class="admin-product-card__container">
+    <h4 class="admin-product-card__row admin-product-card__title">{{productData.name}}</h4>
+    <span class="admin-product-card__row admin-product-card__code">
+      <span>Код товара:</span>{{productData.code}}
+    </span>
+    <div class="admin-product-card__image-wrapper">
+      <img class="admin-product-card__image" [src]="productData.image" alt="#">
+    </div>
+    <span class="admin-product-card__row admin-product-card__price">
+      <span>Цена:</span>{{productData.price}}
+    </span>
+    <span class="admin-product-card__row admin-product-card__discount">
+      <span>Скидка:</span>{{productData.discount}}
+    </span>
+    <span class="admin-product-card__row admin-product-card__old-price">
+      <span>Старая цена:</span>{{productData.oldPrice}}
+    </span>
+    <div class="admin-product-card__characteristic" *ngIf="characteristicsIsShow">
+      <span class="admin-product-card__row admin-product-card__engineType">
+        <span>Тип двигателя:</span>{{productData?.characteristic.engineType}}
+      </span>
+      <span class="admin-product-card__row admin-product-card__manufacturer">
+        <span>Производитель:</span>{{productData?.characteristic.manufacturer}}
+      </span>
+      <span class="admin-product-card__row admin-product-card__power">
+        <span>Мощность двигателя:</span>{{productData?.characteristic.power}}
+      </span>
+      <span class="admin-product-card__row admin-product-card__quantity">
+        <span>Количество на складе:</span>{{productData?.characteristic.quantity}}
+      </span>
+      <span class="admin-product-card__row admin-product-card__yearOfIssue">
+        <span>Год производства:</span>{{productData?.characteristic.yearOfIssue}}
+      </span>
+    </div>
+    <button class="admin-product-card__button admin-product-card__show-characteristic-button" (click)="toggleShowCharacteristic()">{{characteristicsIsShow ? 'Скрыть' : 'Показать'}} характеристики</button>
+    <button class="admin-product-card__button admin-product-card__edit-button">Редактировать</button>
+  </div>
+</div>

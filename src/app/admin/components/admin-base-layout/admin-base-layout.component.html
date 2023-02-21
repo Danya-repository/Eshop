@@ -1,11 +1,10 @@
-<div class="wrapper">
-  <header class="header">
+<app-scroll-window>
+  <div class="wrapper">
     <app-admin-header></app-admin-header>
-  </header>
-  <main class="main">
-    <app-admin-dashboard></app-admin-dashboard>
-  </main>
-  <footer class="footer">
+    <main class="main">
+      <router-outlet></router-outlet>
+    </main>
     <app-admin-footer></app-admin-footer>
-  </footer>
-</div>
+    <app-modal-window></app-modal-window>
+  </div>
+</app-scroll-window>

@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component} from '@angular/core';
 
 @Component({
   selector: 'app-admin-base-layout',
   templateUrl: './admin-base-layout.component.html',
-  styleUrls: ['./admin-base-layout.component.scss']
+  styleUrls: ['./admin-base-layout.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AdminBaseLayoutComponent implements OnInit {
+export class AdminBaseLayoutComponent implements AfterViewInit {
 
-  constructor() { }
+  constructor(private changeDetector: ChangeDetectorRef) { }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
+    this.changeDetector.detectChanges();
   }
-
 }

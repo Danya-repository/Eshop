@@ -6,11 +6,9 @@
     </div>
     <div class="basket__body">
       <app-scroll-window>
-        <ng-container *ngFor="let product of products">
-            <div class="basket__item-wrapper" *appScrollWindowChild>
-              <app-basket-product (removeEmitter)="removeFromBasket($event)" [productData]="product"></app-basket-product>
-            </div>
-        </ng-container>
+          <div class="basket__item-wrapper" *ngFor="let product of products">
+            <app-basket-product (removeEmitter)="removeFromBasket($event)" [productData]="product"></app-basket-product>
+          </div>
       </app-scroll-window>
     </div>
     <div class="basket__total-bar">

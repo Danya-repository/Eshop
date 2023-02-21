@@ -19,10 +19,7 @@ export class BasketComponent implements OnInit, OnDestroy {
   @Output() openEmitter: EventEmitter<any> = new EventEmitter<any>();
   @Output() countEmitter: EventEmitter<number> = new EventEmitter<any>();
 
-  constructor(
-    protected basketService: BasketService
-  ) {
-  }
+  constructor(protected basketService: BasketService) {}
 
   ngOnInit(): void {
     this.products = this.getBasketProductsFromCookies();
@@ -48,10 +45,11 @@ export class BasketComponent implements OnInit, OnDestroy {
 
   private getBasketProductsFromCookies(): ProductInterface[] {
     let productsInCookies: ProductInterface[] = [];
-    let productsJson = document.cookie?.match(`basketEshop`)?.input?.split('=')[1] || []
-    if (typeof productsJson === "string") {
-      productsInCookies = JSON.parse(productsJson);
-    }
+    /*TODO чекнуть*/
+    // let productsJson = document.cookie?.match(`basketEshop`)?.input?.split('=')[1] || []
+    // if (typeof productsJson === "string") {
+    //   productsInCookies = JSON.parse(productsJson);
+    // }
     return productsInCookies
   }
 

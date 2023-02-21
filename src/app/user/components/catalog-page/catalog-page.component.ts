@@ -18,10 +18,8 @@ export class CatalogPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.activateRoute.data.subscribe(data => {
-      let productResponse: ResponseInterface = data['products']
-      let key: string = Object.keys(productResponse)[0]
 
-      this.products = productResponse[key as keyof ResponseInterface] as ProductInterface[];
+      this.products = data['products'];
 
     }, (errorData) => {
       console.log(errorData)

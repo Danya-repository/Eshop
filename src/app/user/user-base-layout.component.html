@@ -1,10 +1,13 @@
-<app-scroll-window [actualDynamicRouteComponentName]="activeComponent">
-  <app-header *appScrollWindowChild></app-header>
-  <app-menu *appScrollWindowChild></app-menu>
-  <main class="main" *appScrollWindowChild>
-    <router-outlet (activate)="onActivate($event)"></router-outlet>
-  </main>
-  <app-footer *appScrollWindowChild></app-footer>
+<app-scroll-window>
+  <div class="wrapper">
+    <app-header></app-header>
+    <app-menu></app-menu>
+    <main class="main">
+      <router-outlet></router-outlet>
+    </main>
+    <app-footer></app-footer>
+    <app-modal-window></app-modal-window>
+  </div>
 </app-scroll-window>
 
 

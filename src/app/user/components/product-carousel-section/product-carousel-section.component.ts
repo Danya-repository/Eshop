@@ -27,8 +27,7 @@ export class ProductCarouselSectionComponent {
   ];
   isLoad: boolean = false;
 
-  constructor(private productService: ProductService) {
-  }
+  constructor(private productService: ProductService) {}
 
   getActiveButtonType(): string {
     let activeButtonType = this.buttons.find(button => button.active);
@@ -62,10 +61,8 @@ export class ProductCarouselSectionComponent {
     if (type) {
       this.productService.getAll(type)
         .pipe(delay(1000))
-        .subscribe((data: ResponseInterface) => {
-          let key: string = Object.keys(data)[0];
-
-          this.products = data[key as keyof ResponseInterface] as ProductInterface[];
+        .subscribe(products => {
+          this.products = products;
           this.isLoad = false;
         }, (errorData) => {
           console.log(errorData)

@@ -1,0 +1,31 @@
+.product-editor {
+  max-width: 550px;
+
+  &__input-text {
+    max-width: 30%;
+  }
+
+  input {
+    width: 50%;
+  }
+
+  label {
+    max-width: 35%;
+    input {
+      max-width: 15%;
+    }
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+
+  &__main-info, &__characteristic {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}

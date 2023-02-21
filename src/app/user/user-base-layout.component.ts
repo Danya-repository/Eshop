@@ -4,7 +4,6 @@ import {
   ChangeDetectorRef,
   Component
 } from '@angular/core';
-import {ActualComponentInterface} from "../shared/components/scroll-window/scroll-window.component";
 
 @Component({
   selector: 'app-user-base-layout',
@@ -14,13 +13,7 @@ import {ActualComponentInterface} from "../shared/components/scroll-window/scrol
 })
 export class UserBaseLayoutComponent implements AfterViewInit {
 
-  activeComponent!: ActualComponentInterface;
-
   constructor(private changeDetector: ChangeDetectorRef) { }
-
-  onActivate($event: any) {
-    this.activeComponent = {element: $event, position: 2};
-  }
 
   ngAfterViewInit(): void {
     this.changeDetector.detectChanges();

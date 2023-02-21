@@ -1,8 +1,11 @@
-<div class="modal-window">
-  <div class="modal-window__container">
-    <button class="modal-window__close-button"></button>
-    <div class="modal-window__content">
-      <ng-content></ng-content>
+<div class="modal-window" [ngClass]="{'open': open}">
+  <div class="modal-window__inner">
+    <div class="modal-window__container">
+      <button class="modal-window__close-button" (click)="close($event)"></button>
+      <div class="modal-window__content">
+        <ng-container #container></ng-container>
+      </div>
     </div>
   </div>
+  <div class="modal-window__background" (click)="close($event)"></div>
 </div>

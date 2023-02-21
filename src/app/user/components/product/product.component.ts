@@ -26,10 +26,10 @@ export class ProductComponent implements OnInit {
   favoriteToggle(event: Event) {
     event.stopPropagation();
 
-    this.subscription = this.productService.putOne({...this.productData, favorite: !this.productData.favorite})
-                                      .subscribe(data => {
-                                        this.productData = data;
-                                      })
+    // this.subscription = this.productService.putOne({...this.productData, favorite: !this.productData.favorite})
+    //                                   .subscribe(data => {
+    //                                     this.productData = data;
+    //                                   })
   }
 
   subscribeToAvailableNotification(event: Event) {
@@ -37,7 +37,7 @@ export class ProductComponent implements OnInit {
   }
 
   goToProductPage() {
-    this.router.navigate(['/product', this.productData.id])
+    this.router.navigate(['product', this.productData.id])
   }
 
   openImage(event: Event) {

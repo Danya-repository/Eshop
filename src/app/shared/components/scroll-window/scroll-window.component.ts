@@ -1,19 +1,14 @@
 import {
-  AfterContentInit,
   AfterViewInit,
-  ChangeDetectionStrategy, ChangeDetectorRef,
+  ChangeDetectorRef,
   Component,
-  ContentChildren, DoCheck,
+  ContentChildren,
   ElementRef,
-  Input,
+  OnDestroy,
   QueryList,
-  TemplateRef,
-  ViewChild,
-  ViewContainerRef,
-  ViewRef
+  ViewChild
 } from '@angular/core';
 import {AppScrollWindowChildDirective} from "../../directives/app-scroll-window-child.directive";
-import {ScrollWindowChildComponent} from "../scroll-window-child/scroll-window-child.component";
 
 export interface ActualComponentInterface {
   element: any,
@@ -25,60 +20,26 @@ export interface ActualComponentInterface {
   templateUrl: './scroll-window.component.html',
   styleUrls: ['./scroll-window.component.scss']
 })
-export class ScrollWindowComponent implements AfterViewInit, AfterContentInit {
+export class ScrollWindowComponent implements AfterViewInit, OnDestroy {
 
   @ContentChildren(AppScrollWindowChildDirective, {read: AppScrollWindowChildDirective})
   children!: QueryList<AppScrollWindowChildDirective>;
 
   @ViewChild('container', {static: true}) container!: ElementRef;
   @ViewChild('handle', {static: false}) handle!: ElementRef;
-  @ViewChild('window', {static: true}) window!: ElementRef;
+  @ViewChild('wrapper', {static: true}) wrapper!: ElementRef;
   @ViewChild('strip', {static: false}) strip!: ElementRef;
 
-  @ViewChild('ref', {read: ViewContainerRef, static: false}) ref!: ViewContainerRef;
-
-  private _actualDynamicRouteComponentName: any;
-  private _childrenCount = 0;
-
-  @Input()
-  set actualDynamicRouteComponentName(parameters: ActualComponentInterface) {
-    if (parameters) {
-      let elementName = parameters.element?.['__proto__'].constructor.name
-      if (this._actualDynamicRouteComponentName != elementName) {
-        this._actualDynamicRouteComponentName = elementName;
-
-        this.renderChild(this.children.get(parameters.position)?.template);
-
-        this.ref.move(<ViewRef>this.ref.get(this.children.length), parameters.position)
-        this.ref.remove(parameters.position + 1)
-      }
-    }
-  };
-
-  renderChild(template?: TemplateRef<any>): void {
-    let componentRef = this.ref.createComponent(ScrollWindowChildComponent)
-    componentRef.instance.contentChild = template;
-    componentRef.instance.resizeHandler.subscribe(this.resize.bind(this));
-  }
+  private resizeObserver = new ResizeObserver(this.resize.bind(this));
 
   constructor(private changeDetector: ChangeDetectorRef) {}
 
-  ngAfterContentInit(): void {
-    this.children.changes.subscribe(changes => {
-      if (this.children.length === this._childrenCount) return
-      if (this.children.length > this._childrenCount) {
-        this.renderChild(changes.last.template);
-        this.ref.move(<ViewRef>this.ref.get(this.children.length - 1), 0)
-      }
-      this.ref.clear()
-      this.children.toArray().reverse().forEach((child) => this.renderChild(child.template))
-      this._childrenCount = this.children.length;
-    })
+  ngOnDestroy(): void {
+    this.resizeObserver.unobserve(this.container.nativeElement)
   }
 
   ngAfterViewInit(): void {
-    this.children.forEach(child => this.renderChild(child.template));
-    this._childrenCount = this.children.length;
+    this.resizeObserver.observe(this.container.nativeElement);
   }
 
   private readonly _slowdown: number = 1.7;
@@ -106,7 +67,6 @@ export class ScrollWindowComponent implements AfterViewInit, AfterContentInit {
 
   mousedown(event: MouseEvent) {
     event.stopPropagation();
-    event.preventDefault();
     if (!this.handle?.nativeElement.contains(event.target)) return
 
     this.draggable = true;
@@ -114,10 +74,9 @@ export class ScrollWindowComponent implements AfterViewInit, AfterContentInit {
   }
 
   mousemove(event: MouseEvent) {
+    if (!this.draggable) return
     event.stopPropagation();
     event.preventDefault();
-
-    if (!this.draggable) return
 
     // драг вниз
     if (this.startMouseHandlePosition < event.clientY) {
@@ -202,7 +161,7 @@ export class ScrollWindowComponent implements AfterViewInit, AfterContentInit {
   }
 
   resize() {
-    this.windowHeight = this.window.nativeElement.offsetHeight;
+    this.windowHeight = this.wrapper.nativeElement.offsetHeight;
     this.containerHeight = this.container.nativeElement.offsetHeight;
     this._setSizeHandler();
   }

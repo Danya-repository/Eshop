@@ -7,15 +7,12 @@ import {environment} from '../environments/environment';
 import {AppRoutingModule} from './app-routing.module';
 import {UserBaseLayoutComponent} from './user/user-base-layout.component';
 import {UserModule} from "./user/user.module";
-import {AdminBaseLayoutComponent} from "./admin/components/admin-base-layout/admin-base-layout.component";
-import {AdminModule} from "./admin/admin.module";
 import {SharedModule} from './shared/shared.module';
 import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
     declarations: [
         AppComponent,
-        AdminBaseLayoutComponent,
         UserBaseLayoutComponent
     ],
     providers: [],
@@ -23,7 +20,6 @@ import {HttpClientModule} from "@angular/common/http";
     imports: [
         BrowserModule,
         UserModule,
-        AdminModule,
         AppRoutingModule,
         SharedModule,
         HttpClientModule,

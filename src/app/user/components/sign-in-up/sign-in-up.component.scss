@@ -1,0 +1,104 @@
+@import "../../../styles/vars";
+
+.sign-in-up {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  &__title {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+    margin: 20px 0 50px;
+    width: 100%;
+    text-align: center;
+  }
+
+  &__checkbox-wrapper {
+    font-size: 14px;
+    text-transform: lowercase;
+    width: 100%;
+  }
+
+  &__button-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__checkbox {
+    margin: 0 10px 10px 0;
+    height: 14px;
+    width: 14px;
+  }
+
+  &__checkbox-label {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &__side-reg-button {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    text-decoration-line: underline;
+    color: #C4C4C4;
+  }
+
+  &__input-inner {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+
+    span {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__input {
+    min-width: 375px;
+    height: 48px;
+    background-color: $base-color;
+    padding: 15px 15px 15px 20px;
+    font-size: 16px;
+    line-height: 19px;
+    border-radius: 3px;
+    position: relative;
+    color: $main-color;
+
+    &:focus {
+      outline: 1px solid #000000;
+    }
+
+    &.ng-invalid.ng-touched {
+      outline: none;
+      border: 2px solid red;
+    }
+  }
+
+  &__input-validation-message{
+    margin-top: 5px;
+    font-size: 12px;
+    color: red;
+    visibility: hidden;
+    &.invalid {
+      visibility: visible;
+    }
+  }
+
+  &__button {
+    text-transform: uppercase;
+    padding: 15px;
+    margin-bottom: 20px;
+    &.invalid {
+      background-color: gray;
+    }
+  }
+}
