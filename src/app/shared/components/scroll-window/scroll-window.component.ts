@@ -1,56 +1,45 @@
 import {
-  ChangeDetectionStrategy,
+  AfterViewInit,
+  ChangeDetectorRef,
   Component,
   ContentChildren,
   ElementRef,
-  Input,
-  OnChanges,
-  OnInit,
+  OnDestroy,
   QueryList,
-  SimpleChange,
-  SimpleChanges,
-  TemplateRef,
   ViewChild
 } from '@angular/core';
-import {ScrollService} from "../../services/scroll.service";
-import {Subscription} from "rxjs";
+import {AppScrollWindowChildDirective} from "../../directives/app-scroll-window-child.directive";
+
+export interface ActualComponentInterface {
+  element: any,
+  position: number
+}
 
 @Component({
   selector: 'app-scroll-window',
   templateUrl: './scroll-window.component.html',
-  styleUrls: ['./scroll-window.component.scss'],
-  providers: [ScrollService],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./scroll-window.component.scss']
 })
-export class ScrollWindowComponent implements OnInit, OnChanges {
+export class ScrollWindowComponent implements AfterViewInit, OnDestroy {
 
-  @Input()
-  actualComponent!: any;
-
-  @ContentChildren('scrollWindowChild', {read: TemplateRef})
-  children: QueryList<TemplateRef<any>> = new QueryList<TemplateRef<any>>()
+  @ContentChildren(AppScrollWindowChildDirective, {read: AppScrollWindowChildDirective})
+  children!: QueryList<AppScrollWindowChildDirective>;
 
   @ViewChild('container', {static: true}) container!: ElementRef;
   @ViewChild('handle', {static: false}) handle!: ElementRef;
-  @ViewChild('window', {static: true}) window!: ElementRef;
+  @ViewChild('wrapper', {static: true}) wrapper!: ElementRef;
   @ViewChild('strip', {static: false}) strip!: ElementRef;
 
-  constructor(private scrollService: ScrollService) {}
+  private resizeObserver = new ResizeObserver(this.resize.bind(this));
 
-  private scrollSub!: Subscription;
+  constructor(private changeDetector: ChangeDetectorRef) {}
 
-  ngOnChanges(change: SimpleChanges) {
-    console.log(change);
-    this.resize();
+  ngOnDestroy(): void {
+    this.resizeObserver.unobserve(this.container.nativeElement)
   }
 
-  ngOnInit(): void {
-    this.scrollSub = this.scrollService.$scrollResizeStream.subscribe(({}) => {
-      console.log('resize')
-      setTimeout(() => {
-        this.resize();
-      },2000)
-    })
+  ngAfterViewInit(): void {
+    this.resizeObserver.observe(this.container.nativeElement);
   }
 
   private readonly _slowdown: number = 1.7;
@@ -67,7 +56,7 @@ export class ScrollWindowComponent implements OnInit, OnChanges {
   public canUp: boolean = true;
   public canDown: boolean = true;
   public transition: boolean = true;
-  public visible: boolean = true;
+  public visible: boolean = false;
 
   public windowHeight: number = 0;
   public containerHeight: number = 0;
@@ -75,9 +64,9 @@ export class ScrollWindowComponent implements OnInit, OnChanges {
 
   public stripOpacityTransition: boolean = false;
 
+
   mousedown(event: MouseEvent) {
     event.stopPropagation();
-    event.preventDefault();
     if (!this.handle?.nativeElement.contains(event.target)) return
 
     this.draggable = true;
@@ -85,10 +74,9 @@ export class ScrollWindowComponent implements OnInit, OnChanges {
   }
 
   mousemove(event: MouseEvent) {
+    if (!this.draggable) return
     event.stopPropagation();
     event.preventDefault();
-
-    if (!this.draggable) return
 
     // драг вниз
     if (this.startMouseHandlePosition < event.clientY) {
@@ -112,7 +100,6 @@ export class ScrollWindowComponent implements OnInit, OnChanges {
   }
 
   mouseleave() {
-    this.mouseup();
     this._visibleTimeoutActivate();
   }
 
@@ -123,7 +110,6 @@ export class ScrollWindowComponent implements OnInit, OnChanges {
 
   mousewheel(event: WheelEvent) {
     event.stopPropagation();
-    event.preventDefault();
 
     if (this.windowHeight > this.containerHeight) return
 
@@ -142,6 +128,7 @@ export class ScrollWindowComponent implements OnInit, OnChanges {
     if (prevHandlePosition < nextHandlePosition) {
       this._downScrolling(event)
     }
+    this.visible = true;
   }
 
   goToPercentage(event: MouseEvent) {
@@ -174,9 +161,8 @@ export class ScrollWindowComponent implements OnInit, OnChanges {
   }
 
   resize() {
-    this.windowHeight = this.window.nativeElement.offsetHeight;
+    this.windowHeight = this.wrapper.nativeElement.offsetHeight;
     this.containerHeight = this.container.nativeElement.offsetHeight;
-
     this._setSizeHandler();
   }
 
@@ -276,8 +262,8 @@ export class ScrollWindowComponent implements OnInit, OnChanges {
       this.stripOpacityTransition = true;
       this.visible = false;
       this._disableStripOpacityTransitionTimeoutActivate();
+      this.changeDetector.detectChanges();
     }, 4000)
-    this.visible = true;
   }
 
   private _disableStripOpacityTransitionTimeoutActivate() {

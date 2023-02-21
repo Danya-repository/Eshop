@@ -1,0 +1,55 @@
+.admin-product-card {
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    max-width: 325px;
+    border: 1px solid blueviolet;
+    padding: 10px;
+  }
+
+  &__row {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  &__characteristic {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+
+  &__image-wrapper {
+    margin: 15px 0;
+  }
+
+  &__button {
+    font-size: 17px;
+    border-radius: 8px;
+    border: 1px solid blueviolet;
+    color: blueviolet;
+    padding: 15px;
+    transition: all .5s;
+    margin-top: 15px;
+    width: 100%;
+
+    &.active, &:hover {
+      background-color: blueviolet;
+      color: #FFFFFF;
+    }
+  }
+
+  .admin-product-card__edit-button {
+    background-color: blueviolet;
+    color: #FFFFFF;
+  }
+}

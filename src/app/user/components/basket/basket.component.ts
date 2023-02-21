@@ -2,13 +2,11 @@ import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angula
 import {Subscription} from 'rxjs';
 import {ProductInterface} from 'src/app/shared/models/product.interface';
 import {BasketService} from 'src/app/shared/services/basket.service';
-import {ScrollService} from "../../../shared/services/scroll.service";
 
 @Component({
   selector: 'app-basket',
   templateUrl: './basket.component.html',
-  styleUrls: ['./basket.component.scss'],
-  providers: [ScrollService]
+  styleUrls: ['./basket.component.scss']
 })
 export class BasketComponent implements OnInit, OnDestroy {
 
@@ -21,11 +19,7 @@ export class BasketComponent implements OnInit, OnDestroy {
   @Output() openEmitter: EventEmitter<any> = new EventEmitter<any>();
   @Output() countEmitter: EventEmitter<number> = new EventEmitter<any>();
 
-  constructor(
-    protected basketService: BasketService,
-    private scrollWindowService: ScrollService
-  ) {
-  }
+  constructor(protected basketService: BasketService) {}
 
   ngOnInit(): void {
     this.products = this.getBasketProductsFromCookies();
@@ -51,10 +45,11 @@ export class BasketComponent implements OnInit, OnDestroy {
 
   private getBasketProductsFromCookies(): ProductInterface[] {
     let productsInCookies: ProductInterface[] = [];
-    let productsJson = document.cookie?.match(`basketEshop`)?.input?.split('=')[1] || []
-    if (typeof productsJson === "string") {
-      productsInCookies = JSON.parse(productsJson);
-    }
+    /*TODO чекнуть*/
+    // let productsJson = document.cookie?.match(`basketEshop`)?.input?.split('=')[1] || []
+    // if (typeof productsJson === "string") {
+    //   productsInCookies = JSON.parse(productsJson);
+    // }
     return productsInCookies
   }
 
@@ -79,7 +74,6 @@ export class BasketComponent implements OnInit, OnDestroy {
     let index: number = this.products.indexOf(product);
     this.products.splice(index, 1);
     this.removeProductFromCookie(product);
-    this.scrollWindowService.$scrollResizeStream.next({});
 
     this.totalSum = this.products.reduce((acc: number, current: ProductInterface) => acc + current.price, 0)
     this.countEmitter.emit(this.products.length)

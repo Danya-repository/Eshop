@@ -6,18 +6,18 @@ import {HomePageComponent} from "./user/components/home-page/home-page.component
 import {CatalogPageComponent} from "./user/components/catalog-page/catalog-page.component";
 import {ProductPageComponent} from "./user/components/product-page/product-page.component";
 import {ProductResolver} from "./shared/services/resolvers/product.resolver";
-import {AdminBaseLayoutComponent} from "./admin/components/admin-base-layout/admin-base-layout.component";
 import {ProductsResolver} from "./shared/services/resolvers/products.resolver";
+import {AuthGuard} from "./shared/services/guards/auth.guard";
 
 const routes: Routes = [
-  {path: '', component: UserBaseLayoutComponent, children: [
-      {path: '', component: HomePageComponent},
+  {path: '', component: UserBaseLayoutComponent,children: [
+      {path: '', component: HomePageComponent, pathMatch: 'full'},
       {path: 'catalog/:productType', component: CatalogPageComponent, resolve: {products: ProductsResolver}},
       {path: 'product/:id', component: ProductPageComponent, resolve: {product: ProductResolver}},
       {path: 'about', component: HomePageComponent},
     ]
   },
-  {path: 'admin', component: AdminBaseLayoutComponent},
+  {path: 'admin', canActivate: [AuthGuard], canDeactivate: [AuthGuard], loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)},
   {path: '**', component: NotFoundComponent}
 ];
 

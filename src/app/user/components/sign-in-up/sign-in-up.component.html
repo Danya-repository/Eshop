@@ -1,0 +1,55 @@
+<div class="sign-in-up">
+  <h3 class="sign-in-up__title">Добро пожаловать!</h3>
+  <form class="sign-in-up__form" [formGroup]="form" (ngSubmit)="submitForm()">
+    <div class="sign-in-up__input-wrapper">
+      <div class="sign-in-up__input-inner">
+        <span>Логин</span>
+        <input class="sign-in-up__input" type="email" formControlName="login">
+        <small
+          class="sign-in-up__input-validation-message"
+          [class.invalid]="form.get('login')?.invalid && form.get('login')?.touched"
+        >Некорректный email</small>
+      </div>
+    </div>
+    <div class="sign-in-up__input-wrapper">
+      <div class="sign-in-up__input-inner">
+        <span>Пароль</span>
+        <input class="sign-in-up__input" type="password" formControlName="password">
+        <small
+          class="sign-in-up__input-validation-message"
+          [class.invalid]="form.get('password')?.invalid && form.get('password')?.touched"
+        >Некорректный пароль. Минимальное количество символов: 5. Текущее количество введенных символов: {{form.get('password')?.errors?.['minlength']?.['actualLength'] || 0}}.</small>
+      </div>
+    </div>
+    <div class="sign-in-up__input-wrapper" *ngIf="form.get('registration')?.value">
+      <div class="sign-in-up__input-inner">
+        <span>Повторите пароль</span>
+        <input class="sign-in-up__input" type="password" formControlName="syncPassword">
+        <small
+          class="sign-in-up__input-validation-message"
+          [class.invalid]="!passwordsEquals()"
+        >Пароли не совпадают</small>
+      </div>
+    </div>
+
+    <div class="sign-in-up__input-wrapper">
+      <div class="sign-in-up__checkbox-wrapper">
+        <label class="sign-in-up__checkbox-label">
+          <input class="sign-in-up__checkbox" type="checkbox" formControlName="registration"> Первый вход
+        </label>
+        <label class="sign-in-up__checkbox-label">
+          <input class="sign-in-up__checkbox" type="checkbox" formControlName="remember"> Запомнить меня
+        </label>
+      </div>
+      <div class="sign-in-up__button-wrapper">
+        <button
+          [disabled]="form.invalid"
+          [ngClass]="{'invalid': form.invalid}"
+          type="submit"
+          class="sign-in-up__button blue-button">{{form.get('registration')?.value ? 'Зарегистрироваться' : 'Войти'}}</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+

@@ -49,11 +49,10 @@ import {BasketProductComponent} from './components/basket-product/basket-product
       ReactiveFormsModule
     ],
     exports: [
-      HeaderComponent,
-      MenuComponent,
-      FooterComponent,
-      BasketComponent,
-      SharedModule
+        HeaderComponent,
+        MenuComponent,
+        FooterComponent,
+        BasketComponent
     ]
 })
 export class UserModule { }

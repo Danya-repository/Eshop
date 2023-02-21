@@ -3,6 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs";
 import {ProductService} from "../../../shared/services/product.service";
 import {ProductInterface} from "../../../shared/models/product.interface";
+import {BasketService} from "../../../shared/services/basket.service";
 
 @Component({
   selector: 'app-product-page',
@@ -17,7 +18,8 @@ export class ProductPageComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+    private basketService: BasketService
   ) { }
 
   ngOnInit(): void {
@@ -30,10 +32,15 @@ export class ProductPageComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
+  toggleAddToBasket(event: Event) {
+    event.stopPropagation()
+    this.basketService.addProduct(this.product)
+  }
+
   toggleLike() {
     this.product.favorite = !this.product.favorite;
-    this.productService.putOne(this.product).subscribe(resp => {
-      this.product = resp
-    })
+    // this.productService.putOne(this.product).subscribe(resp => {
+    //   this.product = resp
+    // })
   }
 }

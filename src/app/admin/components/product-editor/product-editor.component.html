@@ -1,1 +1,50 @@
-<p>product-editor works!</p>
+<form class="product-editor">
+  <div class="product-editor__main-info">
+    <div class="product-editor__row product-editor__name">
+      <div class="product-editor__input-text">Имя товара:</div>
+      <input type="text">
+    </div>
+    <div class="product-editor__row product-editor__code">
+      <div class="product-editor__input-text">Код товара:</div>
+      <input type="number"></div>
+    <div class="product-editor__row product-editor__price">
+      <div class="product-editor__input-text">Цена товара:</div>
+      <input type="number">
+    </div>
+    <div class="product-editor__row product-editor__discount">
+      <div class="product-editor__input-text">Скидка:</div>
+      <input type="checkbox">
+    </div>
+    <div class="product-editor__row product-editor__old-price">
+      <div class="product-editor__input-text">Цена до скидки:</div>
+      <input type="number">
+    </div>
+  </div>
+  <div class="product-editor__characteristic">
+    <div class="product-editor__row product-editor__engine-type">
+      <div class="product-editor__input-text">Тип двигателя:</div>
+      <label>Бензин<input name="engine-type" type="radio"></label>
+      <label>Дизель<input name="engine-type" type="radio"></label>
+    </div>
+    <div class="product-editor__row product-editor__manufacturer">
+      <div class="product-editor__input-text">Производитель:</div>
+      <input type="text">
+    </div>
+    <div class="product-editor__row product-editor__power">
+      <div class="product-editor__input-text">Мощность двигателя:</div>
+      <input type="text">
+    </div>
+    <div class="product-editor__row product-editor__quantity">
+      <div class="product-editor__input-text">Количество на складе:</div>
+      <input type="number">
+    </div>
+    <div class="product-editor__row product-editor__year-of-issue">
+      <div class="product-editor__input-text">Год производства:</div>
+      <input type="number">
+    </div>
+  </div>
+  <div class="product-editor__buttons">
+    <button class="product-editor__reset" type="reset">Сбросить</button>
+    <button class="product-editor__submit" type="submit">Подтвердить</button>
+  </div>
+</form>

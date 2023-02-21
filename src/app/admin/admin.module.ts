@@ -6,22 +6,28 @@ import {AdminRoutingModule} from "./admin-routing.module";
 import {AdminHeaderComponent} from './components/admin-header/admin-header.component';
 import {AdminFooterComponent} from './components/admin-footer/admin-footer.component';
 import {AdminDashboardComponent} from './components/admin-dashboard/admin-dashboard.component';
+import {AdminBaseLayoutComponent} from "./components/admin-base-layout/admin-base-layout.component";
+import { AdminProductCardComponent } from './components/admin-product-card/admin-product-card.component';
+import {SharedModule} from "../shared/shared.module";
 
 @NgModule({
   declarations: [
+    AdminBaseLayoutComponent,
     ProductEditorComponent,
+    AdminHeaderComponent,
+    AdminFooterComponent,
+    AdminDashboardComponent,
+    AdminProductCardComponent
+  ],
+  exports: [
     AdminHeaderComponent,
     AdminFooterComponent,
     AdminDashboardComponent
   ],
-  exports: [
-    AdminHeaderComponent,
-    AdminDashboardComponent,
-    AdminFooterComponent
-  ],
-  imports: [
-    CommonModule,
-    AdminRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        AdminRoutingModule,
+        SharedModule
+    ]
 })
 export class AdminModule { }
